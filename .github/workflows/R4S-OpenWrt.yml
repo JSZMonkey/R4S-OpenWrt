@@ -1,11 +1,19 @@
 name: R4S-OpenWrt
 
 on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - master
+    paths:
+      - '.github/workflows/R4S-OpenWrt.yml'
+      - 'SCRIPTS/**'
+      - 'SEED/R4S/config.seed'
   schedule:
-    - cron: 5 6 * * 0
+    - cron: 5 15 * * 5	 
   watch:
     types: started
-
+    
 jobs:
   
   Cleanup-Old-Releases:
