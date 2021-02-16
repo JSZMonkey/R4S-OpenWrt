@@ -1,15 +1,13 @@
-## R2S/R4S/X86 基于原生OpenWRT 的固件(AS IS, NO WARRANTY!!!)
-![R2S-OpenWrt](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/workflows/R2S-OpenWrt/badge.svg)
-![R4S-OpenWrt](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/workflows/R4S-OpenWrt/badge.svg)
-![X86-OpenWrt](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/workflows/X86-OpenWrt/badge.svg)
+## R4S 基于原生OpenWRT 的固件(AS IS, NO WARRANTY!!!)
+![R4S-OpenWrt](https://github.com/JSZMonkey/R4S-OpenWrt/workflows/R4S-OpenWrt/badge.svg)
 
 ### 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!!
 
 ### 下载地址：
-https://github.com/QiuSimons/R2S-R4S-OpenWrt/releases
+https://github.com/JSZMonkey/R4S-OpenWrt/releases
 
 ### 追新党可以在Action中取每日更新（可能会翻车，风险自担，需要登陆github后才能下载）：
-https://github.com/QiuSimons/R2S-R4S-OpenWrt/actions
+https://github.com/JSZMonkey/R4S-OpenWrt/actions
 
 ### Docker版本自行fork，修改seed，并在自己的Action中自取
 
