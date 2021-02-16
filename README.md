@@ -12,7 +12,7 @@ https://github.com/JSZMonkey/R4S-OpenWrt/actions
 ### Docker版本自行fork，修改seed，并在自己的Action中自取
 
 ### 注意事项：
-0.R2S核心频率1.6，R4S核心频率2.2/1.8（特调了电压表，兼容5v3a的供电，但建议使用5v4a）
+0.R4S核心频率2.2/1.8（特调了电压表，兼容5v3a的供电，但建议使用5v4a）
 
 1.登陆IP：192.168.1.1 密码：无
 
