@@ -232,12 +232,12 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper packa
 #IPSEC
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
 #Zerotier
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-zerotier package/lean/luci-app-zerotier
-cp -f ../PATCH/new/script/move_2_services.sh ./package/lean/luci-app-zerotier/move_2_services.sh
-pushd package/lean/luci-app-zerotier
-bash move_2_services.sh
-popd
-rm -rf ./feeds/packages/net/zerotier/files/etc/init.d/zerotier
+#svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-zerotier package/lean/luci-app-zerotier
+#cp -f ../PATCH/new/script/move_2_services.sh ./package/lean/luci-app-zerotier/move_2_services.sh
+#pushd package/lean/luci-app-zerotier
+#bash move_2_services.sh
+#popd
+#rm -rf ./feeds/packages/net/zerotier/files/etc/init.d/zerotier
 #UPNP（回滚以解决某些沙雕设备的沙雕问题
 rm -rf ./feeds/packages/net/miniupnpd
 svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
