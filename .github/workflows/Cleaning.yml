@@ -1,6 +1,11 @@
 name: Cleaning
 
+
 on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - master
   schedule:
     - cron: 1 1 * * 1
   watch:
