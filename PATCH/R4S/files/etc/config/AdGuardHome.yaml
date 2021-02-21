@@ -1,5 +1,6 @@
 bind_host: 0.0.0.0
 bind_port: 3000
+beta_bind_port: 0
 users:
 - name: root
   password: $2y$10$8GfLmnbQpS883RMTpGN66.TbyavsPmElcy2aR6vec7xL0YOG.gx52
@@ -41,9 +42,9 @@ dns:
   - version.bind
   - id.server
   - hostname.bind
-  cache_size: 4194304
-  cache_ttl_min: 3600
-  cache_ttl_max: 36000
+  cache_size: 51200
+  cache_ttl_min: 300
+  cache_ttl_max: 3600
   bogus_nxdomain: []
   aaaa_disabled: false
   enable_dnssec: false
@@ -69,6 +70,7 @@ dns:
   - domain: https://www.meituan.com
     answer: www.meituan.com
   blocked_services: []
+  customresolver: null
 tls:
   enabled: false
   server_name: ""
@@ -76,6 +78,8 @@ tls:
   port_https: 443
   port_dns_over_tls: 853
   port_dns_over_quic: 784
+  port_dnscrypt: 0
+  dnscrypt_config_file: ""
   allow_unencrypted_doh: false
   strict_sni_check: false
   certificate_chain: ""
@@ -83,38 +87,30 @@ tls:
   certificate_path: ""
   private_key_path: ""
 filters:
-- enabled: false
-  url: https://gitee.com/halflife/list/raw/master/ad.txt
-  name: HalfLife
-  id: 1595502658
-- enabled: false
-  url: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=1&mimetype=plaintext
-  name: Peter Lowe's List
-  id: 1595502661
 - enabled: true
-  url: https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
-  name: NoCoin Filter List
-  id: 1595502662
+  url: https://easylist-downloads.adblockplus.org/easylistchina.txt
+  name: 'EasyList China : 国内网站广告过滤的主规则'
+  id: 1613564314
+- enabled: true
+  url: https://easylist-downloads.adblockplus.org/easyprivacy.txt
+  name: 'EasyPrivacy : EasyPrivacy 是隐私保护，不被跟踪'
+  id: 1613564315
+- enabled: true
+  url: https://gitee.com/halflife/list/raw/master/ad.txt
+  name: HalfLife、EasylistChina、EasylistLite、CJX’sAnnoyance 合并规则
+  id: 1613564316
 - enabled: true
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
-  name: 乘风 广告过滤规则
-  id: 1600600707
+  name: 乘风广告过滤规则
+  id: 1613564317
 - enabled: true
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
-  name: 乘风 视频广告过滤规则
-  id: 1600600708
+  name: 乘风视频过滤规则
+  id: 1613564318
 - enabled: true
-  url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-ublock.txt
-  name: CJX's uBlock list
-  id: 1600600709
-- enabled: true
-  url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-annoyance.txt
-  name: CJX's Annoyance List
-  id: 1600600710
-- enabled: true
-  url: http://sub.adtchrome.com/adt-chinalist-easylist.txt
-  name: ChinaList and EasyList
-  id: 1600600711
+  url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
+  name: 移动客户端过滤规则
+  id: 1613564319
 whitelist_filters: []
 user_rules: []
 dhcp:
