@@ -98,6 +98,9 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/l
 #京东签到
 git clone --depth 1 https://github.com/jerrykuku/node-request.git package/new/node-request
 git clone --depth 1 https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/new/luci-app-jd-dailybonus
+pushd package/new/luci-app-jd-dailybonus
+sed -i 's/wget-ssl/wget/g' root/usr/share/jd-dailybonus/newapp.sh luasrc/controller/jd-dailybonus.lua
+popd
 #arpbind
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-arpbind package/lean/luci-app-arpbind
 patch -p1 < ../PATCH/new/package/arpbind.patch
@@ -236,7 +239,7 @@ mkdir package/new/smartdns
 wget -P package/new/smartdns/ https://github.com/HiGarfield/lede-17.01.4-Mod/raw/master/package/extra/smartdns/Makefile
 sed -i 's,files/etc/config,$(PKG_BUILD_DIR)/package/openwrt/files/etc/config,g' ./package/new/smartdns/Makefile
 #上网APP过滤
-git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/new/OpenAppFilter
 #Docker
 sed -i 's/+docker-ce/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 #ipv6-helper
