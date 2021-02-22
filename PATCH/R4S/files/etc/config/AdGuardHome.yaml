@@ -30,10 +30,13 @@ dns:
   refuse_any: true
   upstream_dns:
   - 127.0.0.1:6052
+  - '[::1]:6052'
   - '[/awsglobalaccelerator.com/]127.0.0.1:6050'
+  - '[/awsglobalaccelerator.com/][::1]:6050'
   upstream_dns_file: ""
   bootstrap_dns:
   - 127.0.0.1:6052
+  - '[::1]:6052'
   all_servers: false
   fastest_addr: true
   allowed_clients: []
