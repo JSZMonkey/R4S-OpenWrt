@@ -114,6 +114,10 @@ filters:
   url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
   name: 移动客户端过滤规则
   id: 1613564319
+- enabled: true
+  url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_English/filter.txt
+  name: AdGuard 基础过滤器
+  id: 1613564320
 whitelist_filters: []
 user_rules: []
 dhcp:
