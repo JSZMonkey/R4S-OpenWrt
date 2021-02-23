@@ -94,7 +94,7 @@ config server
 
 config server
 	option enabled '1'
-	option name 'CN2'
+	option name '114DNS'
 	option ip '114.114.114.114'
 	option type 'udp'
 	option server_group 'mainland'
