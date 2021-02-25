@@ -201,9 +201,6 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/t
 svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
 svn co https://github.com/fw876/helloworld/trunk/ipt2socks-alt package/lean/ipt2socks-alt
 
-# shadowsocksr-libev的GCC 10编译错误修复
-wget -qO - https://patch-diff.githubusercontent.com/raw/coolsnowwolf/lede/pull/6433.patch | patch -p1
-
 #PASSWALL
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/new/luci-app-passwall
 sed -i 's,default n,default y,g' package/new/luci-app-passwall/Makefile
