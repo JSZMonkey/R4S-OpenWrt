@@ -1,18 +1,13 @@
 name: R4S-OpenWrt
 
 on:
+  repository_dispatch:
   workflow_dispatch:
-  push:
-    branches: 
-      - master
-    paths:
-      - '.github/workflows/R4S-OpenWrt.yml'
-      - 'SCRIPTS/**'
-      - 'SEED/R4S/config.seed'
-  schedule:
-    - cron: 5 15 * * 5	 
-  watch:
-    types: started
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: true
+        default: 'true'
     
 jobs:
   build:
