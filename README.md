@@ -9,7 +9,6 @@ https://github.com/JSZMonkey/R4S-OpenWrt/releases
 ### 追新党可以在Action中取每日更新（可能会翻车，风险自担，需要登陆github后才能下载）：
 https://github.com/JSZMonkey/R4S-OpenWrt/actions
 
-### Docker版本自行fork，修改seed，并在自己的Action中自取
 
 ### 注意事项：
 0.R4S核心频率2.2/1.8（特调了电压表，兼容5v3a的供电，但建议使用5v4a）
@@ -37,5 +36,5 @@ R4S的支援由[1715173329](https://github.com/1715173329/)完成！
 
 2.内置两款主题
 
-3.插件包含：SSRP，AdguardHome，BearDropper，SQM，SmartDNS，网络共享，硬盘休眠，挂载点，网络唤醒，DDNS，UPNP，FullCone(防火墙中开启，默认开启)，流量分载(防火墙中开启)，SFE流量分载(也就是SFE加速，防火墙中开启，且默认开启)，BBR（默认开启），irq优化，无线打印，流量监控，过滤军刀，R2S-OLED，带宽监控，ttyd
+3.插件包含：SSRP，AdguardHome，BearDropper，SQM，SmartDNS，网络共享，硬盘休眠，挂载点，网络唤醒，DDNS，UPNP，FullCone(防火墙中开启，默认开启)，流量分载(防火墙中开启)，SFE流量分载(也就是SFE加速，防火墙中开启，且默认开启)，BBR（默认开启），irq优化，无线打印，流量监控，过滤军刀，R2S-OLED，带宽监控，ttyd，Docker
 
