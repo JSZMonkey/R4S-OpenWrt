@@ -16,7 +16,7 @@ sed -i 's,-SNAPSHOT,,g' include/version.mk
 sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 
 ##必要的patch
-wget -P target/linux/generic/pending-5.10 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
+wget -P target/linux/generic/pending-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 
 #luci networkt
 #patch -p1 < ../PATCH/new/main/luci_network-add-packet-steering.patch
@@ -30,8 +30,8 @@ cp -f ../PATCH/new/package/900-add-filter-aaaa-option.patch ./package/network/se
 #wget -P package/base-files/files/etc/init.d https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/package/base-files/files/etc/init.d/boot
 #（从这行开始接下来4个操作全是和fullcone相关的，不需要可以一并注释掉，但极不建议
 # Patch Kernel 以解决fullcone冲突
-pushd target/linux/generic/hack-5.10
-wget https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/952-net-conntrack-events-support-multiple-registrant.patch
+pushd target/linux/generic/hack-5.4
+wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.4/952-net-conntrack-events-support-multiple-registrant.patch
 popd
 #Patch FireWall 以增添fullcone功能 
 mkdir package/network/config/firewall/patches
@@ -42,8 +42,8 @@ patch -p1 < ../PATCH/new/package/luci-app-firewall_add_fullcone.patch
 cp -rf ../openwrt-lienol/package/network/fullconenat ./package/network/fullconenat
 #（从这行开始接下来3个操作全是和SFE相关的，不需要可以一并注释掉，但极不建议
 # Patch Kernel 以支援SFE
-pushd target/linux/generic/hack-5.10
-wget https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+pushd target/linux/generic/hack-5.4
+wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 popd
 # Patch LuCI 以增添SFE开关
 patch -p1 < ../PATCH/new/package/luci-app-firewall_add_sfe_switch.patch
