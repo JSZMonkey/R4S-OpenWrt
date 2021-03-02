@@ -8,22 +8,22 @@ rm -rf ./package/boot/uboot-rockchip
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
 
 #overclock 1.8/2.2
-rm -rf ./target/linux/rockchip/patches-5.4/992-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
-cp -f ../PATCH/new/main/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch ./target/linux/rockchip/patches-5.4/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
-cp -f ../PATCH/new/main/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch ./target/linux/rockchip/patches-5.4/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch
+rm -rf ./target/linux/rockchip/patches-5.10/992-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
+cp -f ../PATCH/new/main/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch ./target/linux/rockchip/patches-5.10/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
+cp -f ../PATCH/new/main/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch ./target/linux/rockchip/patches-5.10/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch
 
 #使用特定的优化
 sed -i 's,-mcpu=generic,-march=armv8-a+crypto+crc -mcpu=cortex-a72.cortex-a53+crypto+crc -mtune=cortex-a72.cortex-a53,g' include/target.mk
 
 #Experimental
-sed -i '/CRYPTO_DEV_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
-sed -i '/HW_RANDOM_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
-sed -i '/CONFIG_SLUB/d' ./target/linux/rockchip/armv8/config-5.4
-sed -i '/CONFIG_PROC_[^V].*/d' ./target/linux/rockchip/armv8/config-5.4
+sed -i '/CRYPTO_DEV_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.10
+sed -i '/HW_RANDOM_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.10
+sed -i '/CONFIG_SLUB/d' ./target/linux/rockchip/armv8/config-5.10
+sed -i '/CONFIG_PROC_[^V].*/d' ./target/linux/rockchip/armv8/config-5.10
 echo '
 CONFIG_CRYPTO_DEV_ROCKCHIP=y
 CONFIG_HW_RANDOM_ROCKCHIP=y
-' >> ./target/linux/rockchip/armv8/config-5.4
+' >> ./target/linux/rockchip/armv8/config-5.10
 #IRQ
 sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
 sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
