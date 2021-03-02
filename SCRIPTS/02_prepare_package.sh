@@ -31,7 +31,7 @@ cp -f ../PATCH/new/package/900-add-filter-aaaa-option.patch ./package/network/se
 #（从这行开始接下来4个操作全是和fullcone相关的，不需要可以一并注释掉，但极不建议
 # Patch Kernel 以解决fullcone冲突
 pushd target/linux/generic/hack-5.10
-wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.10/952-net-conntrack-events-support-multiple-registrant.patch
+wget https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/952-net-conntrack-events-support-multiple-registrant.patch
 popd
 #Patch FireWall 以增添fullcone功能 
 mkdir package/network/config/firewall/patches
@@ -43,7 +43,7 @@ cp -rf ../openwrt-lienol/package/network/fullconenat ./package/network/fullconen
 #（从这行开始接下来3个操作全是和SFE相关的，不需要可以一并注释掉，但极不建议
 # Patch Kernel 以支援SFE
 pushd target/linux/generic/hack-5.10
-wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+wget https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 popd
 # Patch LuCI 以增添SFE开关
 patch -p1 < ../PATCH/new/package/luci-app-firewall_add_sfe_switch.patch
