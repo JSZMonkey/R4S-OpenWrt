@@ -294,7 +294,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 #qBittorrent
 cp -f ../PATCH/duplicate/luci-app-qbittorrent/Makefile ./package/lean/luci-app-qbittorrent
-
+pushd package/lean/luci-app-qbittorrent
+bash move_2_services.sh
+popd
 ##最后的收尾工作
 #Lets Fuck
 mkdir package/base-files/files/usr/bin
