@@ -130,8 +130,8 @@ rm -rf ./feeds/packages/net/ddns-scripts
 rm -rf ./feeds/luci/applications/luci-app-ddns
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_aliyun package/lean/ddns-scripts_aliyun
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_dnspod package/lean/ddns-scripts_dnspod
-svn co https://github.com/openwrt/packages/branches/openwrt-21.02/net/ddns-scripts feeds/packages/net/ddns-scripts
-svn co https://github.com/openwrt/luci/branches/openwrt-21.02/applications/luci-app-ddns feeds/luci/applications/luci-app-ddns
+svn co https://github.com/openwrt/packages/branches/openwrt-18.06/net/ddns-scripts feeds/packages/net/ddns-scripts
+svn co https://github.com/openwrt/luci/branches/openwrt-18.06/applications/luci-app-ddns feeds/luci/applications/luci-app-ddns
 #Pandownload
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/pandownload-fake-server package/lean/pandownload-fake-server
 #oled
@@ -251,8 +251,8 @@ sed -i 's,files/etc/config,$(PKG_BUILD_DIR)/package/openwrt/files/etc/config,g' 
 #上网APP过滤
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/new/OpenAppFilter
 #Docker
-rm -rf ./feeds/luci/applications/luci-app-dockerman
-git clone --depth=1 https://github.com/KFERMercer/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
+#rm -rf ./feeds/luci/applications/luci-app-dockerman
+#git clone --depth=1 https://github.com/KFERMercer/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 sed -i 's/+docker-ce/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 #ipv6-helper
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
