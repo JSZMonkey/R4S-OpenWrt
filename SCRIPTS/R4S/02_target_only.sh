@@ -13,7 +13,7 @@ cp -f ../PATCH/new/main/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4
 cp -f ../PATCH/new/main/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch ./target/linux/rockchip/patches-5.4/213-RK3399-set-critical-CPU-temperature-for-thermal-throttling.patch
 
 #DMC
-cp -f ../PATCH/new/main/803-ARM64-dts-rk3399-add-dmc-and-dfi-node.patch.patch ./target/linux/rockchip/patches-5.4/803-ARM64-dts-rk3399-add-dmc-and-dfi-node.patch.patch
+#cp -f ../PATCH/new/main/803-ARM64-dts-rk3399-add-dmc-and-dfi-node.patch.patch ./target/linux/rockchip/patches-5.4/803-ARM64-dts-rk3399-add-dmc-and-dfi-node.patch.patch
 
 #使用特定的优化
 
