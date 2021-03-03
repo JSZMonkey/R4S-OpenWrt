@@ -17,6 +17,10 @@ uci commit system
 #uci set system.@rngd[0].device="/dev/hwrng"
 #uci commit system
 
+
+#qbt
+sed -i 's,/tmp/qBittorrent/config/qBittorrent.conf,/etc/config/qBittorrent/config/qBittorrent.conf,g' /ect/init.d/qbittorrent
+
 #feed
 sed -i '/natelol\|freifunk/d' /etc/opkg/distfeeds.conf
 sed -i 's,21.02,21.02-SNAPSHOT,g' /etc/opkg/distfeeds.conf
