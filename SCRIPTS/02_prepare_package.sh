@@ -292,6 +292,8 @@ svn co https://github.com/1715173329/tencentcloud-openwrt-plugin-ddns/trunk/tenc
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
 #WOL
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
+#qBittorrent
+cp -f ../PATCH/duplicate/luci-app-qbittorrent/Makefile ./package/lean/luci-app-qbittorrent
 
 ##最后的收尾工作
 #Lets Fuck
