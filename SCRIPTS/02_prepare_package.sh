@@ -300,10 +300,6 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/q
 sed -i 's,4.3.2.10,4.3.3.10,g' package/lean/qBittorrent-Enhanced-Edition/Makefile
 sed -i 's,204da95489e6e6959561ea43fb1e16fe562d217932ae3b63a172db389f0c102e,a06540fdc41eff122e210c09c746daaeaddee69811bea4ec33ad6ddd4f4b7a17,g' package/lean/qBittorrent-Enhanced-Edition/Makefile
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-qbittorrent package/lean/luci-app-qbittorrent
-cp -f ../PATCH/new/script/move_2_services.sh ./package/lean/luci-app-qbittorrent/move_2_services.sh
-pushd package/lean/luci-app-qbittorrent
-bash move_2_services.sh
-popd
 
 ##最后的收尾工作
 #Lets Fuck
