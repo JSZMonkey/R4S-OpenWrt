@@ -21,7 +21,7 @@
 - 正式 Release 版本将具有可无脑 opkg kmod 的特性
 - R4S核心频率2.2/1.8（特调了电压表，兼容5v3a的供电，但建议使用5v4a）
 - O2 编译，性能更可靠
-- 插件包含：SSRP，AdguardHome，BearDropper，SQM，SmartDNS，网络共享，硬盘休眠，挂载点，网络唤醒，DDNS，UPNP，FullCone(防火墙中开启，默认开启)，流量分载(防火墙中开启)，SFE流量分载(也就是SFE加速，防火墙中开启，且默认开启)，BBR（默认开启），irq优化，无线打印，流量监控，过滤军刀，R2S-OLED，带宽监控，ttyd，Docker
+- 插件包含：SSRP，AdguardHome，BearDropper，SQM，SmartDNS，网络共享，硬盘休眠，挂载点，网络唤醒，DDNS，UPNP，FullCone(防火墙中开启，默认开启)，流量分载(防火墙中开启)，SFE流量分载(也就是SFE加速，防火墙中开启，且默认开启)，BBR（默认开启），irq优化，无线打印，流量监控，过滤军刀，R2S-OLED，带宽监控，ttyd，Docker，qBittorrent-Enhanced-Edition
 
 
 ### 截图
