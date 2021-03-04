@@ -294,11 +294,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 
 #qBittorrent
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/lean/qt5
-#svn co https://github.com/Lienol/openwrt/branches/21.02/package/lean/libtorrent-rasterbar package/lean/libtorrent-rasterbar
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/lean/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
-sed -i 's,4.3.2.10,4.3.3.10,g' package/lean/qBittorrent-Enhanced-Edition/Makefile
-sed -i 's,204da95489e6e6959561ea43fb1e16fe562d217932ae3b63a172db389f0c102e,a06540fdc41eff122e210c09c746daaeaddee69811bea4ec33ad6ddd4f4b7a17,g' package/lean/qBittorrent-Enhanced-Edition/Makefile
+cp -rf ../PATCH/duplicate/qBittorrent-Enhanced-Edition ./package/lean/qBittorrent-Enhanced-Edition
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/lean/luci-app-qbittorrent package/lean/luci-app-qbittorrent
 
 ##最后的收尾工作
