@@ -17,17 +17,12 @@ sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 
 ##必要的patch
 wget -P target/linux/generic/pending-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
-
-#luci networkt
-#patch -p1 < ../PATCH/new/main/luci_network-add-packet-steering.patch
 #patch jsonc
 patch -p1 < ../PATCH/new/package/use_json_object_new_int64.patch
 #patch dnsmasq
 patch -p1 < ../PATCH/new/package/dnsmasq-add-filter-aaaa-option.patch
 patch -p1 < ../PATCH/new/package/luci-add-filter-aaaa-option.patch
 cp -f ../PATCH/new/package/900-add-filter-aaaa-option.patch ./package/network/services/dnsmasq/patches/900-add-filter-aaaa-option.patch
-#rm -rf ./package/base-files/files/etc/init.d/boot
-#wget -P package/base-files/files/etc/init.d https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/package/base-files/files/etc/init.d/boot
 #（从这行开始接下来4个操作全是和fullcone相关的，不需要可以一并注释掉，但极不建议
 # Patch Kernel 以解决fullcone冲突
 pushd target/linux/generic/hack-5.4
@@ -106,8 +101,6 @@ sed -i 's/wget-ssl/wget/g' root/usr/share/jd-dailybonus/newapp.sh luasrc/control
 popd
 #arpbind
 svn co https://github.com/QiuSimons/OpenWrt_luci-app/trunk/lean/luci-app-arpbind package/lean/luci-app-arpbind
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-arpbind package/lean/luci-app-arpbind
-#patch -p1 < ../PATCH/new/package/arpbind.patch
 #Adbyby
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-adbyby-plus package/lean/luci-app-adbyby-plus
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/adbyby package/lean/adbyby
@@ -251,8 +244,6 @@ sed -i 's,files/etc/config,$(PKG_BUILD_DIR)/package/openwrt/files/etc/config,g' 
 #上网APP过滤
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/new/OpenAppFilter
 #Docker
-#rm -rf ./feeds/luci/applications/luci-app-dockerman
-#git clone --depth=1 https://github.com/KFERMercer/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 #ipv6-helper
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
@@ -276,8 +267,6 @@ rm -rf ./feeds/luci/applications/luci-app-frps
 rm -rf ./feeds/luci/applications/luci-app-frpc
 rm -rf ./feeds/packages/net/frp
 rm -f ./package/feeds/packages/frp
-#git clone --depth 1 https://github.com/lwz322/luci-app-frps.git package/lean/luci-app-frps
-#git clone --depth 1 https://github.com/kuoruan/luci-app-frpc.git package/lean/luci-app-frpc
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-frps package/lean/luci-app-frps
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-frpc package/lean/luci-app-frpc
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/frp package/lean/frp
@@ -286,7 +275,6 @@ svn co https://github.com/teasiu/dragino2/trunk/package/teasiu/luci-app-phtunnel
 svn co https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/luci-app-oray package/new/luci-app-oray
 svn co https://github.com/teasiu/dragino2/trunk/package/teasiu/phtunnel package/new/phtunnel
 #腾讯DDNS
-#svn co https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns/trunk/tencentcloud_ddns package/lean/luci-app-tencentddns
 svn co https://github.com/1715173329/tencentcloud-openwrt-plugin-ddns/trunk/tencentcloud_ddns package/lean/luci-app-tencentddns
 #阿里DDNS
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
