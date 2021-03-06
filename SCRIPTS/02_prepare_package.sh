@@ -246,6 +246,10 @@ sed -i 's,files/etc/config,$(PKG_BUILD_DIR)/package/openwrt/files/etc/config,g' 
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/new/OpenAppFilter
 #Docker
 #sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+rm -rf ./feeds/luci/applications/luci-app-docker
+rm -rf ./feeds/luci/applications/luci-app-dockerman
+git clone --depth=1 https://github.com/KFERMercer/luci-app-dockerman ./feeds/luci/applications/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker ./feeds/luci/applications/luci-lib-docker
 #ipv6-helper
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
 #IPSEC
