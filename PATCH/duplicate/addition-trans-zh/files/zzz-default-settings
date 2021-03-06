@@ -19,7 +19,6 @@ uci commit system
 
 
 #feed
-sed -i '/natelol\|freifunk/d' /etc/opkg/distfeeds.conf
 sed -i 's,21.02,21.02-SNAPSHOT,g' /etc/opkg/distfeeds.conf
 sed -i 's,downloads.openwrt.org,mirror.sjtu.edu.cn/openwrt,g' /etc/opkg/distfeeds.conf
 
@@ -55,6 +54,8 @@ echo "20 2 * * * /usr/share/MosChinaDNS/update_list.sh &" >> /etc/crontabs/root 
 #openclash
 echo "/etc/openclash/" >> /etc/sysupgrade.conf && cat /etc/sysupgrade.conf | sort | uniq > /tmp/tmp_sysupgrade_conf && cat /tmp/tmp_sysupgrade_conf > /etc/sysupgrade.conf
 
+#nobody
+echo "nobody:x:65534:" >> /etc/group
 
 #dnsmasq
 uci set dhcp.lan.ra='hybrid'
