@@ -245,7 +245,7 @@ sed -i 's,files/etc/config,$(PKG_BUILD_DIR)/package/openwrt/files/etc/config,g' 
 #上网APP过滤
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/new/OpenAppFilter
 #Docker
-sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+#sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 #ipv6-helper
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
 #IPSEC
