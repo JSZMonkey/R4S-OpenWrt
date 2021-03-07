@@ -5,7 +5,7 @@ users:
 - name: root
   password: $2y$10$8GfLmnbQpS883RMTpGN66.TbyavsPmElcy2aR6vec7xL0YOG.gx52
 http_proxy: ""
-language: ""
+language: zh-cn
 rlimit_nofile: 0
 debug_pprof: false
 web_session_ttl: 720
@@ -29,16 +29,13 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - 127.0.0.1:6052
-  - '[::1]:6052'
-  - '[/awsglobalaccelerator.com/]127.0.0.1:6050'
-  - '[/awsglobalaccelerator.com/][::1]:6050'
+  - 127.0.0.1:6050
+  - '[::1]:6050'
   upstream_dns_file: ""
   bootstrap_dns:
-  - 127.0.0.1:6052
-  - '[::1]:6052'
-  all_servers: false
-  fastest_addr: true
+  - 127.0.0.1:6050
+  all_servers: true
+  fastest_addr: false
   allowed_clients: []
   disallowed_clients: []
   blocked_hosts:
@@ -92,11 +89,11 @@ tls:
 filters:
 - enabled: true
   url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
-  name: '移动客户端过滤规则'
+  name: 移动客户端过滤规则
   id: 1613564314
 - enabled: true
   url: https://halflife.coding.net/p/list/d/list/git/raw/master/ad.txt
-  name: '综合广告过滤'
+  name: 综合广告过滤
   id: 1613564315
 - enabled: true
   url: https://raw.sevencdn.com/timlu85/AdGuard-Home_Youtube-Adfilter/master/Youtube-Adfilter-Web.txt
