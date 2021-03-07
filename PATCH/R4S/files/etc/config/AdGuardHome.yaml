@@ -91,29 +91,21 @@ tls:
   private_key_path: ""
 filters:
 - enabled: true
-  url: https://easylist-downloads.adblockplus.org/easylistchina.txt
-  name: 'EasyList China 国内广告主规则'
+  url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
+  name: '移动客户端过滤规则'
   id: 1613564314
 - enabled: true
-  url: https://easylist-downloads.adblockplus.org/easyprivacy.txt
-  name: 'EasyPrivacy 隐私保护'
+  url: https://halflife.coding.net/p/list/d/list/git/raw/master/ad.txt
+  name: '综合广告过滤'
   id: 1613564315
 - enabled: true
-  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
-  name: 乘风广告过滤规则
+  url: https://raw.sevencdn.com/timlu85/AdGuard-Home_Youtube-Adfilter/master/Youtube-Adfilter-Web.txt
+  name: YouTube
   id: 1613564316
 - enabled: true
-  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
-  name: 乘风视频过滤规则
+  url: https://raw.sevencdn.com/91ajames/ublock-filters-ulist-youtube/main/blocklist.txt
+  name: Google
   id: 1613564317
-- enabled: true
-  url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
-  name: 移动客户端过滤规则
-  id: 1613564318
-- enabled: true
-  url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_English/filter.txt
-  name: AdGuard 基础过滤器
-  id: 1613564319
 whitelist_filters: []
 user_rules: []
 dhcp:
