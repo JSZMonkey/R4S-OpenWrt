@@ -68,7 +68,7 @@ uci commit network
 
 #SSRP
 uci set shadowsocksr.@global[0].gfwlist_url='https://raw.sevencdn.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt'
-uci set shadowsocksr.@global[0].chnroute_url='https://raw.sevencdn.com/windmgc/chnroute_auto/master/chnroute-v4'
+uci set shadowsocksr.@global[0].chnroute_url='https://raw.sevencdn.com/QiuSimons/Chnroute/master/dist/chnroute/chnroute.txt'
 uci commit shadowsocksr
 
 ln -sf /sbin/ip /usr/bin/ip
