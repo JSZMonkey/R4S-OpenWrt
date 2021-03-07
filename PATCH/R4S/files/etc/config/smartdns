@@ -1,8 +1,6 @@
 
 config smartdns
-	option port '6051'
-	option server_group 'oversea'
-	option seconddns_port '6050'
+	option server_group 'CN'
 	option seconddns_tcp_server '1'
 	option seconddns_no_speed_check '0'
 	option coredump '0'
@@ -12,23 +10,24 @@ config smartdns
 	option prefetch_domain '1'
 	option serve_expired '1'
 	option seconddns_no_cache '1'
-	option enabled '1'
 	option ipv6_server '1'
 	option seconddns_no_rule_addr '0'
 	option seconddns_no_rule_nameserver '0'
 	option seconddns_no_rule_ipset '0'
 	option seconddns_no_rule_soa '0'
 	option force_aaaa_soa '0'
-	option seconddns_server_group 'mainland'
 	option server_name 'SmartDNS'
 	option rr_ttl_min '3600'
 	option rr_ttl_max '36000'
 	option tcp_server '1'
 	option cache_size '4194304'
-	option rr_ttl '3600'
 	option dualstack_ip_selection '0'
+	option seconddns_server_group 'US'
+	option port '6050'
+	option seconddns_port '6051'
+	option enabled '1'
 	list old_redirect 'none'
-	list old_port '6051'
+	list old_port '6050'
 	list old_enabled '1'
 
 config server
@@ -36,9 +35,8 @@ config server
 	option name 'DNSPod'
 	option ip '119.29.29.29'
 	option blacklist_ip '0'
-	option server_group 'mainland'
+	option server_group 'CN'
 	option enabled '1'
-	option addition_arg '-exclude-default-group'
 
 config server
 	option type 'udp'
@@ -46,8 +44,7 @@ config server
 	option ip '223.5.5.5'
 	option blacklist_ip '0'
 	option enabled '1'
-	option addition_arg '-exclude-default-group'
-	option server_group 'mainland'
+	option server_group 'CN'
 
 config server
 	option type 'tls'
@@ -56,7 +53,7 @@ config server
 	option name 'Google TLS'
 	option enabled '1'
 	option ip '8.8.4.4'
-	option server_group 'oversea'
+	option server_group 'US'
 
 config server
 	option type 'tls'
@@ -65,7 +62,7 @@ config server
 	option ip '1.1.1.1'
 	option enabled '1'
 	option name 'Cloudflare TLS'
-	option server_group 'oversea'
+	option server_group 'US'
 
 config server
 	option enabled '1'
@@ -74,7 +71,7 @@ config server
 	option port '5353'
 	option name 'USTC'
 	option ip '202.141.162.123'
-	option server_group 'oversea'
+	option server_group 'US'
 
 config server
 	option enabled '1'
@@ -82,7 +79,7 @@ config server
 	option ip '2001:4860:4860::8888'
 	option type 'udp'
 	option blacklist_ip '0'
-	option server_group 'oversea'
+	option server_group 'US'
 
 config server
 	option enabled '1'
@@ -90,14 +87,14 @@ config server
 	option ip '2400:3200::1'
 	option type 'udp'
 	option blacklist_ip '0'
-	option server_group 'mainland'
+	option server_group 'CN'
 
 config server
 	option enabled '1'
 	option name '114DNS'
 	option ip '114.114.114.114'
 	option type 'udp'
-	option server_group 'mainland'
+	option server_group 'CN'
 	option blacklist_ip '0'
 
 config server
@@ -105,6 +102,14 @@ config server
 	option name 'OpenDNS'
 	option ip '208.67.222.222'
 	option type 'udp'
-	option server_group 'oversea'
+	option server_group 'US'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option name 'ChinaNet'
+	option ip '61.147.37.1'
+	option type 'udp'
+	option server_group 'CN'
 	option blacklist_ip '0'
 
