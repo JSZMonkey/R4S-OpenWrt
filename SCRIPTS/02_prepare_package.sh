@@ -217,7 +217,7 @@ cp -rf ../PATCH/duplicate/luci-app-qbittorrent/Makefile ./package/lean/luci-app-
 #Lets Fuck
 mkdir package/base-files/files/usr/bin
 cp -f ../PATCH/new/script/fuck package/base-files/files/usr/bin/fuck
-cp -f ../PATCH/new/script/chinadnslist package/base-files/files/usr/bin/chinadnslist
+
 #最大连接
 sed -i 's/16384/65536/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 #修改启动等待（可能无效）
