@@ -29,11 +29,15 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - 127.0.0.1:6050
-  - '[::1]:6050'
+  - 114.114.114.114
+  - 223.5.5.5
+  - 119.29.29.29
+  - '[2400:3200::1]:53'
+  - '[240C::6666]:53'
   upstream_dns_file: ""
   bootstrap_dns:
-  - 127.0.0.1:6050
+  - 61.147.37.1
+  - 61.177.7.1
   all_servers: true
   fastest_addr: false
   allowed_clients: []
