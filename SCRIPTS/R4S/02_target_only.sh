@@ -19,7 +19,6 @@ cp -f ../PATCH/new/package/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensio
 #Experimental
 sed -i '/CRYPTO_DEV_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
 sed -i '/HW_RANDOM_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
-
 echo '
 CONFIG_CRYPTO_DEV_ROCKCHIP=y
 CONFIG_HW_RANDOM_ROCKCHIP=y
