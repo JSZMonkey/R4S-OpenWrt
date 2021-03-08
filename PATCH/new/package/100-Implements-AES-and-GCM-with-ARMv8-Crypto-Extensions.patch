@@ -398,3 +398,4 @@ diff -ruNa --binary a/library/version_features.c b/library/version_features.c
  #if defined(MBEDTLS_AES_C)
      "MBEDTLS_AES_C",
  #endif /* MBEDTLS_AES_C */
+

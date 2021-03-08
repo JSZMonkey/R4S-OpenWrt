@@ -1,3 +1,4 @@
+
 config settings 'cpufreq'
 	option governor0 'schedutil'
 	option minfreq0 '816000'
