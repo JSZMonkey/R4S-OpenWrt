@@ -31,8 +31,10 @@ dns:
   upstream_dns:
   - 119.29.29.29
   - 223.5.5.5
-  - tls://8.8.4.4
-  - 202.141.162.123:5353
+  - 114.114.114.114
+  - tls://8.8.8.8
+  - tls://dns.rubyfish.cn
+  - tls://dns.google:853
   upstream_dns_file: ""
   bootstrap_dns:
   - 61.147.37.1
@@ -90,38 +92,22 @@ tls:
   certificate_path: ""
   private_key_path: ""
 filters:
-- enabled: false
-  url: https://gitee.com/halflife/list/raw/master/ad.txt
-  name: HalfLife
-  id: 1595502658
-- enabled: false
-  url: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=1&mimetype=plaintext
-  name: Peter Lowe's List
-  id: 1595502661
-- enabled: true
-  url: https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
-  name: NoCoin Filter List
-  id: 1595502662
-- enabled: true
-  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
-  name: 乘风 广告过滤规则
-  id: 1600600707
 - enabled: true
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
-  name: 乘风 视频广告过滤规则
+  name: 视频广告过滤规则
   id: 1600600708
+- enabled: false
+  url: https://anti-ad.net/easylist.txt
+  name: 'CHN: anti-AD'
+  id: 1615293500
 - enabled: true
-  url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-ublock.txt
-  name: CJX's uBlock list
-  id: 1600600709
+  url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
+  name: 移动端广告规则
+  id: 1615293501
 - enabled: true
-  url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-annoyance.txt
-  name: CJX's Annoyance List
-  id: 1600600710
-- enabled: true
-  url: http://sub.adtchrome.com/adt-chinalist-easylist.txt
-  name: ChinaList and EasyList
-  id: 1600600711
+  url: https://www.kbsml.com/wp-content/uploads/adblock/adguard/adg-kall.txt
+  name: adg-kall
+  id: 1615293502
 whitelist_filters: []
 user_rules: []
 dhcp:
