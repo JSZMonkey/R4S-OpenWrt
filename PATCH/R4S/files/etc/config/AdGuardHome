@@ -1,4 +1,3 @@
-
 config AdGuardHome 'AdGuardHome'
 	option httpport '3000'
 	option configpath '/etc/config/AdGuardHome.yaml'
