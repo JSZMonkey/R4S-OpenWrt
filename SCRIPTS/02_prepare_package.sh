@@ -202,11 +202,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 #WOL
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 #Docker
-#sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
-rm -rf ./feeds/luci/applications/luci-app-dockerman
-rm -rf ./package/lean/luci-app-docker
-git clone --depth=1 https://github.com/KFERMercer/luci-app-dockerman package/new/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-lib-docker package/new/luci-lib-docker
+sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 #qBittorrent
 cp -rf ../PATCH/duplicate/qBittorrent-Enhanced-Edition ./package/lean/qBittorrent-Enhanced-Edition
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-qbittorrent package/lean/luci-app-qbittorrent
