@@ -1,5 +1,6 @@
 bind_host: 0.0.0.0
 bind_port: 3000
+beta_bind_port: 0
 users:
 - name: root
   password: $2y$10$8GfLmnbQpS883RMTpGN66.TbyavsPmElcy2aR6vec7xL0YOG.gx52
@@ -33,8 +34,8 @@ dns:
   upstream_dns_file: ""
   bootstrap_dns:
   - 127.0.0.1:6052
-  all_servers: false
-  fastest_addr: true
+  all_servers: true
+  fastest_addr: false
   allowed_clients: []
   disallowed_clients: []
   blocked_hosts:
@@ -69,6 +70,7 @@ dns:
   - domain: https://www.meituan.com
     answer: www.meituan.com
   blocked_services: []
+  customresolver: null
 tls:
   enabled: false
   server_name: ""
@@ -76,6 +78,8 @@ tls:
   port_https: 443
   port_dns_over_tls: 853
   port_dns_over_quic: 784
+  port_dnscrypt: 0
+  dnscrypt_config_file: ""
   allow_unencrypted_doh: false
   strict_sni_check: false
   certificate_chain: ""
