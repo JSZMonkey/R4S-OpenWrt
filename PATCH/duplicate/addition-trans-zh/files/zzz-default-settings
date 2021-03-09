@@ -58,7 +58,7 @@ echo "/etc/openclash/" >> /etc/sysupgrade.conf && cat /etc/sysupgrade.conf | sor
 echo "nobody:x:65534:" >> /etc/group
 
 #dockerman
-sed -i 's,/opt,/overlay,g' /etc/config/dockerman
+#sed -i 's,/opt,/overlay,g' /etc/config/dockerman
 
 #dnsmasq
 uci set dhcp.lan.ra='hybrid'
