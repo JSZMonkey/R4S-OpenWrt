@@ -29,11 +29,14 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - 127.0.0.1:6052
-  - '[/awsglobalaccelerator.com/]127.0.0.1:6050'
+  - 119.29.29.29
+  - 223.5.5.5
+  - tls://8.8.4.4
+  - 202.141.162.123:5353
   upstream_dns_file: ""
   bootstrap_dns:
-  - 127.0.0.1:6052
+  - 61.147.37.1
+  - 61.177.7.1
   all_servers: true
   fastest_addr: false
   allowed_clients: []
