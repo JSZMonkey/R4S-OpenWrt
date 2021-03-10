@@ -147,10 +147,7 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/le
 cp -rf ../PATCH/duplicate/luci-app-cpulimit ./package/lean/luci-app-cpulimit
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ntlf9t/cpulimit package/lean/cpulimit
 #订阅转换
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/subconverter package/new/subconverter
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/jpcre2 package/new/jpcre2
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rapidjson package/new/rapidjson
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/duktape package/new/duktape
+git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter /package/lean
 #清理内存
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ramfree package/lean/luci-app-ramfree
 #打印机
