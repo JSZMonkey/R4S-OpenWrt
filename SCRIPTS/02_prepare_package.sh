@@ -158,7 +158,7 @@ git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.gi
 #流量监管
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata package/lean/luci-app-netdata
 #上网APP过滤
-git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
+#git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
 #ipv6-helper
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
 #IPSEC
@@ -175,7 +175,14 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 #WOL
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 #Docker
-sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+#sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+rm -rf ./feeds/luci/applications/luci-app-dockerman
+#rm -rf ./feeds/packages/utils/docker
+#rm -rf ./feeds/packages/utils/dockerd
+cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman feeds/packages/net/luci-app-dockerman
+cp -rf ../openwrt-lienol/package/diy/luci-lib-docker feeds/packages/net/luci-lib-docker
+#rm -rf ./feeds/packages/diy/luci-app-dockerman
+
 #qBittorrent
 cp -rf ../PATCH/duplicate/qBittorrent-Enhanced-Edition ./package/lean/qBittorrent-Enhanced-Edition
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-qbittorrent package/lean/luci-app-qbittorrent
