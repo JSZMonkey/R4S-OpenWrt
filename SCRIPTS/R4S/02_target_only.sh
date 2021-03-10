@@ -18,6 +18,21 @@ cp -f ../PATCH/new/main/213-RK3399-set-critical-CPU-temperature-for-thermal-thro
 sed -i 's,-mcpu=generic,-march=armv8-a+crypto+crc -mabi=lp64,g' include/target.mk
 cp -f ../PATCH/new/package/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch ./package/libs/mbedtls/patches/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch
 
+#Experimental
+sed -i '/CRYPTO_DEV_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
+sed -i '/HW_RANDOM_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
+echo '
+CONFIG_CRYPTO_DEV_ROCKCHIP=y
+CONFIG_HW_RANDOM_ROCKCHIP=y
+' >> ./target/linux/rockchip/armv8/config-5.4
+
+#IRQ
+sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
+sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
+
+#翻译及部分功能优化
+cp -rf ../PATCH/duplicate/addition-trans-zh ./package/lean/lean-translate
+
 #crypto
  echo '
  CONFIG_ARM64_CRYPTO=y
@@ -41,21 +56,6 @@ cp -f ../PATCH/new/package/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensio
  CONFIG_CRYPTO_NHPOLY1305_NEON=y
  CONFIG_CRYPTO_AES_ARM64_BS=y
  ' >> ./target/linux/rockchip/armv8/config-5.4
-
-#Experimental
-sed -i '/CRYPTO_DEV_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
-sed -i '/HW_RANDOM_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
-echo '
-CONFIG_CRYPTO_DEV_ROCKCHIP=y
-CONFIG_HW_RANDOM_ROCKCHIP=y
-' >> ./target/linux/rockchip/armv8/config-5.4
-
-#IRQ
-sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
-sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
-
-#翻译及部分功能优化
-cp -rf ../PATCH/duplicate/addition-trans-zh ./package/lean/lean-translate
 
 <<'COMMENT'
 #Vermagic
