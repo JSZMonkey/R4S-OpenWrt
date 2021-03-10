@@ -131,9 +131,6 @@ pushd package/lean
 #wget -qO - https://patch-diff.githubusercontent.com/raw/fw876/helloworld/pull/271.patch | patch -p1
 popd
 sed -i 's,default n,default y,g' package/lean/luci-app-ssr-plus/Makefile
-sed -i 's,Xray:xray ,Xray:xray-core ,g' package/lean/luci-app-ssr-plus/Makefile
-sed -i '/V2ray:v2ray/d' package/lean/luci-app-ssr-plus/Makefile
-sed -i '/plugin:v2ray/d' package/lean/luci-app-ssr-plus/Makefile
 sed -i '/result.encrypt_method/a\result.fast_open = "1"' package/lean/luci-app-ssr-plus/root/usr/share/shadowsocksr/subscribe.lua
 sed -i 's,ispip.clang.cn/all_cn.txt,raw.sevencdn.com/QiuSimons/Chnroute/master/dist/chnroute/chnroute.txt,g' package/lean/luci-app-ssr-plus/root/etc/init.d/shadowsocksr
 sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2ray-rules-dat/release/gfw.txt,g' package/lean/luci-app-ssr-plus/root/etc/init.d/shadowsocksr
@@ -154,10 +151,12 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs package/lean/simple-obfs
 svn co https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/lean/trojan
-svn co https://github.com/fw876/helloworld/trunk/tcpping package/lean/tcpping
 svn co https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-core
+svn co https://github.com/fw876/helloworld/trunk/tcpping package/lean/tcpping
+svn co https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
 svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
-svn co https://github.com/fw876/helloworld/trunk/ipt2socks-alt package/lean/ipt2socks-alt
+svn co https://github.com/xiaorouji/openwrt-passwall/trunk/v2ray-plugin package/lean/v2ray-plugin
+
 
 #luci-app-cpulimit
 cp -rf ../PATCH/duplicate/luci-app-cpulimit ./package/lean/luci-app-cpulimit
