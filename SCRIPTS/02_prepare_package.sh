@@ -199,11 +199,7 @@ svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wo
 #Docker
 #sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 rm -rf ./feeds/luci/applications/luci-app-dockerman
-#rm -rf ./feeds/packages/utils/docker
-#rm -rf ./feeds/packages/utils/dockerd
 cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman ./feeds/luci/applications/luci-app-dockerman
-#cp -rf ../openwrt-lienol/package/diy/luci-lib-docker feeds/packages/net/luci-lib-docker
-#rm -rf ./feeds/packages/diy/luci-app-dockerman
 
 #qBittorrent
 cp -rf ../PATCH/duplicate/qBittorrent-Enhanced-Edition ./package/lean/qBittorrent-Enhanced-Edition
