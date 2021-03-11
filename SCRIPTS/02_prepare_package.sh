@@ -157,11 +157,10 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs packa
 svn co https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/lean/trojan
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/lean/tcping
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/lean/xray-core
-#svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-plugin package/lean/xray-plugin
-svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/v2ray-plugin package/lean/v2ray-plugin
-
+svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/lean/xray-core
+svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-plugin package/lean/xray-plugin
+svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
 
 #luci-app-cpulimit
 cp -rf ../PATCH/duplicate/luci-app-cpulimit ./package/lean/luci-app-cpulimit
