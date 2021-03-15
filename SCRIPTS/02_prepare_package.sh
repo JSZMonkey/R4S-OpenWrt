@@ -204,7 +204,7 @@ cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman ./feeds/luci/application
 #qBittorrent
 svn co https://github.com/garypang13/openwrt-static-qb/trunk/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-qbittorrent package/lean/luci-app-qbittorrent
-sed -i 's/+qBittorrent +python3/+qBittorrent-Enhanced-Edition/g' ./package/lean/luci-app-qbittorrent/Makefile
+sed -i 's/+qBittorrent +python3/+qBittorrent-Enhanced-Edition/g' package/lean/luci-app-qbittorrent/Makefile
 
 ##最后的收尾工作
 #Lets Fuck
