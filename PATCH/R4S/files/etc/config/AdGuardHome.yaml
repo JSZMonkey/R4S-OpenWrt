@@ -22,19 +22,25 @@ dns:
   blocking_mode: default
   blocking_ipv4: ""
   blocking_ipv6: ""
-  blocked_response_ttl: 10
+  blocked_response_ttl: 60
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
   ratelimit: 0
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - 61.147.37.1
-  - 61.177.7.1
-  - https://dns.alidns.com/dns-query
+  -119.29.29.29
+  -114.114.114.114
+  -223.5.5.5
+  -https://dns10.quad9.net/dns-query
+  -https://dns.alidns.com/dns-query
+  -tcp://8.8.8.8
+  -8.8.8.8
   upstream_dns_file: ""
   bootstrap_dns:
-  - 114.114.114.114
+  - 61.147.37.1
+  - 61.177.7.1
+  - 223.5.5.5
   - 8.8.8.8
   - 8.8.4.4
   all_servers: true
