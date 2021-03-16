@@ -29,15 +29,14 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  -119.29.29.29
-  -114.114.114.114
-  -223.5.5.5
-  -https://dns.alidns.com/dns-query
-  upstream_dns_file: ""
-  bootstrap_dns:
   - 61.147.37.1
   - 61.177.7.1
-  - 119.29.29.29
+  - https://dns.alidns.com/dns-query
+  upstream_dns_file: ""
+  bootstrap_dns:
+  - 114.114.114.114
+  - 8.8.8.8
+  - 8.8.4.4
   all_servers: true
   fastest_addr: false
   allowed_clients: []
