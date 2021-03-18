@@ -137,8 +137,8 @@ jobs:
       with:
         name: OpenWRT-R4S-21.02
         allowUpdates: true
-        tag: master
-        commit: 21.02
+        tag: 2102
+        commit: master
         replacesArtifacts: true
         token: ${{ secrets.workflow_token }}
         artifacts: ./artifact/*.zip,./artifact/*.sha256sum
