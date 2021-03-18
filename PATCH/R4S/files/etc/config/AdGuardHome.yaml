@@ -12,10 +12,10 @@ web_session_ttl: 720
 dns:
   bind_host: 127.0.0.1
   port: 5335
-  statistics_interval: 1
-  querylog_enabled: false
+  statistics_interval: 7
+  querylog_enabled: true
   querylog_file_enabled: true
-  querylog_interval: 1
+  querylog_interval: 7
   querylog_size_memory: 1000
   anonymize_client_ip: false
   protection_enabled: true
@@ -30,16 +30,20 @@ dns:
   refuse_any: true
   upstream_dns:
   - 114.114.114.114
-  - 119.29.29.29
+  - 101.226.4.6
   - 2400:3200::1
   - 2001:4860:4860::8888
+  - '[/majork.win/]114.114.114.114'
+  - '[/c3s3.jamjams.net/]114.114.114.114'
+  - '[/c3s4.jamjams.net/]114.114.114.114'
+  - '[/c3s5.jamjams.net/]114.114.114.114'
   upstream_dns_file: ""
   bootstrap_dns:
-  - 61.147.37.1
-  - 61.177.7.1
+  - 218.2.2.2
+  - 218.4.4.4
   - 240e:5a::6666
   - 240e:5b::6666
-  all_servers: true
+  all_servers: false
   fastest_addr: false
   allowed_clients: []
   disallowed_clients: []
@@ -59,7 +63,7 @@ dns:
   filtering_enabled: true
   filters_update_interval: 24
   parental_enabled: false
-  safesearch_enabled: false
+  safesearch_enabled: true
   safebrowsing_enabled: false
   safebrowsing_cache_size: 1048576
   safesearch_cache_size: 1048576
@@ -74,6 +78,10 @@ dns:
     answer: cn.ntp.org.cn
   - domain: https://www.meituan.com
     answer: www.meituan.com
+  - domain: image.tmdb.org
+    answer: 104.16.61.155
+  - domain: api.themoviedb.org
+    answer: 13.249.134.90
   blocked_services: []
   customresolver: null
 tls:
@@ -96,10 +104,6 @@ filters:
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
   name: 视频广告过滤规则
   id: 1600600708
-- enabled: false
-  url: https://anti-ad.net/easylist.txt
-  name: 'CHN: anti-AD'
-  id: 1615293500
 - enabled: true
   url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
   name: 移动端广告规则
