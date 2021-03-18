@@ -29,10 +29,8 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - 223.5.5.5
-  - 119.29.29.29
   - 114.114.114.114
-  - 8.8.8.8
+  - 119.29.29.29
   - 2400:3200::1
   - 2001:4860:4860::8888
   upstream_dns_file: ""
