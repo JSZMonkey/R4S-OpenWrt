@@ -43,7 +43,7 @@ dns:
   - 218.4.4.4
   - 240e:5a::6666
   - 240e:5b::6666
-  all_servers: false
+  all_servers: true
   fastest_addr: false
   allowed_clients: []
   disallowed_clients: []
