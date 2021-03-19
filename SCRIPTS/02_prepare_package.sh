@@ -155,6 +155,9 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ntlf9t
 # Aliyun动态DNS
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
 
+# EQOS限速
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
+
 #Docker 容器（会导致OpenWrt出现UDP转发问题，慎用）
 #sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 rm -rf ./feeds/luci/applications/luci-app-dockerman
