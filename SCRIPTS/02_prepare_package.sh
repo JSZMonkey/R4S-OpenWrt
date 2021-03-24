@@ -27,6 +27,7 @@ rm -rf ./scripts/download.pl
 rm -rf ./include/download.mk
 wget -P scripts/ https://github.com/immortalwrt/immortalwrt/raw/master/scripts/download.pl
 wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/download.mk
+wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/package-immortalwrt.mk
 # 必要的 Patch 们
 
 #Patch arm cpu name
@@ -101,7 +102,7 @@ svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/pac
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 
 #R8168驱动
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/r8168 package/new/r8168
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8168 package/new/r8168
 patch -p1 < ../PATCH/new/main/r8168-fix_LAN_led-for_r4s-from_TL.patch
 
 # UPX
@@ -225,10 +226,10 @@ svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naivepr
 svn co https://github.com/fw876/helloworld/trunk/shadowsocks-rust package/lean/shadowsocks-rust
 
 #订阅转换
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/subconverter package/new/subconverter
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/jpcre2 package/new/jpcre2
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rapidjson package/new/rapidjson
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/duktape package/new/duktape
+svn co https://github.com/immortalwrt/packages/trunk/net/subconverter package/new/subconverter
+svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 package/new/jpcre2
+svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson package/new/rapidjson
+svn co https://github.com/immortalwrt/packages/trunk/libs/duktape package/new/duktape
 
 #USB 打印机
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
