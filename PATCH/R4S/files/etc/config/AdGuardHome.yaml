@@ -40,8 +40,8 @@ dns:
   bootstrap_dns:
   - 218.2.2.2
   - 240e:5a::6666
-  all_servers: true
-  fastest_addr: false
+  all_servers: false
+  fastest_addr: true
   allowed_clients: []
   disallowed_clients: []
   blocked_hosts:
