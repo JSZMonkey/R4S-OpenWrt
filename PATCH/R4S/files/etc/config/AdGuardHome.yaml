@@ -98,17 +98,33 @@ tls:
   private_key_path: ""
 filters:
 - enabled: true
+  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
+  name: 乘风 广告过滤规则
+  id: 1
+- enabled: true
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
-  name: 视频广告过滤规则
-  id: 1600600708
+  name: 乘风 视频过滤规则
+  id: 2
 - enabled: true
   url: https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_11_Mobile/filter.txt
   name: 移动端广告规则
-  id: 1615293501
+  id: 3
 - enabled: true
-  url: https://www.kbsml.com/wp-content/uploads/adblock/adguard/adg-kall.txt
-  name: adg-kall
-  id: 1615293502
+  url: https://raw.sevencdn.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
+  name: NoCoin Filter List
+  id: 4
+- enabled: true
+  url: https://raw.sevencdn.com/cjx82630/cjxlist/master/cjx-ublock.txt
+  name: CJX's uBlock list
+  id: 5
+- enabled: true
+  url: http://sub.adtchrome.com/adt-chinalist-easylist.txt
+  name: ChinaList and EasyList
+  id: 6
+- enabled: true
+  url: https://raw.sevencdn.com/cjx82630/cjxlist/master/cjx-annoyance.txt
+  name: CJX's Annoyance List
+  id: 7
 whitelist_filters: []
 user_rules: []
 dhcp:
