@@ -1,18 +1,13 @@
 name: Cleaning
 
-
 on:
-  workflow_dispatch:
-  push:
-    branches: 
-      - master
   schedule:
     - cron: 1 1 * * 1
   watch:
     types: started
 
 jobs:
-
+  
   Cleanup-Old-Releases:
     runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id
@@ -34,7 +29,7 @@ jobs:
       with:
         token: ${{ github.token }}
         expire-in: 7d
-
+        
   Cleanup-Workflow-Logs:
     runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id
