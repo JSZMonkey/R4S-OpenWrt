@@ -11,7 +11,7 @@ debug_pprof: false
 web_session_ttl: 720
 dns:
   bind_host: 127.0.0.1
-  port: 5333
+  port: 5335
   statistics_interval: 7
   querylog_enabled: true
   querylog_file_enabled: true
@@ -29,19 +29,13 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - 114.114.114.114
-  - 101.226.4.6
-  - 2400:3200::1
-  - '[/majork.win/]114.114.114.114'
-  - '[/c3s3.jamjams.net/]114.114.114.114'
-  - '[/c3s4.jamjams.net/]114.114.114.114'
-  - '[/c3s5.jamjams.net/]114.114.114.114'
+  - 127.0.0.1:6052
+  - '[/awsglobalaccelerator.com/]127.0.0.1:6050'
   upstream_dns_file: ""
   bootstrap_dns:
-  - 218.2.2.2
-  - 240e:5a::6666
-  all_servers: true
-  fastest_addr: false
+  - 127.0.0.1:6052
+  all_servers: false
+  fastest_addr: true
   allowed_clients: []
   disallowed_clients: []
   blocked_hosts:
