@@ -126,6 +126,8 @@ sed -i '/init/d' feeds/packages/net/adguardhome/Makefile
 
 #Argon 主题
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
+wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/footer.htm
+wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/header.htm
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
 
 #ARP 绑定
@@ -227,7 +229,8 @@ svn co https://github.com/fw876/helloworld/trunk/shadowsocks-rust package/lean/s
 svn co https://github.com/immortalwrt/packages/trunk/net/subconverter package/new/subconverter
 svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 package/new/jpcre2
 svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson package/new/rapidjson
-svn co https://github.com/immortalwrt/packages/trunk/libs/duktape package/new/duktape
+svn co https://github.com/immortalwrt/packages/trunk/libs/libcron package/new/libcron
+svn co https://github.com/immortalwrt/packages/trunk/libs/quickjspp package/new/quickjspp
 
 #USB 打印机
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
