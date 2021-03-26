@@ -10,7 +10,7 @@ config smartdns
 	option coredump '0'
 	option seconddns_enabled '1'
 	option seconddns_no_dualstack_selection '1'
-	option ipv6_server '0'
+	option ipv6_server '1'
 	option redirect 'none'
 	option seconddns_server_group 'mainland'
 	option prefetch_domain '1'
