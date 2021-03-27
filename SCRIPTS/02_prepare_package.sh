@@ -227,9 +227,6 @@ svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson package/new/
 svn co https://github.com/immortalwrt/packages/trunk/libs/libcron package/new/libcron
 svn co https://github.com/immortalwrt/packages/trunk/libs/quickjspp package/new/quickjspp
 
-#USB 打印机
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
-
 #Vlmcsd 激活助手
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-vlmcsd package/lean/luci-app-vlmcsd
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/vlmcsd package/lean/vlmcsd
