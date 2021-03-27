@@ -56,6 +56,12 @@ CONFIG_CRYPTO_NHPOLY1305_NEON=y
 CONFIG_CRYPTO_AES_ARM64_BS=y
 ' >> ./target/linux/rockchip/armv8/config-5.4
 
+# 添加 DRM 硬件解码
+wget https://github.com/coolsnowwolf/lede/raw/757e42d70727fe6b937bb31794a9ad4f5ce98081/target/linux/rockchip/config-default -NP target/linux/rockchip/
+wget https://github.com/coolsnowwolf/lede/commit/f341ef96fe4b509a728ba1281281da96bac23673.patch
+git apply f341ef96fe4b509a728ba1281281da96bac23673.patch
+rm f341ef96fe4b509a728ba1281281da96bac23673.patch
+
 <<'COMMENT'
 #Vermagic
 latest_version="$(curl -s https://github.com/openwrt/openwrt/releases |grep -Eo "v[0-9\.]+\-*r*c*[0-9]*.tar.gz" |sed -n '/21/p' |sed -n 1p |sed 's/v//g' |sed 's/.tar.gz//g')"

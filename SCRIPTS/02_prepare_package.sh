@@ -5,11 +5,6 @@ clear
 #wget -qO - https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/3875.patch | patch -p1
 
 ## 基础部分
-
-# 添加R2S/R4S DRM driver
-rm -rf target/linux/rockchip
-svn co https://github.com/coolsnowwolf/lede/trunk/target/linux/rockchip target/linux/rockchip
-
 # 基础修改
 
 #使用 O3 级别的优化
