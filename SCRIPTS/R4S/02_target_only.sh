@@ -64,6 +64,7 @@ CONFIG_DRM_ROCKCHIP=y
 # CONFIG_ROCKCHIP_LVDS is not set
 # CONFIG_ROCKCHIP_RGB is not set
 # CONFIG_ROCKCHIP_RK3066_HDMI is not set
+
 ' >> ./target/linux/rockchip/armv8/config-5.4
 
 <<'COMMENT'
