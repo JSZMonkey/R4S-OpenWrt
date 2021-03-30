@@ -152,7 +152,7 @@ cp -rf ../NoTengoBattery/package/system/compressed-memory ./package/system/compr
 #CPU 控制相关
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-cpufreq package/lean/luci-app-cpufreq
 cp -rf ../PATCH/duplicate/luci-app-cpulimit ./package/lean/luci-app-cpulimit
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ntlf9t/cpulimit package/lean/cpulimit
+svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit package/lean/cpulimit
 
 # Aliyun动态DNS
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
