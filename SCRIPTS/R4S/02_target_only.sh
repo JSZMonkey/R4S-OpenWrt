@@ -49,8 +49,8 @@ rm -rf ./target/linux/rockchip/modules.mk
 rm -rf ./target/linux/rockchip/config-default
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P target/linux/rockchip/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/rockchip/config-default
-wget -P target/linux/rockchip/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/target/linux/rockchip/modules.mk
-wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/package/kernel/linux/modules/video.mk
+wget -P target/linux/rockchip/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/target/linux/rockchip/modules.mk
+wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
 
 #内核加解密模块
 echo '
