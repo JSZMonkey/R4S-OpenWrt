@@ -32,26 +32,6 @@ sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 
 #翻译及部分功能优化
 cp -rf ../PATCH/duplicate/addition-trans-zh ./package/lean/lean-translate
 
-#R4S 添加GPU驱动
-echo '
-CONFIG_DRM_ROCKCHIP=y
-# CONFIG_ROCKCHIP_ANALOGIX_DP is not set
-# CONFIG_ROCKCHIP_CDN_DP is not set
-# CONFIG_ROCKCHIP_DW_HDMI is not set
-# CONFIG_ROCKCHIP_DW_MIPI_DSI is not set
-# CONFIG_ROCKCHIP_INNO_HDMI is not set
-# CONFIG_ROCKCHIP_LVDS is not set
-# CONFIG_ROCKCHIP_RGB is not set
-# CONFIG_ROCKCHIP_RK3066_HDMI is not set
-' >> ./target/linux/rockchip/armv8/config-5.4
-
-rm -rf ./target/linux/rockchip/modules.mk
-rm -rf ./target/linux/rockchip/config-default
-rm -rf ./package/kernel/linux/modules/video.mk
-wget -P target/linux/rockchip/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/rockchip/config-default
-wget -P target/linux/rockchip/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/target/linux/rockchip/modules.mk
-wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
-
 #内核加解密模块
 echo '
 CONFIG_ARM64_CRYPTO=y
@@ -75,6 +55,26 @@ CONFIG_CRYPTO_POLY1305_NEON=y
 CONFIG_CRYPTO_NHPOLY1305_NEON=y
 CONFIG_CRYPTO_AES_ARM64_BS=y
 ' >> ./target/linux/rockchip/armv8/config-5.4
+
+#R4S 添加GPU驱动
+echo '
+CONFIG_DRM_ROCKCHIP=y
+# CONFIG_ROCKCHIP_ANALOGIX_DP is not set
+# CONFIG_ROCKCHIP_CDN_DP is not set
+# CONFIG_ROCKCHIP_DW_HDMI is not set
+# CONFIG_ROCKCHIP_DW_MIPI_DSI is not set
+# CONFIG_ROCKCHIP_INNO_HDMI is not set
+# CONFIG_ROCKCHIP_LVDS is not set
+# CONFIG_ROCKCHIP_RGB is not set
+# CONFIG_ROCKCHIP_RK3066_HDMI is not set
+' >> ./target/linux/rockchip/armv8/config-5.4
+
+rm -rf ./target/linux/rockchip/modules.mk
+rm -rf ./target/linux/rockchip/config-default
+rm -rf ./package/kernel/linux/modules/video.mk
+wget -P target/linux/rockchip/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/rockchip/config-default
+wget -P target/linux/rockchip/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/target/linux/rockchip/modules.mk
+wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
 
 <<'COMMENT'
 #Vermagic
