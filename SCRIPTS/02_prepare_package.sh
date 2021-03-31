@@ -161,9 +161,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
 
 #Docker 容器（会导致OpenWrt出现UDP转发问题，慎用）
-#sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 rm -rf ./feeds/luci/applications/luci-app-dockerman
-cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman ./feeds/luci/applications/luci-app-dockerman
+cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman package/lean/luci-app-dockerman
+cp -rf ../openwrt-lienol/package/diy/luci-lib-docker package/lean/luci-lib-docker
 
 # qBittorrent 下载
 #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
@@ -180,6 +180,10 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper packa
 #回滚通用即插即用
 #rm -rf ./feeds/packages/net/miniupnpd
 #svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
+
+# 替换为 master 分支的 luci-app-samba4
+rm -fr feeds/luci/applications/luci-app-samba4
+svn co https://github.com/openwrt/luci/trunk/applications/luci-app-samba4 feeds/luci/applications/luci-app-samba4
 
 #流量监管
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata package/lean/luci-app-netdata
