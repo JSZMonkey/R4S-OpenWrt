@@ -25,7 +25,14 @@ CONFIG_CRYPTO_DEV_ROCKCHIP=y
 CONFIG_HW_RANDOM_ROCKCHIP=y
 ' >> ./target/linux/rockchip/armv8/config-5.4
 
-#R4S GPU驱动
+#IRQ 调优
+sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
+sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
+
+#翻译及部分功能优化
+cp -rf ../PATCH/duplicate/addition-trans-zh ./package/lean/lean-translate
+
+#R4S 添加GPU驱动
 echo '
 CONFIG_DRM_ROCKCHIP=y
 # CONFIG_ROCKCHIP_ANALOGIX_DP is not set
@@ -38,18 +45,12 @@ CONFIG_DRM_ROCKCHIP=y
 # CONFIG_ROCKCHIP_RK3066_HDMI is not set
 ' >> ./target/linux/rockchip/armv8/config-5.4
 
-#IRQ 调优
-sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
-sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
-
-#翻译及部分功能优化
-cp -rf ../PATCH/duplicate/addition-trans-zh ./package/lean/lean-translate
-
-# rockchip: add drm and lima gpu driver
-wget https://github.com/immortalwrt/immortalwrt/commit/c10101fc0cf186196a354a91a75bf2856630dd68.patch
-wget https://github.com/coolsnowwolf/lede/raw/757e42d70727fe6b937bb31794a9ad4f5ce98081/target/linux/rockchip/config-default -NP target/linux/rockchip/
-git apply c10101fc0cf186196a354a91a75bf2856630dd68.patch
-rm c10101fc0cf186196a354a91a75bf2856630dd68.patch
+rm -rf ./target/linux/rockchip/modules.mk
+rm -rf ./target/linux/rockchip/config-default
+rm -rf ./package/kernel/linux/modules/video.mk
+wget -P target/linux/rockchip/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/rockchip/config-default
+wget -P target/linux/rockchip/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/target/linux/rockchip/modules.mk
+wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-18.06-k5.4/package/kernel/linux/modules/video.mk
 
 #内核加解密模块
 echo '
