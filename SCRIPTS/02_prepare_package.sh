@@ -162,8 +162,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/n
 
 #Docker 容器（会导致OpenWrt出现UDP转发问题，慎用）
 rm -rf ./feeds/luci/applications/luci-app-dockerman
-cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman package/lean/luci-app-dockerman
-cp -rf ../openwrt-lienol/package/diy/luci-lib-docker package/lean/luci-lib-docker
+cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman ./feeds/luci/applications/luci-app-dockerman
 
 # qBittorrent 下载
 #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
