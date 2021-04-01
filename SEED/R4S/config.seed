@@ -173,19 +173,9 @@ CONFIG_LIBCURL_OPENSSL=y
 # CONFIG_LIBCURL_GNUTLS is not set
 # CONFIG_LIBCURL_NOSSL is not set
 
-
-### DOCKER ###（实验性,有需要的删掉下面三行的注释)
+### DOCKER ###
 CONFIG_PACKAGE_docker=y
 CONFIG_PACKAGE_luci-app-dockerman=y
-CONFIG_PACKAGE_cgroupfs-mount=y
-CONFIG_PACKAGE_kmod-fs-btrfs=y
-CONFIG_PACKAGE_kmod-dm=y
-CONFIG_PACKAGE_kmod-br-netfilter=y
-CONFIG_PACKAGE_kmod-ikconfig=y
-CONFIG_PACKAGE_kmod-nf-conntrack-netlink=y
-CONFIG_PACKAGE_kmod-nf-ipvs=y
-CONFIG_PACKAGE_kmod-veth=y
-CONFIG_PACKAGE_kmod-dummy=y
 
 ### Video Support ###
 CONFIG_PACKAGE_kmod-backlight=y
