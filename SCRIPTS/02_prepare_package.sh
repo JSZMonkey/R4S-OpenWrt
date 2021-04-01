@@ -162,7 +162,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
 
 #Docker 容器
-sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/luci-app-dockerman/Makefile
+sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 
 # qBittorrent 下载
 #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
@@ -179,10 +179,6 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper packa
 #回滚通用即插即用
 #rm -rf ./feeds/packages/net/miniupnpd
 #svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
-
-# 替换为 master 分支的 luci-app-samba4
-rm -fr feeds/luci/applications/luci-app-samba4
-svn co https://github.com/openwrt/luci/trunk/applications/luci-app-samba4 feeds/luci/applications/luci-app-samba4
 
 #流量监管
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata package/lean/luci-app-netdata
