@@ -162,9 +162,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
 
 #Docker 容器
-#sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
-#rm -rf ./feeds/luci/applications/luci-app-dockerman
-#cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman ./feeds/luci/applications/luci-app-dockerman
+sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/luci-app-dockerman/Makefile
 
 # qBittorrent 下载
 #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
