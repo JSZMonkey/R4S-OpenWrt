@@ -54,10 +54,22 @@ CONFIG_CRYPTO_CHACHA20_NEON=y
 CONFIG_CRYPTO_POLY1305_NEON=y
 CONFIG_CRYPTO_NHPOLY1305_NEON=y
 CONFIG_CRYPTO_AES_ARM64_BS=y
+
+CONFIG_DRM_ROCKCHIP=y
+# CONFIG_ROCKCHIP_ANALOGIX_DP is not set
+# CONFIG_ROCKCHIP_CDN_DP is not set
+# CONFIG_ROCKCHIP_DW_HDMI is not set
+# CONFIG_ROCKCHIP_DW_MIPI_DSI is not set
+# CONFIG_ROCKCHIP_INNO_HDMI is not set
+# CONFIG_ROCKCHIP_LVDS is not set
+# CONFIG_ROCKCHIP_RGB is not set
+# CONFIG_ROCKCHIP_RK3066_HDMI is not set
 ' >> ./target/linux/rockchip/armv8/config-5.4
 
 #R4S 添加GPU驱动
 rm -rf ./package/kernel/linux/modules/video.mk
+rm -rf ./target/linux/rockchip/config-default
+wget -P target/linux/rockchip/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/rockchip/config-default
 wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/master/package/kernel/linux/modules/video.mk
 
 <<'COMMENT'
