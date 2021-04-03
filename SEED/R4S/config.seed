@@ -173,6 +173,22 @@ CONFIG_LIBCURL_OPENSSL=y
 # CONFIG_LIBCURL_GNUTLS is not set
 # CONFIG_LIBCURL_NOSSL is not set
 
+### Diy ###
+CONFIG_PACKAGE_kmod-fs-btrfs=y
+CONFIG_PACKAGE_kmod-lib-crc32c=y
+CONFIG_PACKAGE_kmod-lib-lzo=y
+CONFIG_PACKAGE_kmod-lib-raid6=y
+CONFIG_PACKAGE_kmod-lib-xor=y
+CONFIG_PACKAGE_kmod-lib-zstd=y
+CONFIG_PACKAGE_kmod-br-netfilter=y
+CONFIG_PACKAGE_kmod-usb2-pci=y
+CONFIG_PACKAGE_libcgroup=y
+CONFIG_PACKAGE_musl-fts=y
+CONFIG_PACKAGE_cgroup-tools=y
+CONFIG_PACKAGE_cgroupfs-mount=y
+# CONFIG_CGROUPFS_MOUNT_KERNEL_CGROUPS is not set
+
+
 ### DOCKER ###
 CONFIG_PACKAGE_luci-app-dockerman=y
 CONFIG_DOCKER_KERNEL_OPTIONS=y
@@ -188,6 +204,7 @@ CONFIG_DOCKER_STO_EXT4=y
 ### Video Support ###
 CONFIG_PACKAGE_kmod-backlight=y
 CONFIG_PACKAGE_kmod-drm=y
+CONFIG_PACKAGE_kmod-drm-ttm=y
 CONFIG_PACKAGE_kmod-drm-kms-helper=y
 CONFIG_PACKAGE_kmod-drm-rockchip=y
 CONFIG_PACKAGE_kmod-fb=y
