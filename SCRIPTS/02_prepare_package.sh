@@ -164,12 +164,6 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/n
 #Docker 容器
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 
-# qBittorrent 下载
-#svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
-svn co https://github.com/garypang13/openwrt-static-qb/trunk/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
-sed -i 's/4.3.3.10/4.3.4.11/g' package/lean/qBittorrent-Enhanced-Edition/Makefile
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-qbittorrent package/lean/luci-app-qbittorrent
-
 #IPSec
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
 
