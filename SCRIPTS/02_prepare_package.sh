@@ -238,12 +238,6 @@ svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wo
 git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
 git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 
-# qBittorrent 下载
-svn co https://github.com/garypang13/openwrt-static-qb/trunk/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
-sed -i 's/4.3.3.10/4.3.4.11/g' package/lean/qBittorrent-Enhanced-Edition/Makefile
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-qbittorrent package/lean/luci-app-qbittorrent
-sed -i 's/+qBittorrent +python3/+qBittorrent-Enhanced-Edition/g' package/lean/luci-app-qbittorrent/Makefile
-
 # USB 打印机
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
 
