@@ -108,8 +108,8 @@ CONFIG_PACKAGE_mount-utils=y
 CONFIG_PACKAGE_luci-app-ssr-plus=y
 CONFIG_PACKAGE_luci-app-boostupnp=y
 CONFIG_PACKAGE_luci-app-aliddns=y
-CONFIG_PACKAGE_luci-app-aria2=y
-CONFIG_PACKAGE_ariang=y
+CONFIG_PACKAGE_luci-app-qbittorrent=y
+
 
 ### THEME ###
 CONFIG_PACKAGE_luci-theme-argon=y
