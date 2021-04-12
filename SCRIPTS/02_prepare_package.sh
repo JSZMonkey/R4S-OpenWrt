@@ -101,6 +101,10 @@ rm -rf ./feeds/packages/lang/node-yarn
 svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/packages/lang/node-yarn
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 
+#修复libnfnetlink
+rm -rf ./package/libs/libnfnetlink/Makefile
+wget -P package/libs/libnfnetlink https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/libs/libnfnetlink/Makefile
+
 #R8168驱动
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8168 package/new/r8168
 patch -p1 < ../PATCH/new/main/r8168-fix_LAN_led-for_r4s-from_TL.patch
