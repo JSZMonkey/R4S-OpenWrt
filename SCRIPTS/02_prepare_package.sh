@@ -105,6 +105,9 @@ ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 rm -rf ./package/libs/libnfnetlink/Makefile
 wget -P package/libs/libnfnetlink https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/libs/libnfnetlink/Makefile
 
+# 上网 APP 过滤
+git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
+
 #R8168驱动
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8168 package/new/r8168
 patch -p1 < ../PATCH/new/main/r8168-fix_LAN_led-for_r4s-from_TL.patch
