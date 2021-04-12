@@ -101,10 +101,6 @@ rm -rf ./feeds/packages/lang/node-yarn
 svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/packages/lang/node-yarn
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 
-#修复libnfnetlink
-rm -rf ./package/libs/libnfnetlink/Makefile
-wget -P package/libs/libnfnetlink https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/libs/libnfnetlink/Makefile
-
 # 上网 APP 过滤
 git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
 
