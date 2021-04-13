@@ -29,7 +29,7 @@ wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/d
 wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/package-immortalwrt.mk
 
 #临时补丁
-wget -qO - https://github.com/openwrt/openwrt/commit/7fae64.patch | patch -p1
+#wget -qO - https://github.com/openwrt/openwrt/commit/7fae64.patch | patch -p1
 
 # 必要的 Patch 们
 #Patch arm cpu name
@@ -190,7 +190,7 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ramfree 
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
-#wget -qO - https://patch-diff.githubusercontent.com/raw/fw876/helloworld/pull/442.patch | patch -p1
+wget -qO - https://patch-diff.githubusercontent.com/raw/fw876/helloworld/pull/473.patch | patch -p1
 popd
 pushd package/lean/luci-app-ssr-plus
 #sed -i 's,default n,default y,g' Makefile
