@@ -137,9 +137,6 @@ wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://githu
 wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/header.htm
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
 
-#Argon_new 主题
-svn co https://github.com/kenzok8/openwrt-packages/branches/master/luci-theme-argon_new package/new/luci-theme-argon_new
-
 #ARP 绑定
 svn co https://github.com/QiuSimons/OpenWrt_luci-app/trunk/lean/luci-app-arpbind package/lean/luci-app-arpbind
 
