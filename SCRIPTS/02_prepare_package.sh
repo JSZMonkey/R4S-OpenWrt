@@ -28,6 +28,7 @@ wget -P scripts/ https://github.com/immortalwrt/immortalwrt/raw/master/scripts/d
 wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/download.mk
 wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/package-immortalwrt.mk
 sed -i '/unshift/d' scripts/download.pl
+sed -i '/mirror02/d' scripts/download.pl
 
 #临时补丁
 #wget -qO - https://github.com/openwrt/openwrt/commit/7fae64.patch | patch -p1
@@ -163,7 +164,8 @@ cp -rf ../PATCH/duplicate/luci-app-cpulimit ./package/lean/luci-app-cpulimit
 svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit package/lean/cpulimit
 
 # Aliyun动态DNS
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
+ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 
 # EQOS限速
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
