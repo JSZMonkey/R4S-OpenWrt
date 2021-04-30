@@ -111,7 +111,7 @@ git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git pack
 
 #R8168驱动
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8168 package/new/r8168
-patch -p1 < ../PATCH/new/main/r8168-fix_LAN_led-for_r4s-from_TL.patch
+#patch -p1 < ../PATCH/new/main/r8168-fix_LAN_led-for_r4s-from_TL.patch
 
 # UPX
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
