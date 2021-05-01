@@ -245,7 +245,9 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/vlmcsd package/le
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 
 # 网易云音乐解锁
-git clone --depth 1 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-unblockmusic package/new/luci-app-unblockmusic
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusicGo package/new/UnblockNeteaseMusicGo
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusic package/new/UnblockNeteaseMusic
 
 #流量监视
 git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
