@@ -247,6 +247,7 @@ svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wo
 
 # 网易云音乐解锁
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-unblockmusic package/new/luci-app-unblockmusic
+sed -i 's,https://raw.githubusercontent.com/nondanee/UnblockNeteaseMusic/master/ca.crt,https://raw.fastgit.org/JSZMonkey/R4S-OpenWrt/master/ca.crt,' package/new/luci-app-unblockmusic/luasrc/model/cbi/unblockmusic/unblockmusic.lua
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusicGo package/new/UnblockNeteaseMusicGo
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusic package/new/UnblockNeteaseMusic
 
