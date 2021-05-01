@@ -167,6 +167,7 @@ svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit package/lean
 
 # Aliyun动态DNS
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
+mv feeds/luci/applications/luci-app-aliddns/po/zh_cn feeds/luci/applications/luci-app-aliddns/po/zh_Hans
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 
 # EQOS限速
