@@ -34,9 +34,6 @@ uci commit firewall
 uci set network.globals.packet_steering='1'
 uci commit network
 
-#网易云音乐
-echo "10 2 * * * cd /usr/share/unblockneteasemusic/core/ && openssl req -new -x509 -key server.key -out server.crt -days 3650  -subj "/CN=*.music.163.com" && cd" >> /etc/crontabs/root && cat /etc/crontabs/root | sort | uniq > /tmp/tmp_cron_root && cat /tmp/tmp_cron_root > /etc/crontabs/root
-
 #通用即插即用
 uci set upnpd.config.igdv1='1'
 uci set upnpd.config.enabled='1'
