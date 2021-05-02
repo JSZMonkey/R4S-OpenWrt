@@ -167,7 +167,7 @@ svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit package/lean
 
 # Aliyun动态DNS
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
-mv feeds/luci/applications/luci-app-aliddns/po/zh_cn feeds/luci/applications/luci-app-aliddns/po/zh_Hans
+mv ./feeds/luci/applications/luci-app-aliddns/po/zh_cn ./feeds/luci/applications/luci-app-aliddns/po/zh_Hans
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 
 # EQOS限速
@@ -246,10 +246,7 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/vlmcsd package/le
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 
 # 网易云音乐解锁
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-unblockmusic package/new/luci-app-unblockmusic
-sed -i 's,https://raw.githubusercontent.com/nondanee/UnblockNeteaseMusic/master/ca.crt,https://raw.fastgit.org/JSZMonkey/R4S-OpenWrt/master/ca.crt,' package/new/luci-app-unblockmusic/luasrc/model/cbi/unblockmusic/unblockmusic.lua
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusicGo package/new/UnblockNeteaseMusicGo
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusic package/new/UnblockNeteaseMusic
+git clone --depth 1 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
 
 #流量监视
 git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
