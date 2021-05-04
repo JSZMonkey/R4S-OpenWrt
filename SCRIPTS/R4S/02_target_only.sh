@@ -99,5 +99,7 @@ sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generat
 #预配置一些插件
 cp -rf ../PATCH/R4S/files ./files
 chmod -R 755 ./
+find ./ -name *.orig | xargs rm -f
+find ./ -name *.rej | xargs rm -f
 
 exit 0
