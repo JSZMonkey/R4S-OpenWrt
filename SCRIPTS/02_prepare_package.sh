@@ -189,23 +189,6 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper packa
 #清理内存
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ramfree package/lean/luci-app-ramfree
 
-#SSRP
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
-rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
-pushd package/lean
-#wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/b1a2d3c.patch | patch -p1
-wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/c1674ad.patch | patch -p1
-popd
-pushd package/lean/luci-app-ssr-plus
-#sed -i 's,default n,default y,g' Makefile
-sed -i 's,Xray:xray ,Xray:xray-core ,g' Makefile
-sed -i '/V2ray:v2ray/d' Makefile
-sed -i '/plugin:v2ray/d' Makefile
-#sed -i '/result.encrypt_method/a\result.fast_open = "1"' root/usr/share/shadowsocksr/subscribe.lua
-sed -i 's,ispip.clang.cn/all_cn,cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
-sed -i 's,ghproxy.com/https://raw.githubusercontent.com/YW5vbnltb3Vz/domain-list-community/release/gfwlist,cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw,' root/etc/init.d/shadowsocksr luasrc/model/cbi/shadowsocksr/advanced.lua
-sed -i '/Clang.CN.CIDR/a\o:value("https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
-popd
 #SSRP 依赖
 rm -rf ./feeds/packages/net/xray-core
 rm -rf ./feeds/packages/net/kcptun
@@ -230,7 +213,23 @@ svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-plugin package/l
 svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
 svn co https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust package/lean/shadowsocks-rust
 #svn co https://github.com/fw876/helloworld/trunk/shadowsocks-rust package/lean/shadowsocks-rust
-
+#SSRP
+svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
+rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
+pushd package/lean
+wget -qO - https://github.com/fw876/helloworld/pull/509.patch | patch -p1
+wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/c1674ad.patch | patch -p1
+popd
+pushd package/lean/luci-app-ssr-plus
+#sed -i 's,default n,default y,g' Makefile
+sed -i 's,Xray:xray ,Xray:xray-core ,g' Makefile
+sed -i '/V2ray:v2ray/d' Makefile
+sed -i '/plugin:v2ray/d' Makefile
+#sed -i '/result.encrypt_method/a\result.fast_open = "1"' root/usr/share/shadowsocksr/subscribe.lua
+sed -i 's,ispip.clang.cn/all_cn,cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
+sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2ray-rules-dat/release/gfw.txt,' root/etc/init.d/shadowsocksr luasrc/model/cbi/shadowsocksr/advanced.lua
+sed -i '/Clang.CN.CIDR/a\o:value("https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
+popd
 #订阅转换
 svn co https://github.com/immortalwrt/packages/trunk/net/subconverter package/new/subconverter
 svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 package/new/jpcre2
