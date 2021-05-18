@@ -24,9 +24,9 @@ sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 #维多利亚的秘密
 rm -rf ./scripts/download.pl
 rm -rf ./include/download.mk
-wget -P scripts/ https://github.com/immortalwrt/immortalwrt/raw/master/scripts/download.pl
-wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/download.mk
-wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/package-immortalwrt.mk
+wget -P scripts/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/scripts/download.pl
+wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/include/download.mk
+wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/include/package-immortalwrt.mk
 sed -i '/unshift/d' scripts/download.pl
 sed -i '/mirror02/d' scripts/download.pl
 #echo "net.netfilter.nf_conntrack_helper = 1" >> ./package/kernel/linux/files/sysctl-nf-conntrack.conf
@@ -83,7 +83,7 @@ cp -f ../PATCH/duplicate/shortcut-fe ./package/base-files/files/etc/init.d
 # 基础 Packages
 
 #AutoCore
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/autocore package/lean/autocore
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emortal/autocore package/lean/autocore
 #wget -qO - https://github.com/immortalwrt/immortalwrt/commit/13d6e338f1f7eba45e1aada749ac74fc391b9216.patch | patch -Rp1
 rm -rf ./feeds/packages/utils/coremark
 svn co https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
@@ -161,9 +161,11 @@ sed -i 's,include ../..,include $(TOPDIR)/feeds/luci,g' ./package/new/luci-app-c
 cp -rf ../NoTengoBattery/package/system/compressed-memory ./package/system/compressed-memory
 
 #CPU 控制相关
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-cpufreq package/lean/luci-app-cpufreq
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq feeds/luci/applications/luci-app-cpufreq
+ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/luci-app-cpufreq
 cp -rf ../PATCH/duplicate/luci-app-cpulimit ./package/lean/luci-app-cpulimit
-svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit package/lean/cpulimit
+svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit feeds/packages/utils/cpulimit
+ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 
 # Aliyun动态DNS
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
