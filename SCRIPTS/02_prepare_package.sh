@@ -31,9 +31,6 @@ sed -i '/unshift/d' scripts/download.pl
 sed -i '/mirror02/d' scripts/download.pl
 #echo "net.netfilter.nf_conntrack_helper = 1" >> ./package/kernel/linux/files/sysctl-nf-conntrack.conf
 
-#临时补丁
-#wget -qO - https://github.com/openwrt/openwrt/commit/7fae64.patch | patch -p1
-
 # 必要的 Patch 们
 #Patch arm cpu name
 wget -P target/linux/generic/pending-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
@@ -180,6 +177,8 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/n
 
 #Docker 容器
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+#临时补丁
+wget -qO - https://github.com/openwrt/packages/commit/ca0049cec9247ffdfd704670fd0520c611544ffc.patch  | patch -p1
 
 #IPSec
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
