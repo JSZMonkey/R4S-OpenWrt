@@ -177,8 +177,6 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/n
 
 #Docker 容器
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
-#临时补丁
-wget -qO - https://github.com/openwrt/packages/commit/ca0049cec9247ffdfd704670fd0520c611544ffc.patch  | patch -p1
 
 #IPSec
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
