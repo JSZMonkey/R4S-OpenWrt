@@ -32,10 +32,13 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
+  - 101.226.4.6
+  - 114.114.114.114
   - tls://dns.alidns.com
   - https://dns.alidns.com/dns-query
   - tls://dns.pub
   - https://dns.pub/dns-query
+  - 2400:3200::1
   - 240C::6644
   upstream_dns_file: ""
   bootstrap_dns:
