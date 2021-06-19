@@ -81,8 +81,6 @@ dns:
     answer: 104.16.61.155
   - domain: api.themoviedb.org
     answer: 13.249.134.90
-  - domain: httpdns.n.netease.com
-    answer: 115.236.121.49
   blocked_services: []
   local_domain_name: lan
   resolve_clients: true
