@@ -16,7 +16,7 @@ dns:
   - 127.0.0.1
   port: 5335
   statistics_interval: 7
-  querylog_enabled: true
+  querylog_enabled: false
   querylog_file_enabled: true
   querylog_interval: 7
   querylog_size_memory: 1000
@@ -32,8 +32,6 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - 101.226.4.6
-  - 114.114.114.114
   - tls://dns.alidns.com
   - https://dns.alidns.com/dns-query
   - tls://dns.pub
@@ -88,7 +86,8 @@ dns:
   blocked_services: []
   local_domain_name: lan
   resolve_clients: true
-  local_ptr_upstreams: []
+  local_ptr_upstreams:
+  - 127.0.0.1
 tls:
   enabled: false
   server_name: ""
