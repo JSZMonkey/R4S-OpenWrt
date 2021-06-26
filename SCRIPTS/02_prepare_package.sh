@@ -33,7 +33,7 @@ echo "net.netfilter.nf_conntrack_helper = 1" >> ./package/kernel/linux/files/sys
 
 # 必要的 Patch 们
 #Patch arm cpu name
-wget -P target/linux/generic/pending-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
+wget -P target/linux/generic/pending-5.4/ https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 
 #Patch jsonc
 patch -p1 < ../PATCH/jsonc/use_json_object_new_int64.patch
@@ -123,7 +123,7 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tool
 
 #访问控制
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-accesscontrol package/lean/luci-app-accesscontrol
-svn co https://github.com/QiuSimons/OpenWrt-Add/tree/master/luci-app-control-weburl package/new/luci-app-control-weburl
+svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
 
 #广告过滤 AdGuard
 cp -rf ../openwrt-lienol/package/diy/luci-app-adguardhome ./package/new/luci-app-adguardhome
@@ -134,7 +134,7 @@ sed -i '/init/d' feeds/packages/net/adguardhome/Makefile
 
 #Argon 主题
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
-wget -P ./package/new/luci-theme-argon/htdocs/luci-static/argon/css -N https://github.com/msylgj/luci-theme-argon/raw/patch-1/htdocs/luci-static/argon/css/dark.css
+#wget -P ./package/new/luci-theme-argon/htdocs/luci-static/argon/css/ -N https://github.com/msylgj/luci-theme-argon/raw/patch-1/htdocs/luci-static/argon/css/dark.css
 #wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/footer.htm
 #wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/header.htm
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
@@ -166,7 +166,7 @@ ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/lu
 sed -i 's,1608,1800,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
 sed -i 's,2016,2208,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
 sed -i 's,1512,1608,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
-svn co https://github.com/QiuSimons/OpenWrt-Add/tree/master/luci-app-cpulimit package/lean/luci-app-cpulimit
+svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-cpulimit package/lean/luci-app-cpulimit
 svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit feeds/packages/utils/cpulimit
 ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 
@@ -266,13 +266,13 @@ git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.gi
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
 
 # 翻译及部分功能优化
-svn co https://github.com/QiuSimons/OpenWrt-Add/tree/master/addition-trans-zh package/lean/lean-translate
+svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
 
 ##最后的收尾工作
 
 #Lets Fuck
 mkdir package/base-files/files/usr/bin
-wget -P package/base-files/files/usr/bin https://github.com/QiuSimons/OpenWrt-Add/raw/master/fuck
+wget -P package/base-files/files/usr/bin/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/fuck
 
 #最大连接
 sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
@@ -280,4 +280,4 @@ sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 #生成默认配置及缓存
 rm -rf .config
 
-exit 0
+#exit 0
