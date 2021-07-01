@@ -7,3 +7,4 @@ config dnsfilter
 	list url 'https://cdn.jsdelivr.net/gh/AdguardTeam/FiltersRegistry@master/filters/filter_2_English/filter.txt'
 	list url 'https://cdn.jsdelivr.net/gh/AdguardTeam/FiltersRegistry@master/filters/filter_224_Chinese/filter.txt'
 	list url 'https://cdn.jsdelivr.net/gh/AdguardTeam/FiltersRegistry@master/filters/filter_14_Annoyances/filter.txt'
+	
