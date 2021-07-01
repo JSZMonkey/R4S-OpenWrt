@@ -182,10 +182,12 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/n
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 
 # Dnsfilter
-git clone -b master --depth 1 https://github.com/garypang13/luci-app-dnsfilter.git package/new/luci-app-dnsfilter
+git clone --depth 1 https://github.com/garypang13/luci-app-dnsfilter.git package/new/luci-app-dnsfilter
+
 # Dnsproxy
 svn co https://github.com/immortalwrt/packages/trunk/net/dnsproxy feeds/packages/net/dnsproxy
 ln -sf ../../../feeds/packages/net/dnsproxy ./package/feeds/packages/dnsproxy
+wget -P package/base-files/files/etc/init.d/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/dnsproxy
 
 #IPSec
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
@@ -235,6 +237,7 @@ pushd package/lean
 #wget -qO - https://github.com/fw876/helloworld/pull/513.patch | patch -p1
 wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/c1674ad.patch | patch -p1
 wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/5bbf6e7.patch | patch -p1
+wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/323fbf0.patch | patch -p1
 popd
 pushd package/lean/luci-app-ssr-plus
 #sed -i 's,default n,default y,g' Makefile
@@ -279,6 +282,7 @@ svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/
 #Lets Fuck
 mkdir package/base-files/files/usr/bin
 wget -P package/base-files/files/usr/bin/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/fuck
+wget -P package/base-files/files/usr/bin/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/setdns
 
 #最大连接
 sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
