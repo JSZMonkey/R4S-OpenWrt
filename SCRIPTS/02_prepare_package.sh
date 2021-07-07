@@ -182,10 +182,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/n
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 
 # Dnsfilter
-#git clone --depth 1 https://github.com/garypang13/luci-app-dnsfilter.git package/new/luci-app-dnsfilter
-
-# ADBP
-git clone --depth 1 https://github.com/small-5/luci-app-adblock-plus.git package/new/luci-app-adblock-plus
+git clone --depth 1 https://github.com/garypang13/luci-app-dnsfilter.git package/new/luci-app-dnsfilter
 
 # Dnsproxy
 svn co https://github.com/immortalwrt/packages/trunk/net/dnsproxy feeds/packages/net/dnsproxy
