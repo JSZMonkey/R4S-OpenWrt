@@ -39,6 +39,8 @@ wget -P target/linux/generic/hack-5.4/ https://github.com/Ysurac/openmptcprouter
 # BBRv2
 wget -P target/linux/generic/hack-5.4/ https://github.com/Ysurac/openmptcprouter/raw/develop/root/target/linux/generic/hack-5.4/692-tcp_nanqinlang.patch
 wget -P target/linux/generic/hack-5.4/ https://github.com/Ysurac/openmptcprouter/raw/develop/root/target/linux/generic/hack-5.4/693-tcp_bbr2.patch
+wget -qO - https://github.com/Ysurac/openmptcprouter/raw/develop/patches/nanqinlang.patch | patch -p1
+wget -qO - https://github.com/Ysurac/openmptcprouter/raw/develop/patches/bbr2.patch | patch -p1
 
 # 必要的 Patch 们
 #Patch arm cpu name
