@@ -216,7 +216,7 @@ git clone --depth 1 https://github.com/garypang13/luci-app-dnsfilter.git package
 # Dnsproxy
 svn co https://github.com/immortalwrt/packages/trunk/net/dnsproxy feeds/packages/net/dnsproxy
 ln -sf ../../../feeds/packages/net/dnsproxy ./package/feeds/packages/dnsproxy
-wget -P package/base-files/files/etc/init.d/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/dnsproxy
+#wget -P package/base-files/files/etc/init.d/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/dnsproxy
 
 #IPSec
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
@@ -314,7 +314,7 @@ svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/addition-trans-zh package/
 #Lets Fuck
 mkdir package/base-files/files/usr/bin
 wget -P package/base-files/files/usr/bin/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/fuck
-wget -P package/base-files/files/usr/bin/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/setdns
+#wget -P package/base-files/files/usr/bin/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/setdns
 
 #最大连接
 sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
