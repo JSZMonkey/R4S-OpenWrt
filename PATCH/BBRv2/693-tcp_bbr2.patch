@@ -3149,14 +3149,6 @@ index 88b987ca9ebb..c3538bd0d008 100644
  	tcp_rate_gen(sk, delivered, lost, is_sack_reneg, sack_state.rate);
  	tcp_cong_control(sk, ack, delivered, flag, sack_state.rate);
  	tcp_xmit_recovery(sk, rexmit);
-@@ -5261,13 +5279,14 @@
- 
- 	    /* More than one full frame received... */
- 	if (((tp->rcv_nxt - tp->rcv_wup) > inet_csk(sk)->icsk_ack.rcv_mss &&
-+	    (tp->fast_ack_mode == 1 ||
- 	     /* ... and right edge of window advances far enough.
- 	      * (tcp_recvmsg() will send ACK otherwise).
- 	      * If application uses SO_RCVLOWAT, we want send ack now if
 diff --git a/net/ipv4/tcp_output.c b/net/ipv4/tcp_output.c
 index be6d22b8190f..4943f96aade8 100644
 --- a/net/ipv4/tcp_output.c
