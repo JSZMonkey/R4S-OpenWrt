@@ -35,3 +35,4 @@ index 0c68b394d1e2..164322838008 100644
 
  define KernelPackage/ax25
    SUBMENU:=$(NETWORK_SUPPORT_MENU)
+   
