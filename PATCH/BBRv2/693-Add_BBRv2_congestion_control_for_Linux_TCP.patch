@@ -3349,10 +3349,10 @@ index 0de693565963..796fa6e5310c 100644
  				    rs->prior_mstamp); /* ack phase */
  	rs->interval_us = max(snd_us, ack_us);
  
-diff --git a/net/ipv4/tcp_input.c b/net/ipv4/tcp_input.c
-index 88b987ca9ebb..6c1c4e23bbea 100644
---- a/net/ipv4/tcp_input.c
-+++ b/net/ipv4/tcp_input.c
+diff --git a/net/ipv4/tcp_timer.c b/net/ipv4/tcp_timer.c
+index dd5a6317a801..1da66d4bbb08 100644
+--- a/net/ipv4/tcp_timer.c
++++ b/net/ipv4/tcp_timer.c
 @@ -602,6 +602,7 @@
  		goto out;
  	}
@@ -3360,4 +3360,4 @@ index 88b987ca9ebb..6c1c4e23bbea 100644
 +	tcp_rate_check_app_limited(sk);
  	tcp_mstamp_refresh(tcp_sk(sk));
  	event = icsk->icsk_pending;
-  
+ 
