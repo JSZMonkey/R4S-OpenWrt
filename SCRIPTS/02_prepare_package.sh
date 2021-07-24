@@ -50,7 +50,8 @@ CONFIG_CRYPTO_SHA256=y
 
 # BBRv2
 patch -p1 < ../PATCH/BBRv2/openwrt-kmod-bbr2.patch
-cp -f ../PATCH/BBRv2/693-tcp_bbr2.patch ./target/linux/generic/hack-5.4/693-tcp_bbr2.patch
+cp -f ../PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch ./target/linux/generic/hack-5.4/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
+
 
 # OPENSSL
 wget -qO - https://github.com/mj22226/openwrt/commit/5e1063.patch | patch -p1
