@@ -35,13 +35,13 @@ echo '
 ' >> ./target/linux/rockchip/armv8/config-5.4
 
 # MPTCP
-echo '
-CONFIG_MPTCP=y
-CONFIG_MPTCP_PM_ADVANCED=y
-CONFIG_MPTCP_FULLMESH=y
-CONFIG_DEFAULT_FULLMESH=y
-CONFIG_DEFAULT_MPTCP_PM="fullmesh"
-' >> ./target/linux/rockchip/armv8/config-5.4
+#echo '
+#CONFIG_MPTCP=y
+#CONFIG_MPTCP_PM_ADVANCED=y
+#CONFIG_MPTCP_FULLMESH=y
+#CONFIG_DEFAULT_FULLMESH=y
+#CONFIG_DEFAULT_MPTCP_PM="fullmesh"
+#' >> ./target/linux/rockchip/armv8/config-5.4
 
 
 #R4S 添加GPU驱动
