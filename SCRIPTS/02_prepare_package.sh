@@ -48,14 +48,13 @@ svn co https://github.com/openwrt/packages/trunk/libs/dtc feeds/packages/libs/dt
 #CONFIG_CRYPTO_SHA256=y
 #' >> ./target/linux/generic/config-5.4
 
-# BBRv2
+ BBRv2
 patch -p1 < ../PATCH/BBRv2/openwrt-kmod-bbr2.patch
 cp -f ../PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch ./target/linux/generic/hack-5.4/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
-
+wget -qO - https://github.com/openwrt/openwrt/commit/cfaf039.patch | patch -p1
 
 # OPENSSL
-wget -qO - https://github.com/mj22226/openwrt/commit/5e1063.patch | patch -p1
-
+wget -qO - https://github.com/mj22226/openwrt/commit/5e10633.patch | patch -p1
 
 # 必要的 Patch 们
 #Patch arm cpu name
