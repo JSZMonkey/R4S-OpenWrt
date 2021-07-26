@@ -176,6 +176,9 @@ svn co https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/
 rm -rf ./feeds/packages/net/miniupnpd
 svn co https://github.com/openwrt/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 
+# socat
+svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-socat package/new/luci-app-socat
+
 #内存压缩
 #wget -O- https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/2840.patch | patch -p1
 wget -O- https://github.com/NoTengoBattery/openwrt/commit/40f1d5.patch | patch -p1
