@@ -8,7 +8,7 @@ clear
 # 基础修改
 
 #使用 O3 级别的优化
-sed -i 's/Os/O3/g' include/target.mk
+sed -i 's/Os/O3 -ffunction-sections -fdata-sections/g' include/target.mk
 
 #更新 Feeds
 ./scripts/feeds update -a
