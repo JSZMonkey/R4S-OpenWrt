@@ -8,7 +8,7 @@ clear
 # 基础修改
 
 #使用 O3 级别的优化
-sed -i 's/Os/O3/g' include/target.mk
+sed -i 's/Os/O3 -funsafe-math-optimizations/g' include/target.mk
 
 #更新 Feeds
 ./scripts/feeds update -a
@@ -110,6 +110,7 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emorta
 #wget -qO - https://github.com/immortalwrt/immortalwrt/commit/13d6e338f1f7eba45e1aada749ac74fc391b9216.patch | patch -Rp1
 rm -rf ./feeds/packages/utils/coremark
 svn co https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
+sed -i 's,-O3,-Ofast,g' ./feeds/packages/utils/coremark/Makefile
 
 #更换 Node 版本
 rm -rf ./feeds/packages/lang/node
