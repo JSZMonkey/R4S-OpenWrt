@@ -26,27 +26,20 @@ sed -i '/unshift/d' scripts/download.pl
 sed -i '/mirror02/d' scripts/download.pl
 echo "net.netfilter.nf_conntrack_helper = 1" >> ./package/kernel/linux/files/sysctl-nf-conntrack.conf
 
-# GCC11
-rm -rf ./toolchain/gcc
-svn co https://github.com/openwrt/openwrt/trunk/toolchain/gcc toolchain/gcc
-rm -rf ./package/network/utils/bpftools
-svn co https://github.com/openwrt/openwrt/trunk/package/network/utils/bpftools package/network/utils/bpftools
-rm -rf ./package/libs/elfutils
-svn co https://github.com/neheb/openwrt/branches/elf/package/libs/elfutils package/libs/elfutils
-rm -rf ./feeds/packages/libs/dtc
-svn co https://github.com/openwrt/packages/trunk/libs/dtc feeds/packages/libs/dtc
-
-# MPTCP
-#wget -P target/linux/generic/hack-5.4/ https://github.com/Ysurac/openmptcprouter/raw/develop/root/target/linux/generic/hack-5.4/690-mptcp_trunk.patch
-#wget -P target/linux/generic/hack-5.4/ https://github.com/Ysurac/openmptcprouter/raw/develop/root/target/linux/generic/hack-5.4/998-ndpi-netfilter.patch
-#echo '
-#CONFIG_CRYPTO_SHA256=y
-#' >> ./target/linux/generic/config-5.4
-
  BBRv2
 patch -p1 < ../PATCH/BBRv2/openwrt-kmod-bbr2.patch
 cp -f ../PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch ./target/linux/generic/hack-5.4/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
 wget -qO - https://github.com/openwrt/openwrt/commit/cfaf039.patch | patch -p1
+
+# Grub 2
+wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/71d808b.patch | patch -p1
+
+# Haproxy
+rm -rf ./feeds/packages/net/haproxy
+svn co https://github.com/openwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
+pushd feeds/packages
+wget -qO - https://github.com/QiuSimons/packages/commit/e365bd2.patch | patch -p1
+popd
 
 # OPENSSL
 wget -qO - https://github.com/mj22226/openwrt/commit/5e10633.patch | patch -p1
@@ -81,7 +74,6 @@ patch -p1 < ../PATCH/firewall/luci-app-firewall_add_fullcone.patch
 cp -rf ../openwrt-lienol/package/network/fullconenat ./package/network/fullconenat
 
 # Shortcut-FE 部分
-
 #Patch Kernel 以支持SFE
 #pushd target/linux/generic/hack-5.4
 #wget https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
@@ -95,11 +87,7 @@ cp -rf ../openwrt-lienol/package/network/fullconenat ./package/network/fullconen
 #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/fast-classifier package/lean/fast-classifier
 #wget -P package/base-files/files/etc/init.d/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/shortcut-fe
 
-
 ## 获取额外的 Packages
-
-# 基础 Packages
-
 #AutoCore
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emortal/autocore package/lean/autocore
 #wget -qO - https://github.com/immortalwrt/immortalwrt/commit/13d6e338f1f7eba45e1aada749ac74fc391b9216.patch | patch -Rp1
