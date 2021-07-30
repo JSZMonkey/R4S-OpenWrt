@@ -1,14 +1,9 @@
 #!/bin/bash
 clear
 
-#凑合解决方案
-#wget -qO - https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/3875.patch | patch -p1
-
 ## 基础部分
-# 基础修改
-
 #使用 O3 级别的优化
-sed -i 's/Os/O3 -funsafe-math-optimizations/g' include/target.mk
+sed -i 's/Os/O3 -funsafe-math-optimizations -funroll-loops/g' include/target.mk
 
 #更新 Feeds
 ./scripts/feeds update -a
@@ -110,7 +105,6 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emorta
 #wget -qO - https://github.com/immortalwrt/immortalwrt/commit/13d6e338f1f7eba45e1aada749ac74fc391b9216.patch | patch -Rp1
 rm -rf ./feeds/packages/utils/coremark
 svn co https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
-sed -i 's,-O3,-Ofast,g' ./feeds/packages/utils/coremark/Makefile
 
 #更换 Node 版本
 rm -rf ./feeds/packages/lang/node
@@ -150,13 +144,6 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tool
 #访问控制
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-accesscontrol package/lean/luci-app-accesscontrol
 svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
-
-#广告过滤 AdGuard
-cp -rf ../openwrt-lienol/package/diy/luci-app-adguardhome ./package/new/luci-app-adguardhome
-rm -rf ./feeds/packages/net/adguardhome
-svn co https://github.com/openwrt/packages/trunk/net/adguardhome feeds/packages/net/adguardhome
-sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/AdGuardHome' ./feeds/packages/net/adguardhome/Makefile
-sed -i '/init/d' feeds/packages/net/adguardhome/Makefile
 
 #Argon 主题
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
