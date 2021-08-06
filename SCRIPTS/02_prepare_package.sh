@@ -144,6 +144,12 @@ git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-arpbind feeds/luci/applications/luci-app-arpbind
 ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/luci-app-arpbind
 
+# ipsec VPN
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-ipsec-vpnd feeds/luci/applications/luci-app-ipsec-vpnd
+
+# NTF QOS
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-nft-qos feeds/luci/applications/luci-app-nft-qos
+
 #定时重启
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-autoreboot package/lean/luci-app-autoreboot
 
