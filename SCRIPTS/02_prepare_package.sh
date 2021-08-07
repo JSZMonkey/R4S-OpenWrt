@@ -113,9 +113,6 @@ rm -rf ./feeds/packages/lang/node-yarn
 svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/packages/lang/node-yarn
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 
-# 上网 APP 过滤
-git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
-
 #R8168驱动
 #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8168 package/new/r8168
 git clone -b master --depth 1 https://github.com/BROBIRD/openwrt-r8168.git package/new/r8168
@@ -129,10 +126,6 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tool
 
 # LuCI应用，主题和依赖们
 
-#访问控制
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-accesscontrol package/lean/luci-app-accesscontrol
-svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
-
 #Argon 主题
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
 #wget -P ./package/new/luci-theme-argon/htdocs/luci-static/argon/css/ -N https://github.com/msylgj/luci-theme-argon/raw/patch-1/htdocs/luci-static/argon/css/dark.css
@@ -143,10 +136,6 @@ git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 # MAC 地址与 IP 绑定
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-arpbind feeds/luci/applications/luci-app-arpbind
 ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/luci-app-arpbind
-
-# ipsec VPN
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-ipsec-vpnd feeds/luci/applications/luci-app-ipsec-vpnd
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-ipsec-vpnserver-manyusers feeds/luci/applications/luci-app-ipsec-vpnserver-manyusers
 
 # NTF QOS
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-nft-qos feeds/luci/applications/luci-app-nft-qos
@@ -186,9 +175,6 @@ ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
 mv ./feeds/luci/applications/luci-app-aliddns/po/zh_cn ./feeds/luci/applications/luci-app-aliddns/po/zh_Hans
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
-
-# EQOS限速
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
 
 #Docker 容器
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
@@ -281,10 +267,6 @@ svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wo
 
 # 网易云音乐解锁
 git clone --depth 1 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
-
-#流量监视
-git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
-git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 
 # USB 打印机
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
