@@ -139,6 +139,7 @@ ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/lu
 
 # NTF QOS
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-nft-qos feeds/luci/applications/luci-app-nft-qos
+sed -i "s/services/network/g" feeds/luci/luci-app-nft-qos/luasrc/controller/nft-qos.lua
 
 #定时重启
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-autoreboot package/lean/luci-app-autoreboot
