@@ -146,6 +146,7 @@ ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/lu
 
 # ipsec VPN
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-ipsec-vpnd feeds/luci/applications/luci-app-ipsec-vpnd
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-ipsec-vpnserver-manyusers feeds/luci/applications/luci-app-ipsec-vpnserver-manyusers
 
 # NTF QOS
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-nft-qos feeds/luci/applications/luci-app-nft-qos
