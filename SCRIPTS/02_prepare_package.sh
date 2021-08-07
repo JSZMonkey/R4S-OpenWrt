@@ -248,15 +248,18 @@ sed -i '/result.encrypt_method/a\result.fast_open = "1"' root/usr/share/shadowso
 sed -i 's,ispip.clang.cn/all_cn,cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
 sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2ray-rules-dat/release/gfw.txt,' root/etc/init.d/shadowsocksr
 sed -i '/Clang.CN.CIDR/a\o:value("https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
-
-
 popd
 #订阅转换
-svn co https://github.com/immortalwrt/packages/trunk/net/subconverter package/new/subconverter
-svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 package/new/jpcre2
-svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson package/new/rapidjson
-svn co https://github.com/immortalwrt/packages/trunk/libs/libcron package/new/libcron
-svn co https://github.com/immortalwrt/packages/trunk/libs/quickjspp package/new/quickjspp
+svn co https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
+ln -sf ../../../feeds/packages/net/subconverter ./package/feeds/packages/subconverter
+svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
+ln -sf ../../../feeds/packages/libs/jpcre2 ./package/feeds/packages/jpcre2
+svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson feeds/packages/libs/rapidjson
+ln -sf ../../../feeds/packages/libs/rapidjson ./package/feeds/packages/rapidjson
+svn co https://github.com/immortalwrt/packages/trunk/libs/libcron feeds/packages/libs/libcron
+ln -sf ../../../feeds/packages/libs/libcron ./package/feeds/packages/libcron
+svn co https://github.com/immortalwrt/packages/trunk/libs/quickjspp feeds/packages/libs/quickjspp
+ln -sf ../../../feeds/packages/libs/quickjspp ./package/feeds/packages/quickjspp
 
 #Vlmcsd 激活助手
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-vlmcsd package/lean/luci-app-vlmcsd
