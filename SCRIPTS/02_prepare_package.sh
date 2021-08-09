@@ -88,6 +88,13 @@ cp -rf ../openwrt-lienol/package/network/fullconenat ./package/network/fullconen
 #wget -P package/base-files/files/etc/init.d/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/shortcut-fe
 
 ## 获取额外的 Packages
+# 更换为 ImmortalWrt Uboot 以及 Target
+rm -rf ./target/linux/rockchip
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip target/linux/rockchip
+rm -rf ./package/boot/uboot-rockchip
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
+
 #AutoCore
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emortal/autocore package/lean/autocore
 #wget -qO - https://github.com/immortalwrt/immortalwrt/commit/13d6e338f1f7eba45e1aada749ac74fc391b9216.patch | patch -Rp1
@@ -117,6 +124,9 @@ ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8168 package/new/r8168
 git clone -b master --depth 1 https://github.com/BROBIRD/openwrt-r8168.git package/new/r8168
 patch -p1 < ../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
+
+# R8152驱动
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
 
 # UPX
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
