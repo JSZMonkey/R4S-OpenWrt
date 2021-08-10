@@ -140,7 +140,7 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tool
 # LuCI应用，主题和依赖们
 # 访问控制
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-accesscontrol package/lean/luci-app-accesscontrol
-svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
+svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
 
 #Argon 主题
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
