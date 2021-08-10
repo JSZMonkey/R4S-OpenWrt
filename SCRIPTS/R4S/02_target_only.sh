@@ -18,21 +18,6 @@ CONFIG_HW_RANDOM_ROCKCHIP=y
 sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
 sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
 
-
-#内核加解密模块
-echo '
-' >> ./target/linux/rockchip/armv8/config-5.4
-
-# MPTCP
-#echo '
-#CONFIG_MPTCP=y
-#CONFIG_MPTCP_PM_ADVANCED=y
-#CONFIG_MPTCP_FULLMESH=y
-#CONFIG_DEFAULT_FULLMESH=y
-#CONFIG_DEFAULT_MPTCP_PM="fullmesh"
-#' >> ./target/linux/rockchip/armv8/config-5.4
-
-
 #R4S 添加GPU驱动
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/master/package/kernel/linux/modules/video.mk
