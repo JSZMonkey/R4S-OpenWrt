@@ -43,8 +43,9 @@ wget -qO - https://github.com/openwrt/openwrt/commit/cfaf039.patch | patch -p1
 
 # CacULE
 wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/336a9b8.patch | patch -p1
-wget -P target/linux/generic/hack-5.4/ https://github.com/hamadmarri/cacule-cpu-scheduler/raw/master/patches/CacULE/v5.4/cacule-5.4.patch
-
+wget https://github.com/hamadmarri/cacule-cpu-scheduler/raw/master/patches/CacULE/v5.4/cacule-5.4.patch -O ./target/linux/generic/hack-5.4/694-cacule-5.4.patch
+# UKSM
+cp -f ../PATCH/UKSM/695-uksm-5.4.patch ./target/linux/generic/hack-5.4/695-uksm-5.4.patch
 # Grub 2
 wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/afed16a.patch | patch -p1
 
@@ -177,13 +178,13 @@ svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-socat package/ne
 
 #内存压缩
 #wget -O- https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/2840.patch | patch -p1
-wget -O- https://github.com/NoTengoBattery/openwrt/commit/40f1d5.patch | patch -p1
-wget -O- https://github.com/NoTengoBattery/openwrt/commit/a83a0b.patch | patch -p1
-wget -O- https://github.com/NoTengoBattery/openwrt/commit/6d5fb4.patch | patch -p1
-mkdir ./package/new
-cp -rf ../NoTengoBattery/feeds/luci/applications/luci-app-compressed-memory ./package/new/luci-app-compressed-memory
-sed -i 's,include ../..,include $(TOPDIR)/feeds/luci,g' ./package/new/luci-app-compressed-memory/Makefile
-cp -rf ../NoTengoBattery/package/system/compressed-memory ./package/system/compressed-memory
+#wget -O- https://github.com/NoTengoBattery/openwrt/commit/40f1d5.patch | patch -p1
+#wget -O- https://github.com/NoTengoBattery/openwrt/commit/a83a0b.patch | patch -p1
+#wget -O- https://github.com/NoTengoBattery/openwrt/commit/6d5fb4.patch | patch -p1
+#mkdir ./package/new
+#cp -rf ../NoTengoBattery/feeds/luci/applications/luci-app-compressed-memory ./package/new/luci-app-compressed-memory
+#sed -i 's,include ../..,include $(TOPDIR)/feeds/luci,g' ./package/new/luci-app-compressed-memory/Makefile
+#cp -rf ../NoTengoBattery/package/system/compressed-memory ./package/system/compressed-memory
 
 #CPU 控制相关
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq feeds/luci/applications/luci-app-cpufreq
