@@ -6,14 +6,6 @@ sed -i 's,-mcpu=generic,-mcpu=cortex-a72.cortex-a53+crypto,g' include/target.mk
 cp -f ../PATCH/mbedtls/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch ./package/libs/mbedtls/patches/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch
 sed -i 's,kmod-r8169,kmod-r8168,g' target/linux/rockchip/image/armv8.mk
 
-#测试性功能
-sed -i '/CRYPTO_DEV_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
-sed -i '/HW_RANDOM_ROCKCHIP/d' ./target/linux/rockchip/armv8/config-5.4
-echo '
-CONFIG_CRYPTO_DEV_ROCKCHIP=y
-CONFIG_HW_RANDOM_ROCKCHIP=y
-' >> ./target/linux/rockchip/armv8/config-5.4
-
 # CacULE
 sed -i '/CONFIG_NR_CPUS/d' ./target/linux/rockchip/armv8/config-5.4
 echo '
