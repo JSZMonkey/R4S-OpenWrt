@@ -73,6 +73,7 @@ jobs:
         cd openwrt
         mv ../SEED/R4S/config.seed .config
         make defconfig
+        
     - name: Smart chmod
       run: |
         MY_Filter=$(mktemp)
@@ -82,6 +83,7 @@ jobs:
         find ./ -type f | grep -v -f ${MY_Filter} | xargs -s1024 file | grep 'executable\|ELF' | cut -d ':' -f1 | xargs -s1024 chmod 755
         rm -f ${MY_Filter}
         unset MY_Filter
+        
     - name: Make Download
       run: |
         df -h
@@ -141,5 +143,5 @@ jobs:
         commit: master
         replacesArtifacts: true
         token: ${{ secrets.workflow_token }}
-        artifacts: ./artifact/*.zip,./artifact/*.sha256sum
+        artifacts: ./artifact/*.zip
         
