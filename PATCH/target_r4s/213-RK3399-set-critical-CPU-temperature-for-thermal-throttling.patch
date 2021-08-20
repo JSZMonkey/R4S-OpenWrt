@@ -35,4 +35,3 @@ index 2551b238b97c6..a53ff24d92bad 100644
  					hysteresis = <2000>;
  					type = "passive";
  				};
-     
