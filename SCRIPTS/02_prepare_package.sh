@@ -174,7 +174,8 @@ git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-autoreboot package/lean/luci-app-autoreboot
 
 # Boost 通用即插即用
-svn co https://github.com/ryohuang/slim-wrt/branches/master/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
+svn co https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
+sed -i 's,-sL --connect-timeout 3 whatismyip.akamai.com,-s https://api.ipify.org,g' package/new/luci-app-boostupnp/root/usr/sbin/boostupnp.sh
 
 # socat
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-socat package/new/luci-app-socat
