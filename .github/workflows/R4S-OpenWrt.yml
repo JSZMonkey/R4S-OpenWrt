@@ -72,6 +72,7 @@ jobs:
       run: |
         cd openwrt
         mv ../SEED/R4S/config.seed .config
+        echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config
         make defconfig
     - name: Smart chmod
       run: |
