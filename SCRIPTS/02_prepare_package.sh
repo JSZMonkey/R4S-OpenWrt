@@ -186,6 +186,8 @@ ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/lu
 
 # 上网 APP 过滤
 git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
+sed -i 's,先关闭ACC加速,在防火墙中关闭 FullCone 及 流量分载 ,g' package/new/OpenAppFilter/luci-app-oaf/luasrc/model/cbi/appfilter/appfilter.lua
+sed -i 's,flowoffload.@flow[0],firewall.@defaults[0],g' package/new/OpenAppFilter/luci-app-oaf/luasrc/model/cbi/appfilter/appfilter.lua
 
 #Docker 容器
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
