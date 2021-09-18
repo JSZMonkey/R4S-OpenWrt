@@ -181,7 +181,7 @@ ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 
 # Mosdns
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
-svn co https://github.com/JSZMonkey/openwrt-mos/branches/master/luci-app-mosdns package/new/luci-app-mosdns
+svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
 
 # Aliyun动态DNS
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
