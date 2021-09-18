@@ -103,7 +103,7 @@ sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-efi.c
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-iso.cfg
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-pc.cfg
 #AutoCore
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emortal/autocore package/lean/autocore
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autocore package/lean/autocore
 rm -rf ./feeds/packages/utils/coremark
 svn co https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
 
