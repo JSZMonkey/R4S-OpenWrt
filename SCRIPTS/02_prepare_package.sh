@@ -165,6 +165,8 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-autorebo
 # Boost 通用即插即用
 svn co https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
 sed -i 's,-sL --connect-timeout 3 whatismyip.akamai.com,-s https://api.ipify.org,g' package/new/luci-app-boostupnp/root/usr/sbin/boostupnp.sh
+rm -rf ./feeds/packages/net/miniupnpd
+svn co https://github.com/openwrt/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 
 # socat
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-socat package/new/luci-app-socat
