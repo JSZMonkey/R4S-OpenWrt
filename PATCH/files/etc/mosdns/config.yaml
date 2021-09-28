@@ -7,7 +7,7 @@ plugin:
     args:
       entry:
         - _no_ecs
-        - _default_cache
+        - lazy_cache
         - main_sequence
         - ttl_set
       server:
@@ -58,8 +58,8 @@ plugin:
     type: fast_forward
     args:
       upstream:
-        - addr: 180.76.76.76
         - addr: 114.114.114.114
+        - addr: 180.76.76.76
       deduplicate: true
   - tag: forward_remote
     type: fast_forward
@@ -75,6 +75,11 @@ plugin:
     args:
       minimal_ttl: 3600
       maximum_ttl: 7200
+  - tag: lazy_cache
+    type: cache
+    args:
+      size: 512000
+      lazy_cache_ttl: 31536000
   - tag: query_is_local_domain
     type: query_matcher
     args:
