@@ -271,6 +271,7 @@ sed -i '/Clang.CN.CIDR/a\o:value("https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute
 popd
 #订阅转换
 svn co https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
+wget https://github.com/QiuSimons/subconverter/commit/3b4713d.patch -O ./feeds/packages/net/subconverter/patches/101-gcc7_fix.patch
 ln -sf ../../../feeds/packages/net/subconverter ./package/feeds/packages/subconverter
 svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
 ln -sf ../../../feeds/packages/libs/jpcre2 ./package/feeds/packages/jpcre2
