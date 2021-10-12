@@ -58,7 +58,7 @@ wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/afed16a.pa
 rm -rf ./feeds/packages/net/haproxy
 svn co https://github.com/openwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
 pushd feeds/packages
-wget -qO - https://github.com/QiuSimons/packages/commit/e365bd2.patch | patch -p1
+wget -qO - https://github.com/QiuSimons/packages/commit/7ffbfbe.patch | patch -p1
 popd
 
 # OPENSSL
