@@ -23,20 +23,20 @@ wget -P scripts/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/sc
 wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/include/download.mk
 sed -i '/unshift/d' scripts/download.pl
 sed -i '/mirror02/d' scripts/download.pl
-echo "net.netfilter.nf_conntrack_helper = 1" >> ./package/kernel/linux/files/sysctl-nf-conntrack.conf
+echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysctl-nf-conntrack.conf
 
 ### 必要的 Patches ###
 # Patch arm64 型号名称
 wget -P target/linux/generic/hack-5.4/ https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 # Patch jsonc
-patch -p1 < ../PATCH/jsonc/use_json_object_new_int64.patch
+patch -p1 <../PATCH/jsonc/use_json_object_new_int64.patch
 # Patch dnsmasq
-patch -p1 < ../PATCH/dnsmasq/dnsmasq-add-filter-aaaa-option.patch
-patch -p1 < ../PATCH/dnsmasq/luci-add-filter-aaaa-option.patch
+patch -p1 <../PATCH/dnsmasq/dnsmasq-add-filter-aaaa-option.patch
+patch -p1 <../PATCH/dnsmasq/luci-add-filter-aaaa-option.patch
 cp -f ../PATCH/dnsmasq/900-add-filter-aaaa-option.patch ./package/network/services/dnsmasq/patches/900-add-filter-aaaa-option.patch
 
 # BBRv2
-patch -p1 < ../PATCH/BBRv2/openwrt-kmod-bbr2.patch
+patch -p1 <../PATCH/BBRv2/openwrt-kmod-bbr2.patch
 cp -f ../PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch ./target/linux/generic/hack-5.4/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
 wget -qO - https://github.com/openwrt/openwrt/commit/cfaf039.patch | patch -p1
 
@@ -50,7 +50,7 @@ cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.4/
 echo '
 CONFIG_LRNG=y
 CONFIG_LRNG_JENT=y
-' >> ./target/linux/generic/config-5.4
+' >>./target/linux/generic/config-5.4
 # Grub 2
 wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/afed16a.patch | patch -p1
 
@@ -76,7 +76,7 @@ mkdir package/network/config/firewall/patches
 wget -P package/network/config/firewall/patches/ https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/fullconenat.patch
 wget -qO- https://github.com/msylgj/R2S-R4S-OpenWrt/raw/21.02/PATCHES/001-fix-firewall-flock.patch | patch -p1
 # Patch LuCI 以增添fullcone开关
-patch -p1 < ../PATCH/firewall/luci-app-firewall_add_fullcone.patch
+patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
 
 #FullCone 相关组件
 svn co https://github.com/Lienol/openwrt/trunk/package/network/fullconenat package/network/fullconenat
@@ -84,12 +84,12 @@ svn co https://github.com/Lienol/openwrt/trunk/package/network/fullconenat packa
 ## 获取额外的 Packages
 # 更换为 ImmortalWrt Uboot 以及 Target
 rm -rf ./target/linux/rockchip
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip target/linux/rockchip
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/target/linux/rockchip target/linux/rockchip
 rm -rf ./package/boot/uboot-rockchip
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/uboot-rockchip package/boot/uboot-rockchip
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
 rm -rf ./package/kernel/linux/modules/video.mk
-wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/master/package/kernel/linux/modules/video.mk
+wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
 # R4S超频到 2.2/1.8 GHz
 rm -rf ./target/linux/rockchip/patches-5.4/992-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
 cp -f ../PATCH/target_r4s/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch ./target/linux/rockchip/patches-5.4/991-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
@@ -127,7 +127,7 @@ ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
 
 #R8168驱动
 git clone -b master --depth 1 https://github.com/BROBIRD/openwrt-r8168.git package/new/r8168
-patch -p1 < ../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
+patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
 
 # R8152驱动
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
@@ -181,11 +181,10 @@ svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit feeds/packag
 ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 
 # Mosdns
-#svn co https://github.com/immortalwrt/packages/trunk/net/mosdns feeds/packages/net/mosdns
-#ln -sf ../../../feeds/packages/net/mosdns ./package/feeds/packages/mosdns
-#sed -i '/config.yaml/d' feeds/packages/net/mosdns/Makefile
-#sed -i '/mosdns-init-openwrt/d' feeds/packages/net/mosdns/Makefile
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
+svn co https://github.com/immortalwrt/packages/trunk/net/mosdns feeds/packages/net/mosdns
+ln -sf ../../../feeds/packages/net/mosdns ./package/feeds/packages/mosdns
+sed -i '/config.yaml/d' feeds/packages/net/mosdns/Makefile
+sed -i '/mosdns-init-openwrt/d' feeds/packages/net/mosdns/Makefile
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
 
 # Aliyun动态DNS
@@ -255,7 +254,7 @@ ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
-#wget -qO - https://github.com/fw876/helloworld/pull/656.patch | patch -p1
+wget -qO - https://github.com/fw876/helloworld/pull/656.patch | patch -p1
 wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/5bbf6e7.patch | patch -p1
 wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/323fbf0.patch | patch -p1
 popd
