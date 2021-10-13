@@ -226,10 +226,10 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/qttools package/l
 #清理内存
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ramfree package/lean/luci-app-ramfree
 
-#SSRP 依赖
-rm -rf ./feeds/packages/net/xray-core
+# ShadowsocksR Plus+ 依赖
 rm -rf ./feeds/packages/net/kcptun
 rm -rf ./feeds/packages/net/shadowsocks-libev
+rm -rf ./feeds/packages/net/xray-core
 svn co https://github.com/fw876/helloworld/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/pdnsd-alt package/lean/pdnsd
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
@@ -240,21 +240,20 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs package/lean/simple-obfs
 svn co https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/lean/trojan
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/lean/tcping
+svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
+svn co https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
 svn co https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-core
 svn co https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
 svn co https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
-svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
-svn co https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
 svn co https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
 ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
 svn co https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
 ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
-#SSRP
+# ShadowsocksR Plus+
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
-wget -qO - https://github.com/fw876/helloworld/pull/656.patch | patch -p1
+#wget -qO - https://github.com/fw876/helloworld/pull/656.patch | patch -p1
 wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/5bbf6e7.patch | patch -p1
 wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/323fbf0.patch | patch -p1
 popd
