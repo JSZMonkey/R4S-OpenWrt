@@ -145,9 +145,9 @@ svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-control-weburl pa
 
 #Argon 主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
-pushd package/new/luci-theme-argon
-git checkout 3b15d06
-popd
+#pushd package/new/luci-theme-argon
+#git checkout 3b15d06
+#popd
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
 
 # MAC 地址与 IP 绑定
