@@ -62,7 +62,9 @@ wget -qO - https://github.com/QiuSimons/packages/commit/7ffbfbe.patch | patch -p
 popd
 
 # OPENSSL
-wget -qO - https://github.com/mj22226/openwrt/commit/5e10633.patch | patch -p1
+wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/11895.patch
+wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/14578.patch
+wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/16575.patch
 
 # Fullcone-NAT 部分
 
@@ -109,6 +111,7 @@ svn co https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packag
 #更换 Node 版本
 rm -rf ./feeds/packages/lang/node
 svn co https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
+sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
 rm -rf ./feeds/packages/lang/node-arduino-firmata
 svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
 rm -rf ./feeds/packages/lang/node-cylon
@@ -250,6 +253,7 @@ svn co https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-cor
 svn co https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
 svn co https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
 svn co https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
+sed -i '/Build\/Compile/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $$(PKG_BUILD_DIR)/$(component)' feeds/packages/net/shadowsocks-rust/Makefile
 ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
 svn co https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
 ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
@@ -271,6 +275,7 @@ sed -i '/Clang.CN.CIDR/a\o:value("https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute
 popd
 # 订阅转换
 svn co https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
+sed -i '\/bin\/subconverter/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/subconverter' feeds/packages/net/subconverter/Makefile
 ln -sf ../../../feeds/packages/net/subconverter ./package/feeds/packages/subconverter
 svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
 ln -sf ../../../feeds/packages/libs/jpcre2 ./package/feeds/packages/jpcre2
