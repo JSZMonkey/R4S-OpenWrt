@@ -141,4 +141,4 @@ jobs:
         replacesArtifacts: true
         token: ${{ secrets.workflow_token }}
         artifacts: ./artifact/*.zip
-        
+

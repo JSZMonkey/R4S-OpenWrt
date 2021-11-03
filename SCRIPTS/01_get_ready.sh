@@ -25,4 +25,5 @@ cp -rf ./openwrt_release/target/linux/* ./openwrt/target/linux/
 #git clone -b main --depth 1 https://github.com/Lienol/openwrt-packages packages-lienol
 #git clone -b main --depth 1 https://github.com/Lienol/openwrt-luci luci-lienol
 #git clone -b linksys-ea6350v3-mastertrack --depth 1 https://github.com/NoTengoBattery/openwrt NoTengoBattery
+
 exit 0

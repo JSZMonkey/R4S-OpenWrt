@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-#使用特定的优化
+# 使用特定的优化
 sed -i 's,-mcpu=generic,-mcpu=cortex-a72.cortex-a53+crypto,g' include/target.mk
 cp -f ../PATCH/mbedtls/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch ./package/libs/mbedtls/patches/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch
 sed -i 's,kmod-r8169,kmod-r8168,g' target/linux/rockchip/image/armv8.mk
@@ -22,7 +22,7 @@ CONFIG_KSM=y
 CONFIG_UKSM=y
 ' >>./target/linux/rockchip/armv8/config-5.4
 
-#IRQ 调优
+# IRQ 调优
 sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
 sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
 
@@ -32,11 +32,9 @@ wget https://downloads.openwrt.org/releases/${latest_version}/targets/rockchip/a
 zgrep -m 1 "Depends: kernel (=.*)$" Packages.gz | sed -e 's/.*-\(.*\))/\1/' >.vermagic
 sed -i -e 's/^\(.\).*vermagic$/\1cp $(TOPDIR)\/.vermagic $(LINUX_DIR)\/.vermagic/' include/kernel-defaults.mk
 
-#更改默认IP地址
-#sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generate
-
-#预配置一些插件
+# 预配置一些插件
 cp -rf ../PATCH/files ./files
+
 chmod -R 755 ./
 find ./ -name *.orig | xargs rm -f
 find ./ -name *.rej | xargs rm -f
