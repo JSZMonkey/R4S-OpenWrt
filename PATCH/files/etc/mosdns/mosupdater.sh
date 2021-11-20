@@ -7,7 +7,7 @@ wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.da
 find /tmp/mosdns/* -size -20k -exec rm {} \;
 syncconfig=$(uci -q get mosdns.mosdns.syncconfig)
 if [ $syncconfig -eq 1 ]; then
-wget https://cdn.jsdelivr.net/gh/JSZMonkey/openwrt-mos@master/luci-app-mosdns/root/etc/mosdns/config.yaml -nv -O /tmp/mosdns/config.yaml
+wget https://cdn.jsdelivr.net/gh/JSZMonkey/OpenWrt-Add@master/config.yaml -nv -O /tmp/mosdns/config.yaml
 find /tmp/mosdns/* -size -2k -exec rm {} \;
 fi
 chmod -R  755  /tmp/mosdns
