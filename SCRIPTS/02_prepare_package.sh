@@ -262,7 +262,6 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dns2socks package
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/lean/redsocks2
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package/lean/ipt2socks
 svn co https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
-svn co https://github.com/fw876/helloworld/trunk/trojan package/lean/trojan
 svn co https://github.com/fw876/helloworld/trunk/simple-obfs package/lean/simple-obfs
 svn co https://github.com/fw876/helloworld/trunk/tcping package/lean/tcping
 svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
