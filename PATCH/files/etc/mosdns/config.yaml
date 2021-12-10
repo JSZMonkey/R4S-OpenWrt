@@ -56,7 +56,7 @@ plugin:
     type:                  fast_forward
     args:
       upstream:
-        - addr:            119.29.29.29
+        - addr:            114.114.114.114
         - addr:            101.226.4.6
 
   - tag:                   forward_remote
