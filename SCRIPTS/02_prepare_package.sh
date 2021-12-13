@@ -219,6 +219,10 @@ pushd package/new/OpenAppFilter
 wget -qO - https://github.com/QiuSimons/OpenAppFilter-destan19/commit/9088cc2.patch | patch -p1
 wget https://destan19.github.io/assets/oaf/open_feature/feature-06-18.cfg -O ./open-app-filter/files/feature.cfg
 popd
+
+# OLED 驱动程序
+git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git package/new/luci-app-oled
+
 # Docker 容器（会导致 OpenWrt 出现 UDP 转发问题，慎用）
 sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 sed -i '/sysctl.d/d' feeds/packages/utils/dockerd/Makefile
