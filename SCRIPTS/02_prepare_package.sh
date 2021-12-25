@@ -154,7 +154,7 @@ patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
 
 # R8152驱动
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
-sed -i 's,kmod-usb-net-rtl8152,usb-net-rtl8152-vendor,g' target/linux/rockchip/image/armv8.mk
+sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockchip/image/armv8.mk
 
 # UPX
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
