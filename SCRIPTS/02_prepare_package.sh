@@ -89,7 +89,7 @@ wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/16
 
 #Patch Kernel 以解决 fullcone 冲突
 pushd target/linux/generic/hack-5.4
-wget https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/target/linux/generic/hack-5.4/952-net-conntrack-events-support-multiple-registrant.patch
+wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.4/952-net-conntrack-events-support-multiple-registrant.patch
 popd
 
 #Patch FireWall 以增添 fullcone 功能 
@@ -100,7 +100,10 @@ wget -qO- https://github.com/msylgj/R2S-R4S-OpenWrt/raw/21.02/PATCHES/001-fix-fi
 patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
 
 #FullCone 相关组件
-svn co https://github.com/Lienol/openwrt/trunk/package/network/fullconenat package/network/fullconenat
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/openwrt-fullconenat package/lean/openwrt-fullconenat
+pushd package/lean/openwrt-fullconenat
+patch -p2 <../../../../PATCH/firewall/fullcone6.patch
+popd
 
 ## 获取额外的 Packages
 # 更换为 ImmortalWrt Uboot 以及 Target
