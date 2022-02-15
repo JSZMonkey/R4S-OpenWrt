@@ -278,7 +278,7 @@ svn co https://github.com/xiaorouji/openwrt-passwall/trunk/pdnsd-alt package/lea
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/microsocks package/lean/microsocks
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/dns2socks package/lean/dns2socks
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/redsocks2 package/lean/redsocks2
+svn co https://github.com/coolsnowwolf/packages/trunk/net/redsocks2 package/lean/redsocks2
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/ipt2socks package/lean/ipt2socks
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan package/lean/trojan
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/lean/tcping
