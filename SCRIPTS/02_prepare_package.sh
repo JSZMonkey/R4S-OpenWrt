@@ -150,7 +150,8 @@ svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bin
 rm -rf ./feeds/packages/lang/node-yarn
 svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/packages/lang/node-yarn
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
-
+svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings-cpp feeds/packages/lang/node-serialport-bindings-cpp
+ln -sf ../../../feeds/packages/lang/node-serialport-bindings-cpp ./package/feeds/packages/node-serialport-bindings-cpp
 #R8168驱动
 git clone -b master --depth 1 https://github.com/BROBIRD/openwrt-r8168.git package/new/r8168
 patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
@@ -262,9 +263,9 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper packa
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent package/lean/luci-app-qbittorrent
 svn co https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static package/lean/qBittorrent-static
 svn co https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent package/lean/qBittorrent
-svn co https://github.com/coolsnowwolf/packages/trunk/net/rblibtorrent package/lean/rblibtorrent
-svn co https://github.com/coolsnowwolf/packages/trunk/net/qtbase package/lean/qtbase
-svn co https://github.com/coolsnowwolf/packages/trunk/net/qttools package/lean/qttools
+svn co https://github.com/coolsnowwolf/packages/trunk/libs/qtbase package/lean/qtbase
+svn co https://github.com/coolsnowwolf/packages/trunk/libs/qttools package/lean/qttools
+svn co https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent package/lean/rblibtorrent
 
 #清理内存
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ramfree package/lean/luci-app-ramfree
@@ -342,7 +343,7 @@ svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vlmcsd p
 svn co https://github.com/coolsnowwolf/packages/trunk/net/vlmcsd package/lean/vlmcsd
 
 #网络唤醒
-svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
+svn co https://github.com/zxlhhyccc/bf-package-master/trunk/zxlhhyccc/luci-app-services-wolplus package/new/luci-app-services-wolplus
 
 # 网易云音乐解锁
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
