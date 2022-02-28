@@ -321,7 +321,7 @@ popd
 
 # v2raya
 git clone --depth 1 https://github.com/zxlhhyccc/luci-app-v2raya.git package/new/luci-app-v2raya
-svn co https://github.com/v2rayA/v2raya-openwrt/trunk/v2raya package/new/v2raya
+svn co https://github.com/fw876/helloworld/trunk/v2raya package/new/v2raya
 
 # 订阅转换
 svn co https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
