@@ -75,7 +75,7 @@ wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/afed16a.pa
 
 # Haproxy
 rm -rf ./feeds/packages/net/haproxy
-svn co https://github.com/openwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
+svn export https://github.com/openwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
 pushd feeds/packages
 wget -qO - https://github.com/QiuSimons/packages/commit/7ffbfbe.patch | patch -p1
 popd
@@ -100,7 +100,7 @@ wget -qO- https://github.com/msylgj/R2S-R4S-OpenWrt/raw/21.02/PATCHES/001-fix-fi
 patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
 
 #FullCone 相关组件
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/openwrt-fullconenat package/lean/openwrt-fullconenat
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/openwrt-fullconenat package/lean/openwrt-fullconenat
 pushd package/lean/openwrt-fullconenat
 patch -p2 <../../../../PATCH/firewall/fullcone6.patch
 popd
@@ -108,10 +108,10 @@ popd
 ## 获取额外的 Packages
 # 更换为 ImmortalWrt Uboot 以及 Target
 rm -rf ./target/linux/rockchip
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/target/linux/rockchip target/linux/rockchip
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/target/linux/rockchip target/linux/rockchip
 rm -rf ./package/boot/uboot-rockchip
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/uboot-rockchip package/boot/uboot-rockchip
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/uboot-rockchip package/boot/uboot-rockchip
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/kernel/linux/modules/video.mk
 # R4S超频到 2.2/1.8 GHz
@@ -126,50 +126,50 @@ sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-efi.c
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-iso.cfg
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-pc.cfg
 #AutoCore
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autocore package/lean/autocore
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autocore package/lean/autocore
 rm -rf ./feeds/packages/utils/coremark
-svn co https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
+svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/packages/utils/coremark
 # DPDK
-svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/dpdk package/new/dpdk
+svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/dpdk package/new/dpdk
 #更换 Node 版本
 rm -rf ./feeds/packages/lang/node
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
 sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
 rm -rf ./feeds/packages/lang/node-arduino-firmata
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
 rm -rf ./feeds/packages/lang/node-cylon
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-cylon feeds/packages/lang/node-cylon
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-cylon feeds/packages/lang/node-cylon
 rm -rf ./feeds/packages/lang/node-hid
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-hid feeds/packages/lang/node-hid
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-hid feeds/packages/lang/node-hid
 rm -rf ./feeds/packages/lang/node-homebridge
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-homebridge feeds/packages/lang/node-homebridge
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-homebridge feeds/packages/lang/node-homebridge
 rm -rf ./feeds/packages/lang/node-serialport
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport feeds/packages/lang/node-serialport
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport feeds/packages/lang/node-serialport
 rm -rf ./feeds/packages/lang/node-serialport-bindings
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings feeds/packages/lang/node-serialport-bindings
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings feeds/packages/lang/node-serialport-bindings
 rm -rf ./feeds/packages/lang/node-yarn
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/packages/lang/node-yarn
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-yarn feeds/packages/lang/node-yarn
 ln -sf ../../../feeds/packages/lang/node-yarn ./package/feeds/packages/node-yarn
-svn co https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings-cpp feeds/packages/lang/node-serialport-bindings-cpp
+svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-serialport-bindings-cpp feeds/packages/lang/node-serialport-bindings-cpp
 ln -sf ../../../feeds/packages/lang/node-serialport-bindings-cpp ./package/feeds/packages/node-serialport-bindings-cpp
 #R8168驱动
 git clone -b master --depth 1 https://github.com/BROBIRD/openwrt-r8168.git package/new/r8168
 patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
 
 # R8152驱动
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
 sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockchip/image/armv8.mk
 
 # UPX
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/upx tools/upx
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tools/ucl
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/tools/upx tools/upx
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tools/ucl
 
 # LuCI应用，主题和依赖们
 # 访问控制
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-accesscontrol package/lean/luci-app-accesscontrol
-svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-accesscontrol package/lean/luci-app-accesscontrol
+svn export https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
 
 #Argon 主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
@@ -179,45 +179,45 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-the
 git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
 
 # MAC 地址与 IP 绑定
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-arpbind feeds/luci/applications/luci-app-arpbind
+svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-arpbind feeds/luci/applications/luci-app-arpbind
 ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/luci-app-arpbind
 
 # EQOS限速
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
+svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
 
 # 流量监视
 git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
 git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 
 #定时重启
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
 
 # Boost 通用即插即用
-svn co https://github.com/QiuSimons/slim-wrt/branches/dev-21.02/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
+svn export https://github.com/QiuSimons/slim-wrt/branches/dev-21.02/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
 sed -i 's,curl -s https://api.ipify.org,curl -k -s -4 ipv4.ipw.cn/api/ip/myip,g' package/new/luci-app-boostupnp/root/usr/sbin/boostupnp.sh
 rm -rf ./feeds/packages/net/miniupnpd
-svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
+svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 
 # socat
-svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-socat package/new/luci-app-socat
+svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-socat package/new/luci-app-socat
 
 #CPU 控制相关
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq feeds/luci/applications/luci-app-cpufreq
+svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq feeds/luci/applications/luci-app-cpufreq
 ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/luci-app-cpufreq
 sed -i 's,1608,1800,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
 sed -i 's,2016,2208,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
 sed -i 's,1512,1608,g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/cpufreq
-svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-cpulimit package/lean/luci-app-cpulimit
-svn co https://github.com/immortalwrt/packages/trunk/utils/cpulimit feeds/packages/utils/cpulimit
+svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-cpulimit package/lean/luci-app-cpulimit
+svn export https://github.com/immortalwrt/packages/trunk/utils/cpulimit feeds/packages/utils/cpulimit
 ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 
 # Mosdns
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/new/v2ray-geodata
+svn export https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
+svn export https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
+svn export https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/new/v2ray-geodata
 
 # Aliyun动态DNS
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
+svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
 mv ./feeds/luci/applications/luci-app-aliddns/po/zh_cn ./feeds/luci/applications/luci-app-aliddns/po/zh_Hans
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 
@@ -233,9 +233,9 @@ git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git packa
 
 # Docker 容器（会导致 OpenWrt 出现 UDP 转发问题，慎用）
 rm -rf ./feeds/luci/applications/luci-app-dockerman
-svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
+svn export https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
 rm -rf ./feeds/luci/collections/luci-lib-docker
-svn co https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker feeds/luci/collections/luci-lib-docker
+svn export https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker feeds/luci/collections/luci-lib-docker
 #sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 sed -i '/sysctl.d/d' feeds/packages/utils/dockerd/Makefile
 
@@ -249,56 +249,56 @@ wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/Parted.Mak
 git clone --depth 1 https://github.com/kiddin9/luci-app-dnsfilter.git package/new/luci-app-dnsfilter
 
 # Dnsproxy
-svn co https://github.com/immortalwrt/packages/trunk/net/dnsproxy feeds/packages/net/dnsproxy
+svn export https://github.com/immortalwrt/packages/trunk/net/dnsproxy feeds/packages/net/dnsproxy
 ln -sf ../../../feeds/packages/net/dnsproxy ./package/feeds/packages/dnsproxy
 sed -i '/CURDIR/d' feeds/packages/net/dnsproxy/Makefile
-svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-dnsproxy package/new/luci-app-dnsproxy
+svn export https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-dnsproxy package/new/luci-app-dnsproxy
 
 #IPSec
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
 
 #IPv6 兼容助手
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
 
 # qBittorrent 下载
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent package/lean/luci-app-qbittorrent
-svn co https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static package/lean/qBittorrent-static
-svn co https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent package/lean/qBittorrent
-svn co https://github.com/coolsnowwolf/packages/trunk/libs/qtbase package/lean/qtbase
-svn co https://github.com/coolsnowwolf/packages/trunk/libs/qttools package/lean/qttools
-svn co https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent package/lean/rblibtorrent
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent package/lean/luci-app-qbittorrent
+svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static package/lean/qBittorrent-static
+svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent package/lean/qBittorrent
+svn export https://github.com/coolsnowwolf/packages/trunk/libs/qtbase package/lean/qtbase
+svn export https://github.com/coolsnowwolf/packages/trunk/libs/qttools package/lean/qttools
+svn export https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent package/lean/rblibtorrent
 
 #清理内存
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ramfree package/lean/luci-app-ramfree
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ramfree package/lean/luci-app-ramfree
 
 # ShadowsocksR Plus+ 依赖
 rm -rf ./feeds/packages/net/kcptun
 rm -rf ./feeds/packages/net/shadowsocks-libev
 rm -rf ./feeds/packages/net/xray-core
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/pdnsd-alt package/lean/pdnsd
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/microsocks package/lean/microsocks
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/dns2socks package/lean/dns2socks
-svn co https://github.com/coolsnowwolf/packages/trunk/net/redsocks2 package/lean/redsocks2
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/ipt2socks package/lean/ipt2socks
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan package/lean/trojan
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/lean/tcping
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-go package/lean/trojan-go
-svn co https://github.com/fw876/helloworld/trunk/simple-obfs package/lean/simple-obfs
-svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
-svn co https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
-svn co https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-core
-svn co https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
-svn co https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
-#svn co https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/pdnsd-alt package/lean/pdnsd
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/microsocks package/lean/microsocks
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/dns2socks package/lean/dns2socks
+svn export https://github.com/coolsnowwolf/packages/trunk/net/redsocks2 package/lean/redsocks2
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/ipt2socks package/lean/ipt2socks
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/trojan package/lean/trojan
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/lean/tcping
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-go package/lean/trojan-go
+svn export https://github.com/fw876/helloworld/trunk/simple-obfs package/lean/simple-obfs
+svn export https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
+svn export https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
+svn export https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-core
+svn export https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
+svn export https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
+#svn export https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
 sed -i '/Build\/Compile/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $$(PKG_BUILD_DIR)/$(component)' feeds/packages/net/shadowsocks-rust/Makefile
 ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
-svn co https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
+svn export https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
 ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
 # ShadowsocksR Plus+
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
+svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
 #wget -qO - https://github.com/fw876/helloworld/pull/656.patch | patch -p1
@@ -322,39 +322,39 @@ popd
 
 # v2raya
 git clone --depth 1 https://github.com/zxlhhyccc/luci-app-v2raya.git package/new/luci-app-v2raya
-svn co https://github.com/openwrt/packages/trunk/net/v2raya feeds/packages/net/v2raya
+svn export https://github.com/openwrt/packages/trunk/net/v2raya feeds/packages/net/v2raya
 ln -sf ../../../feeds/packages/net/v2raya ./package/feeds/packages/v2raya
 
 # 订阅转换
-svn co https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
+svn export https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
 sed -i '\/bin\/subconverter/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/subconverter' feeds/packages/net/subconverter/Makefile
 ln -sf ../../../feeds/packages/net/subconverter ./package/feeds/packages/subconverter
-svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
+svn export https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
 ln -sf ../../../feeds/packages/libs/jpcre2 ./package/feeds/packages/jpcre2
-svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson feeds/packages/libs/rapidjson
+svn export https://github.com/immortalwrt/packages/trunk/libs/rapidjson feeds/packages/libs/rapidjson
 ln -sf ../../../feeds/packages/libs/rapidjson ./package/feeds/packages/rapidjson
-svn co https://github.com/immortalwrt/packages/trunk/libs/libcron feeds/packages/libs/libcron
+svn export https://github.com/immortalwrt/packages/trunk/libs/libcron feeds/packages/libs/libcron
 ln -sf ../../../feeds/packages/libs/libcron ./package/feeds/packages/libcron
-svn co https://github.com/immortalwrt/packages/trunk/libs/quickjspp feeds/packages/libs/quickjspp
+svn export https://github.com/immortalwrt/packages/trunk/libs/quickjspp feeds/packages/libs/quickjspp
 ln -sf ../../../feeds/packages/libs/quickjspp ./package/feeds/packages/quickjspp
-svn co https://github.com/immortalwrt/packages/trunk/libs/toml11 feeds/packages/libs/toml11
+svn export https://github.com/immortalwrt/packages/trunk/libs/toml11 feeds/packages/libs/toml11
 ln -sf ../../../feeds/packages/libs/toml11 ./package/feeds/packages/toml11
 
 #Vlmcsd 激活助手
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vlmcsd package/lean/luci-app-vlmcsd
-svn co https://github.com/coolsnowwolf/packages/trunk/net/vlmcsd package/lean/vlmcsd
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vlmcsd package/lean/luci-app-vlmcsd
+svn export https://github.com/coolsnowwolf/packages/trunk/net/vlmcsd package/lean/vlmcsd
 
 #网络唤醒
-svn co https://github.com/zxlhhyccc/bf-package-master/trunk/zxlhhyccc/luci-app-services-wolplus package/new/luci-app-services-wolplus
+svn export https://github.com/zxlhhyccc/bf-package-master/trunk/zxlhhyccc/luci-app-services-wolplus package/new/luci-app-services-wolplus
 
 # 网易云音乐解锁
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
 
 # USB 打印机
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-usb-printer package/lean/luci-app-usb-printer
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-usb-printer package/lean/luci-app-usb-printer
 
 # 翻译及部分功能优化
-svn co https://github.com/JSZMonkey/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
+svn export https://github.com/JSZMonkey/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
 
 ##最后的收尾工作
 #sed -i 's/services/network/g' feeds/luci/applications/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
@@ -377,12 +377,12 @@ rm -rf .config
 # Patch LuCI 以增添 Shortcut-FE 开关
 #patch -p1 < ../PATCH/firewall/luci-app-firewall_add_sfe_switch.patch
 # Shortcut-FE 相关组件
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/lean/shortcut-fe
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/fast-classifier package/lean/fast-classifier
+#svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/lean/shortcut-fe
+#svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/fast-classifier package/lean/fast-classifier
 #wget -P package/base-files/files/etc/init.d/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/shortcut-fe
 
 # 回滚通用即插即用
 #rm -rf ./feeds/packages/net/miniupnpd
-#svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
+#svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 
 #exit 0
