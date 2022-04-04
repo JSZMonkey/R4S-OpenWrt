@@ -170,6 +170,11 @@ svn export https://github.com/immortalwrt/immortalwrt/branches/master/tools/upx 
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tools/ucl
 
 # LuCI应用，主题和依赖们
+
+# 更换 golang 版本
+rm -rf ./feeds/packages/lang/golang
+svn export https://github.com/openwrt/packages/trunk/lang/golang feeds/packages/lang/golang
+
 # 访问控制
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-accesscontrol package/lean/luci-app-accesscontrol
 svn export https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-control-weburl package/new/luci-app-control-weburl
