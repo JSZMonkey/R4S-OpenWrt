@@ -127,7 +127,7 @@ sed -i 's,rootwait,rootwait mitigations=off,g' target/linux/rockchip/image/nanop
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-efi.cfg
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-iso.cfg
 sed -i 's,noinitrd,noinitrd mitigations=off,g' target/linux/x86/image/grub-pc.cfg
-#AutoCore
+# AutoCore
 svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-21.02/package/emortal/autocore package/lean/autocore
 sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package/lean/autocore/files/generic/luci-mod-status-autocore.json
 rm -rf ./feeds/packages/utils/coremark
@@ -166,8 +166,8 @@ sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockc
 # UPX
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
-svn export https://github.com/immortalwrt/immortalwrt/branches/master/tools/upx tools/upx
-svn export https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tools/ucl
+svn export https://github.com/coolsnowwolf/openwrt/branches/lede-17.01/tools/ucl tools/ucl
+svn export https://github.com/coolsnowwolf/openwrt/branches/lede-17.01/tools/upx tools/upx
 
 # LuCI应用，主题和依赖们
 
@@ -262,8 +262,8 @@ ln -sf ../../../feeds/packages/net/dnsproxy ./package/feeds/packages/dnsproxy
 sed -i '/CURDIR/d' feeds/packages/net/dnsproxy/Makefile
 svn export https://github.com/JSZMonkey/OpenWrt-Add/trunk/luci-app-dnsproxy package/new/luci-app-dnsproxy
 
-#IPSec
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
+# IPSec
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ipsec-server package/lean/luci-app-ipsec-server
 
 #IPv6 兼容助手
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
