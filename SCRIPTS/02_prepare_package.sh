@@ -361,7 +361,10 @@ svn export https://github.com/coolsnowwolf/packages/trunk/net/vlmcsd package/lea
 svn export https://github.com/zxlhhyccc/bf-package-master/trunk/zxlhhyccc/luci-app-services-wolplus package/new/luci-app-services-wolplus
 
 # 网易云音乐解锁
-git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
+git clone --depth 1 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
+
+# ucode
+svn export https://github.com/openwrt/openwrt/trunk/package/utils/ucode package/utils/ucode
 
 # USB 打印机
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-usb-printer package/lean/luci-app-usb-printer
