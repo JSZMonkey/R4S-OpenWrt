@@ -310,8 +310,8 @@ svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/l
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
 #wget -qO - https://github.com/fw876/helloworld/pull/656.patch | patch -p1
-wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/5bbf6e7.patch | patch -p1
-wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/323fbf0.patch | patch -p1
+wget -qO - https://github.com/fw876/helloworld/commit/5bbf6e7.patch | patch -p1
+wget -qO - https://github.com/fw876/helloworld/commit/ea3b4bd.patch | patch -p1
 popd
 pushd package/lean/luci-app-ssr-plus
 sed -i 's,default n,default y,g' Makefile
