@@ -100,6 +100,7 @@ jobs:
       run: |
         df -h
         cd openwrt
+        echo | make kernel_oldconfig -j$(($(nproc) + 1)) 
         make -j$(($(nproc) + 1)) || make -j$(($(nproc) + 1)) V=s
         echo $?
     - name: If Error
@@ -133,13 +134,14 @@ jobs:
 
     - name: Create release
       id: create_release
-      uses: ncipollo/release-action@v1.8.0
+      uses: ncipollo/release-action@main
       with:
         name: OpenWRT-${{ env.latest_release }}
         allowUpdates: true
+        prerelease: true
         tag: ${{ env.latest_release }}
         commit: master
         replacesArtifacts: true
         token: ${{ secrets.workflow_token }}
         artifacts: ./artifact/*.zip
-
+        
