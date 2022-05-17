@@ -353,14 +353,14 @@ svn export https://github.com/zxlhhyccc/bf-package-master/trunk/zxlhhyccc/luci-a
 git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
 git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 # 翻译及部分功能优化
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
+svn export https://github.com/JSZMonkey/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
 #sed -i 's,iptables-mod-fullconenat,iptables-nft +kmod-nft-fullcone,g' package/lean/lean-translate/Makefile
 
 ### 最后的收尾工作 ###
 # Lets Fuck
 mkdir package/base-files/files/usr/bin
-wget -P package/base-files/files/usr/bin/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/fuck
-#wget -P package/base-files/files/usr/bin/ https://github.com/QiuSimons/OpenWrt-Add/raw/master/ss2v2ray
+wget -P package/base-files/files/usr/bin/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/fuck
+#wget -P package/base-files/files/usr/bin/ https://github.com/JSZMonkey/OpenWrt-Add/raw/master/ss2v2ray
 # 最大连接数
 sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 # 生成默认配置及缓存
