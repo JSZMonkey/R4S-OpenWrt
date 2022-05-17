@@ -20,6 +20,12 @@ wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/d
 sed -i '/unshift/d' scripts/download.pl
 sed -i '/mirror02/d' scripts/download.pl
 echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysctl-nf-conntrack.conf
+# IPSET & Firewall
+rm -rf ./package/network/utils/ipset
+svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/utils/ipset package/network/utils/ipset
+rm -rf ./package/network/config/firewall
+svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/config/firewall package/network/config/firewall
+wget -qO - https://github.com/openwrt/openwrt/commit/a94e954.patch | patch -p1
 
 ### 必要的 Patches ###
 # offload bug fix
@@ -95,7 +101,7 @@ mkdir package/network/utils/nftables/patches
 wget -P package/network/utils/nftables/patches/ https://github.com/wongsyrone/lede-1/raw/master/package/network/utils/nftables/patches/999-01-nftables-add-fullcone-expression-support.patch
 # FW3
 mkdir package/network/config/firewall/patches
-wget -P package/network/config/firewall/patches/ https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/fullconenat.patch
+wget -P package/network/config/firewall/patches/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/network/config/firewall/patches/fullconenat.patch
 wget -qO- https://github.com/msylgj/R2S-R4S-OpenWrt/raw/master/PATCHES/001-fix-firewall3-flock.patch | patch -p1
 # Patch LuCI 以增添 FullCone 开关
 patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
@@ -175,9 +181,6 @@ sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
 svn export https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
 svn export https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
-# IPSET
-rm -rf ./package/network/utils/ipset
-svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/utils/ipset package/network/utils/ipset
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # 更换 golang 版本
