@@ -175,6 +175,9 @@ sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
 svn export https://github.com/coolsnowwolf/lede/trunk/tools/ucl tools/ucl
 svn export https://github.com/coolsnowwolf/lede/trunk/tools/upx tools/upx
+# IPSET
+rm -rf ./package/network/utils/ipset
+svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/utils/ipset package/network/utils/ipset
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # 更换 golang 版本
@@ -293,7 +296,7 @@ ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
 svn export https://github.com/1715173329/helloworld/branches/v2v5/luci-app-ssr-plus package/lean/luci-app-ssr-plus
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
-wget -qO - https://github.com/fw876/helloworld/commit/2875c57.patch | patch -p1
+#wget -qO - https://github.com/fw876/helloworld/commit/2875c57.patch | patch -p1
 wget -qO - https://github.com/fw876/helloworld/commit/5bbf6e7.patch | patch -p1
 popd
 pushd package/lean/luci-app-ssr-plus
