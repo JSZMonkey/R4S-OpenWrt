@@ -5,6 +5,7 @@ clear
 # 使用 O3 级别的优化
 sed -i 's/Os/O3 -ffast-math -ftree-vectorize -Wl,--gc-sections/g' include/target.mk
 wget -qO - https://github.com/openwrt/openwrt/commit/8249a8c.patch | patch -p1
+wget -qO - https://github.com/openwrt/openwrt/commit/66fa343.patch | patch -p1
 # 更新 Feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -24,9 +25,9 @@ echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysc
 # IPSET & Firewall
 rm -rf ./package/network/utils/ipset
 svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/utils/ipset package/network/utils/ipset
-rm -rf ./package/network/config/firewall
-svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/config/firewall package/network/config/firewall
-wget -qO - https://github.com/openwrt/openwrt/commit/a94e954.patch | patch -p1
+#rm -rf ./package/network/config/firewall
+#svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/config/firewall package/network/config/firewall
+#wget -qO - https://github.com/openwrt/openwrt/commit/a94e954.patch | patch -p1
 
 ### 必要的 Patches ###
 # offload bug fix
@@ -71,13 +72,11 @@ echo '
 CONFIG_LRNG=y
 CONFIG_LRNG_JENT=y
 ' >>./target/linux/generic/config-5.10
-# Grub 2
-wget -qO - https://github.com/openwrt/openwrt/commit/31f1033.patch | patch -p1
 # Haproxy
 rm -rf ./feeds/packages/net/haproxy
 svn export https://github.com/openwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
 pushd feeds/packages
-wget -qO - https://github.com/QiuSimons/packages/commit/7ffbfbe.patch | patch -p1
+wget -qO - https://github.com/openwrt/packages/commit/a09cbcd.patch | patch -p1
 popd
 # OPENSSL
 wget -P package/libs/openssl/patches/ https://github.com/openssl/openssl/pull/11895.patch
@@ -297,7 +296,7 @@ ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/sha
 svn export https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
 ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
 # ShadowsocksR Plus+
-svn export https://github.com/1715173329/helloworld/branches/v2v5/luci-app-ssr-plus package/lean/luci-app-ssr-plus
+svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
 rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
 pushd package/lean
 #wget -qO - https://github.com/fw876/helloworld/commit/2875c57.patch | patch -p1
