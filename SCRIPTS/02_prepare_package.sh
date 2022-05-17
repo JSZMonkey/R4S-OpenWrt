@@ -4,6 +4,7 @@ clear
 ### 基础部分 ###
 # 使用 O3 级别的优化
 sed -i 's/Os/O3 -ffast-math -ftree-vectorize -Wl,--gc-sections/g' include/target.mk
+wget -qO - https://github.com/openwrt/openwrt/commit/8249a8c.patch | patch -p1
 # 更新 Feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
