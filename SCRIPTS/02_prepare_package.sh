@@ -210,6 +210,12 @@ svn export https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/applicat
 #svn export https://github.com/msylgj/packages/branches/miniupnpd-nftables/net/miniupnpd feeds/packages/net/miniupnpd
 #svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 
+# aliddns
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
+
+# EQOS限速
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
+
 # CPU 控制相关
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq feeds/luci/applications/luci-app-cpufreq
 ln -sf ../../../feeds/luci/applications/luci-app-cpufreq ./package/feeds/luci/luci-app-cpufreq
