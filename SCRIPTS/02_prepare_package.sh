@@ -23,8 +23,8 @@ sed -i '/unshift/d' scripts/download.pl
 sed -i '/mirror02/d' scripts/download.pl
 echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysctl-nf-conntrack.conf
 # IPSET & Firewall
-rm -rf ./package/network/utils/ipset
-svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/utils/ipset package/network/utils/ipset
+#rm -rf ./package/network/utils/ipset
+#svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/utils/ipset package/network/utils/ipset
 #rm -rf ./package/network/config/firewall
 #svn export https://github.com/openwrt/openwrt/branches/openwrt-21.02/package/network/config/firewall package/network/config/firewall
 #wget -qO - https://github.com/openwrt/openwrt/commit/a94e954.patch | patch -p1
@@ -152,7 +152,7 @@ svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/pa
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
-sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
+#sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
 rm -rf ./feeds/packages/lang/node-arduino-firmata
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
 rm -rf ./feeds/packages/lang/node-cylon
@@ -297,8 +297,6 @@ svn export https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray
 svn export https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
 svn export https://github.com/fw876/helloworld/trunk/xray-plugin package/lean/xray-plugin
 svn export https://github.com/xiaorouji/openwrt-passwall/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
-#svn export https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
-sed -i '/Build\/Compile/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $$(PKG_BUILD_DIR)/$(component)' feeds/packages/net/shadowsocks-rust/Makefile
 ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
 svn export https://github.com/immortalwrt/packages/trunk/net/kcptun feeds/packages/net/kcptun
 ln -sf ../../../feeds/packages/net/kcptun ./package/feeds/packages/kcptun
@@ -311,18 +309,6 @@ pushd package/lean
 wget -qO - https://github.com/fw876/helloworld/commit/5bbf6e7.patch | patch -p1
 popd
 pushd package/lean/luci-app-ssr-plus
-sed -i '/Trojan:/d' Makefile
-sed -i 's,default n,default y,g' Makefile
-sed -i '/trojan-plus/d' Makefile
-sed -i '/v2ray-core/d' Makefile
-sed -i '/v2ray-plugin/d' Makefile
-sed -i '/xray-plugin/d' Makefile
-sed -i '/shadowsocks-libev-ss-redir/d' Makefile
-sed -i '/shadowsocks-libev-ss-server/d' Makefile
-sed -i '/shadowsocks-libev-ss-local/d' Makefile
-sed -i '/result.encrypt_method/a\result.fast_open = "1"' root/usr/share/shadowsocksr/subscribe.lua
-sed -i 's,ispip.clang.cn/all_cn,gh.404delivr.workers.dev/https://github.com/QiuSimons/Chnroute/raw/master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
-sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2ray-rules-dat/release/gfw.txt,' root/etc/init.d/shadowsocksr
 sed -i '/Clang.CN.CIDR/a\o:value("https://gh.404delivr.workers.dev/https://github.com/QiuSimons/Chnroute/raw/master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
 popd
 # v2raya
@@ -337,7 +323,6 @@ svn export https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/
 #wget https://github.com/immortalwrt/packages/raw/b7b4499/net/subconverter/Makefile -O feeds/packages/net/subconverter/Makefile
 #mkdir -p ./feeds/packages/net/subconverter/patches
 #wget https://github.com/immortalwrt/packages/raw/b7b4499/net/subconverter/patches/100-stdcxxfs.patch -O feeds/packages/net/subconverter/patches/100-stdcxxfs.patch
-sed -i '\/bin\/subconverter/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/subconverter' feeds/packages/net/subconverter/Makefile
 ln -sf ../../../feeds/packages/net/subconverter ./package/feeds/packages/subconverter
 svn export https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
 ln -sf ../../../feeds/packages/libs/jpcre2 ./package/feeds/packages/jpcre2
