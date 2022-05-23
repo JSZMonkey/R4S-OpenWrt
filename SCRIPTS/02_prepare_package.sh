@@ -113,6 +113,7 @@ wget -P target/linux/generic/ https://github.com/immortalwrt/immortalwrt/raw/mas
 echo '
 CONFIG_DEBUG_INFO_REDUCED=y
 ' >>./target/linux/generic/config-5.10
+
 # LRNG
 cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.10/
 echo '
