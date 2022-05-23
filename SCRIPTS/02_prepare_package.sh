@@ -37,6 +37,9 @@ cp -f ../PATCH/backport/290-remove-kconfig-CONFIG_I8K.patch ./target/linux/gener
 # ZSTD
 cp -rf ../PATCH/backport/ZSTD/* ./target/linux/generic/hack-5.10/
 
+# Futex
+cp -rf ../PATCH/futex/* ./target/linux/generic/hack-5.10/
+
 # Patch arm64 型号名称
 wget -P target/linux/generic/hack-5.10/ https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 
