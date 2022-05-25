@@ -30,6 +30,9 @@ echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysc
 
 ### 必要的 Patches ###
 
+# offload bug fix
+wget -qO - https://github.com/openwrt/openwrt/pull/4849.patch | patch -p1
+
 # introduce "le9" Linux kernel patches
 cp -f ../PATCH/backport/995-le9i.patch ./target/linux/generic/hack-5.10/995-le9i.patch
 cp -f ../PATCH/backport/290-remove-kconfig-CONFIG_I8K.patch ./target/linux/generic/hack-5.10/290-remove-kconfig-CONFIG_I8K.patch
@@ -68,8 +71,8 @@ wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5
 popd
 
 # Patch FireWall 以增添 FullCone 功能
-# FW4
 mkdir package/network/config/firewall4/patches
+wget 'https://git.openwrt.org/?p=project/firewall4.git;a=patch;h=38423fae' -O package/network/config/firewall4/patches/990-unconditionally-allow-ct-status-dnat.patch
 wget -P package/network/config/firewall4/patches/ https://github.com/wongsyrone/lede-1/raw/master/package/network/config/firewall4/patches/999-01-firewall4-add-fullcone-support.patch
 sed -i 's/-1,3 +1,5/-2,3 +2,5/g' package/network/config/firewall4/patches/999-01-firewall4-add-fullcone-support.patch
 mkdir package/libs/libnftnl/patches
@@ -108,18 +111,9 @@ svn export https://github.com/coolsnowwolf/lede/trunk/package/boot/uboot-rockchi
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/master/package/kernel/linux/modules/video.mk
-rm -rf ./target/linux/generic/config-5.10
-wget -P target/linux/generic/ https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/config-5.10
-echo '
-CONFIG_DEBUG_INFO_REDUCED=y
-' >>./target/linux/generic/config-5.10
 
 # LRNG
 cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.10/
-echo '
-CONFIG_LRNG=y
-CONFIG_LRNG_JENT=y
-' >>./target/linux/generic/config-5.10
 
 # ImmortalWrt Uboot TMP Fix
 wget -qO- https://github.com/coolsnowwolf/lede/commit/0104258.patch | patch -REtp1
@@ -141,6 +135,7 @@ svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/pa
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
+#sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
 rm -rf ./feeds/packages/lang/node-arduino-firmata
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
 rm -rf ./feeds/packages/lang/node-cylon
@@ -195,8 +190,10 @@ ln -sf ../../../feeds/luci/applications/luci-app-arpbind ./package/feeds/luci/lu
 # 定时重启
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
 
-# aliddns
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
+# Boost 通用即插即用
+svn export https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
+rm -rf ./feeds/packages/net/miniupnpd
+git clone -b main --depth 1 https://github.com/msylgj/miniupnpd.git feeds/packages/net/miniupnpd
 
 # EQOS限速
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
@@ -212,10 +209,6 @@ svn export https://github.com/immortalwrt/packages/trunk/utils/cpulimit feeds/pa
 ln -sf ../../../feeds/packages/utils/cpulimit ./package/feeds/packages/cpulimit
 
 # 动态DNS
-sed -i '/boot()/,+2d' feeds/packages/net/ddns-scripts/files/etc/init.d/ddns
-svn export https://github.com/linkease/istore-packages/trunk/ddns-scripts_dnspod package/lean/ddns-scripts_dnspod
-svn export https://github.com/linkease/istore-packages/trunk/ddns-scripts_aliyun package/lean/ddns-scripts_aliyun
-svn export https://github.com/QiuSimons/OpenWrt_luci-app/trunk/luci-app-tencentddns package/lean/luci-app-tencentddns
 svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 
@@ -339,6 +332,7 @@ git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.gi
 
 # 翻译及部分功能优化
 svn export https://github.com/JSZMonkey/OpenWrt-Add/trunk/addition-trans-zh package/lean/lean-translate
+sed -i 's,iptables-mod-fullconenat,iptables-nft +kmod-nft-fullcone,g' package/lean/lean-translate/Makefile
 
 ### 最后的收尾工作 ###
 
@@ -351,3 +345,46 @@ sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 
 # 生成默认配置及缓存
 rm -rf .config
+
+echo '
+CONFIG_RESERVE_ACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
+CONFIG_RESERVE_ACTIVEFILE_KBYTES=65536
+CONFIG_RESERVE_INACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
+CONFIG_RESERVE_INACTIVEFILE_KBYTES=65536
+CONFIG_LRNG=y
+# CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES is not set
+CONFIG_LRNG_IRQ=y
+CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED=y
+# CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED is not set
+CONFIG_LRNG_ENABLE_CONTINUOUS_COMPRESSION=y
+# CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION is not set
+# CONFIG_LRNG_COLLECTION_SIZE_32 is not set
+# CONFIG_LRNG_COLLECTION_SIZE_256 is not set
+# CONFIG_LRNG_COLLECTION_SIZE_512 is not set
+CONFIG_LRNG_COLLECTION_SIZE_1024=y
+# CONFIG_LRNG_COLLECTION_SIZE_2048 is not set
+# CONFIG_LRNG_COLLECTION_SIZE_4096 is not set
+# CONFIG_LRNG_COLLECTION_SIZE_8192 is not set
+CONFIG_LRNG_COLLECTION_SIZE=1024
+# CONFIG_LRNG_HEALTH_TESTS is not set
+CONFIG_LRNG_IRQ_ENTROPY_RATE=256
+# CONFIG_LRNG_JENT is not set
+CONFIG_LRNG_CPU=y
+CONFIG_LRNG_CPU_ENTROPY_RATE=8
+# CONFIG_LRNG_DRNG_SWITCH is not set
+# CONFIG_LRNG_TESTING_MENU is not set
+# CONFIG_LRNG_SELFTEST is not set
+# CONFIG_IR_SANYO_DECODER is not set
+# CONFIG_IR_SHARP_DECODER is not set
+# CONFIG_IR_MCE_KBD_DECODER is not set
+# CONFIG_IR_XMP_DECODER is not set
+# CONFIG_IR_IMON_DECODER is not set
+# CONFIG_IR_RCMM_DECODER is not set
+# CONFIG_IR_SPI is not set
+# CONFIG_IR_GPIO_TX is not set
+# CONFIG_IR_PWM_TX is not set
+# CONFIG_IR_SERIAL is not set
+# CONFIG_IR_SIR is not set
+# CONFIG_RC_XBOX_DVD is not set
+# CONFIG_IR_TOY is not set
+' >>./target/linux/generic/config-5.10
