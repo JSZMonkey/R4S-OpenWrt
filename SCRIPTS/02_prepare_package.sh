@@ -108,6 +108,12 @@ svn export https://github.com/coolsnowwolf/lede/trunk/package/boot/uboot-rockchi
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/master/package/kernel/linux/modules/video.mk
+sed -i '/GOV_ONDEMAND/d' target/linux/rockchip/armv8/config-5.10
+sed -i '/DEVFREQ_THERMAL/d' target/linux/rockchip/armv8/config-5.10
+echo '
+CONFIG_DEVFREQ_THERMAL=y
+CONFIG_CPU_FREQ_GOV_ONDEMAND=y
+' >>./target/linux/rockchip/armv8/config-5.10
 
 # LRNG
 cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.10/
