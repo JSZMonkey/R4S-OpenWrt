@@ -91,10 +91,7 @@ patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
 
 # FullCone PKG
 git clone --depth 1 https://github.com/fullcone-nat-nftables/nft-fullcone package/new/nft-fullcone
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/openwrt-fullconenat package/lean/openwrt-fullconenat
-pushd package/lean/openwrt-fullconenat
-patch -p2 <../../../../PATCH/firewall/fullcone6.patch
-popd
+svn export https://github.com/Lienol/openwrt/trunk/package/network/fullconenat package/lean/openwrt-fullconenat
 
 ### 获取额外的基础软件包 ###
 
@@ -135,7 +132,6 @@ svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/pa
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
-#sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
 rm -rf ./feeds/packages/lang/node-arduino-firmata
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
 rm -rf ./feeds/packages/lang/node-cylon
@@ -160,7 +156,6 @@ patch -p1 <../PATCH/r8168/r8168-fix_LAN_led-for_r4s-from_TL.patch
 
 # R8152驱动
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/r8152 package/new/r8152
-#sed -i 's,kmod-usb-net-rtl8152,kmod-usb-net-rtl8152-vendor,g' target/linux/rockchip/image/armv8.mk
 
 # UPX 可执行软件压缩
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
@@ -388,3 +383,17 @@ CONFIG_LRNG_CPU_ENTROPY_RATE=8
 # CONFIG_RC_XBOX_DVD is not set
 # CONFIG_IR_TOY is not set
 ' >>./target/linux/generic/config-5.10
+
+### Shortcut-FE 部分 ###
+
+# Patch Kernel 以支持 Shortcut-FE
+wget -P target/linux/generic/hack-5.10/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+
+# Patch LuCI 以增添 Shortcut-FE 开关
+patch -p1 < ../PATCH/firewall/luci-app-firewall_add_sfe_switch.patch
+
+# Shortcut-FE 相关组件
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/fast-classifier package/lean/fast-classifier
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/shortcut-fe package/lean/shortcut-fe
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/simulated-driver package/lean/simulated-driver
+
