@@ -71,6 +71,7 @@ wget https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5
 popd
 
 # Patch FireWall 以增添 FullCone 功能
+# FW4
 mkdir package/network/config/firewall4/patches
 wget 'https://git.openwrt.org/?p=project/firewall4.git;a=patch;h=38423fae' -O package/network/config/firewall4/patches/990-unconditionally-allow-ct-status-dnat.patch
 wget -P package/network/config/firewall4/patches/ https://github.com/wongsyrone/lede-1/raw/master/package/network/config/firewall4/patches/999-01-firewall4-add-fullcone-support.patch
@@ -195,6 +196,9 @@ svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-auto
 svn export https://github.com/QiuSimons/slim-wrt/branches/main/slimapps/application/luci-app-boostupnp package/new/luci-app-boostupnp
 rm -rf ./feeds/packages/net/miniupnpd
 git clone -b main --depth 1 https://github.com/msylgj/miniupnpd.git feeds/packages/net/miniupnpd
+pushd feeds/packages
+wget -qO - https://github.com/openwrt/packages/commit/785bbcb.patch | patch -p1
+popd
 
 # EQOS限速
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-eqos package/new/luci-app-eqos
