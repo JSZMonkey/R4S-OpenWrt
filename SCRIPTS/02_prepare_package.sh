@@ -30,9 +30,6 @@ echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysc
 
 ### 必要的 Patches ###
 
-# offload bug fix
-wget -qO - https://github.com/openwrt/openwrt/pull/4849.patch | patch -p1
-
 # introduce "le9" Linux kernel patches
 cp -f ../PATCH/backport/995-le9i.patch ./target/linux/generic/hack-5.10/995-le9i.patch
 cp -f ../PATCH/backport/290-remove-kconfig-CONFIG_I8K.patch ./target/linux/generic/hack-5.10/290-remove-kconfig-CONFIG_I8K.patch
@@ -139,6 +136,7 @@ svn export https://github.com/immortalwrt/packages/trunk/utils/coremark feeds/pa
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node feeds/packages/lang/node
+#sed -i '\/bin\/node/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(1)/usr/bin/node' feeds/packages/lang/node/Makefile
 rm -rf ./feeds/packages/lang/node-arduino-firmata
 svn export https://github.com/nxhack/openwrt-node-packages/trunk/node-arduino-firmata feeds/packages/lang/node-arduino-firmata
 rm -rf ./feeds/packages/lang/node-cylon
@@ -226,6 +224,7 @@ wget -qO- https://github.com/openwrt/packages/commit/ed7396a.patch | patch -p1
 popd
 rm -rf ./feeds/luci/collections/luci-lib-docker
 svn export https://github.com/lisaac/luci-lib-docker/trunk/collections/luci-lib-docker feeds/luci/collections/luci-lib-docker
+#sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 sed -i '/sysctl.d/d' feeds/packages/utils/dockerd/Makefile
 sed -i 's,# CONFIG_BLK_CGROUP_IOCOST is not set,CONFIG_BLK_CGROUP_IOCOST=y,g' target/linux/generic/config-5.10
 
@@ -261,7 +260,7 @@ svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ramf
 
 # ShadowsocksR Plus+ 依赖
 rm -rf ./feeds/packages/net/shadowsocks-libev
-#svn export https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
+svn export https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
 svn export https://github.com/coolsnowwolf/packages/trunk/net/redsocks2 package/lean/redsocks2
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
 svn export https://github.com/fw876/helloworld/trunk/trojan package/lean/trojan
@@ -354,27 +353,27 @@ CONFIG_RESERVE_ACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_ACTIVEFILE_KBYTES=65536
 CONFIG_RESERVE_INACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_INACTIVEFILE_KBYTES=65536
+CONFIG_RANDOM_DEFAULT_IMPL=y
 CONFIG_LRNG=y
-# CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES is not set
-CONFIG_LRNG_IRQ=y
-CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED=y
-# CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED is not set
-CONFIG_LRNG_ENABLE_CONTINUOUS_COMPRESSION=y
-# CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION is not set
-# CONFIG_LRNG_COLLECTION_SIZE_32 is not set
-# CONFIG_LRNG_COLLECTION_SIZE_256 is not set
-# CONFIG_LRNG_COLLECTION_SIZE_512 is not set
-CONFIG_LRNG_COLLECTION_SIZE_1024=y
-# CONFIG_LRNG_COLLECTION_SIZE_2048 is not set
-# CONFIG_LRNG_COLLECTION_SIZE_4096 is not set
-# CONFIG_LRNG_COLLECTION_SIZE_8192 is not set
-CONFIG_LRNG_COLLECTION_SIZE=1024
-# CONFIG_LRNG_HEALTH_TESTS is not set
-CONFIG_LRNG_IRQ_ENTROPY_RATE=256
+CONFIG_LRNG_SHA256=y
+# CONFIG_LRNG_KCAPI_IF is not set
+# CONFIG_LRNG_HWRAND_IF is not set
+# CONFIG_LRNG_DEV_IF is not set
+# CONFIG_LRNG_RUNTIME_ES_CONFIG is not set
+CONFIG_LRNG_RCT_CUTOFF=31
+CONFIG_LRNG_APT_CUTOFF=325
 # CONFIG_LRNG_JENT is not set
 CONFIG_LRNG_CPU=y
+CONFIG_LRNG_CPU_FULL_ENT_MULTIPLIER=1
 CONFIG_LRNG_CPU_ENTROPY_RATE=8
-# CONFIG_LRNG_DRNG_SWITCH is not set
+# CONFIG_LRNG_SCHED is not set
+# CONFIG_LRNG_KERNEL_RNG is not set
+CONFIG_LRNG_DRNG_CHACHA20=y
+# CONFIG_LRNG_SWITCH_HASH is not set
+# CONFIG_LRNG_SWITCH_DRNG is not set
+CONFIG_LRNG_DFLT_DRNG_CHACHA20=y
+# CONFIG_LRNG_DFLT_DRNG_DRBG is not set
+# CONFIG_LRNG_DFLT_DRNG_KCAPI is not set
 # CONFIG_LRNG_TESTING_MENU is not set
 # CONFIG_LRNG_SELFTEST is not set
 # CONFIG_IR_SANYO_DECODER is not set
