@@ -48,6 +48,14 @@ cp -rf ../PATCH/BBRv2/kernel/* ./target/linux/generic/hack-5.10/
 cp -rf ../PATCH/BBRv2/openwrt/package ./
 wget -qO - https://github.com/openwrt/openwrt/commit/7db9763.patch | patch -p1
 
+# SSL
+rm -rf ./package/libs/mbedtls
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/libs/mbedtls package/libs/mbedtls
+rm -rf ./package/libs/openssl
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/libs/openssl package/libs/openssl
+wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/openssl-engine.mk
+
+
 # Haproxy
 rm -rf ./feeds/packages/net/haproxy
 svn export https://github.com/openwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
@@ -272,6 +280,9 @@ svn export https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/nai
 svn export https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
 svn export https://github.com/fw876/helloworld/trunk/hysteria package/lean/hysteria
 svn export https://github.com/fw876/helloworld/trunk/sagernet-core package/lean/sagernet-core
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/microsocks package/lean/microsocks
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/dns2socks package/lean/dns2socks
+svn export https://github.com/xiaorouji/openwrt-passwall/trunk/ipt2socks package/lean/ipt2socks
 rm -rf ./feeds/packages/net/xray-core
 svn export https://github.com/fw876/helloworld/trunk/xray-core package/lean/xray-core
 svn export https://github.com/fw876/helloworld/trunk/v2ray-plugin package/lean/v2ray-plugin
