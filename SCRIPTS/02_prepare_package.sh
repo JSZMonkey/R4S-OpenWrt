@@ -78,9 +78,9 @@ popd
 # Patch FireWall 以增添 FullCone 功能
 
 # FW4
-mkdir package/network/config/firewall4/patches
+rm -rf ./package/network/config/firewall4
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/network/config/firewall4 package/network/config/firewall4
 wget 'https://git.openwrt.org/?p=project/firewall4.git;a=patch;h=38423fae' -O package/network/config/firewall4/patches/990-unconditionally-allow-ct-status-dnat.patch
-wget -P package/network/config/firewall4/patches/ https://raw.githubusercontent.com/immortalwrt/immortalwrt/ce3b9cc/package/network/config/firewall4/patches/001-firewall4-add-support-for-fullcone-nat.patch
 rm -rf ./package/libs/libnftnl
 svn export https://github.com/wongsyrone/lede-1/trunk/package/libs/libnftnl package/libs/libnftnl
 rm -rf ./package/network/utils/nftables
