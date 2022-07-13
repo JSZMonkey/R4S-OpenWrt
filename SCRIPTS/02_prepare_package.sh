@@ -108,22 +108,15 @@ wget -P target/linux/rockchip/ https://github.com/openwrt/openwrt/raw/openwrt-22
 rm -rf ./target/linux/rockchip/patches-5.10/002-net-usb-r8152-add-LED-configuration-from-OF.patch
 rm -rf ./target/linux/rockchip/patches-5.10/003-dt-bindings-net-add-RTL8152-binding-documentation.patch
 rm -rf ./package/boot/uboot-rockchip
-svn export https://github.com/coolsnowwolf/lede/trunk/package/boot/uboot-rockchip package/boot/uboot-rockchip
+svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rockchip-vendor package/boot/arm-trusted-firmware-rockchip-vendor
 rm -rf ./package/kernel/linux/modules/video.mk
 wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/master/package/kernel/linux/modules/video.mk
-sed -i '/GOV_ONDEMAND/d' target/linux/rockchip/armv8/config-5.10
-sed -i '/DEVFREQ_THERMAL/d' target/linux/rockchip/armv8/config-5.10
-echo '
-CONFIG_DEVFREQ_THERMAL=y
-CONFIG_CPU_FREQ_GOV_ONDEMAND=y
-' >>./target/linux/rockchip/armv8/config-5.10
 
 # LRNG
 cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.10/
 
-# ImmortalWrt Uboot TMP Fix
-wget -qO- https://github.com/coolsnowwolf/lede/commit/0104258.patch | patch -REtp1
+
 
 # Disable Mitigations
 sed -i 's,rootwait,rootwait mitigations=off,g' target/linux/rockchip/image/mmc.bootscript
