@@ -55,6 +55,9 @@ rm -rf ./package/libs/openssl
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/libs/openssl package/libs/openssl
 wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/openssl-engine.mk
 
+# wolfssl
+rm -rf ./package/libs/wolfssl
+svn export https://github.com/coolsnowwolf/lede/trunk/package/libs/wolfssl package/libs/wolfssl
 
 # Haproxy
 rm -rf ./feeds/packages/net/haproxy
@@ -409,7 +412,8 @@ wget -P target/linux/generic/hack-5.10/ https://github.com/coolsnowwolf/lede/raw
 patch -p1 < ../PATCH/firewall/luci-app-firewall_add_sfe_switch.patch
 
 # Shortcut-FE 相关组件
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/fast-classifier package/lean/fast-classifier
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/shortcut-fe package/lean/shortcut-fe
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/simulated-driver package/lean/simulated-driver
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/fast-classifier package/lean/shortcut-fe/fast-classifier
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/shortcut-fe package/lean/shortcut-fe/shortcut-fe
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/simulated-driver package/lean/shortcut-fe/simulated-driver
+wget -qO - https://github.com/coolsnowwolf/lede/commit/e517080.patch | patch -p1
 #exit 0
