@@ -83,6 +83,7 @@ popd
 # FW4
 rm -rf ./package/network/config/firewall4
 svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/network/config/firewall4 package/network/config/firewall4
+cp -f ../PATCH/firewall/990-unconditionally-allow-ct-status-dnat.patch ./package/network/config/firewall4/patches/990-unconditionally-allow-ct-status-dnat.patch
 rm -rf ./package/libs/libnftnl
 svn export https://github.com/wongsyrone/lede-1/trunk/package/libs/libnftnl package/libs/libnftnl
 rm -rf ./package/network/utils/nftables
@@ -119,8 +120,6 @@ wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt
 
 # LRNG
 cp -rf ../PATCH/LRNG/* ./target/linux/generic/hack-5.10/
-
-
 
 # Disable Mitigations
 sed -i 's,rootwait,rootwait mitigations=off,g' target/linux/rockchip/image/mmc.bootscript
