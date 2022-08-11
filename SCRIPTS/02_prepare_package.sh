@@ -106,7 +106,7 @@ svn export https://github.com/Lienol/openwrt/trunk/package/network/fullconenat p
 # 更换为 ImmortalWrt Uboot 以及 Target
 rm -rf ./target/linux/rockchip
 svn export https://github.com/coolsnowwolf/lede/trunk/target/linux/rockchip target/linux/rockchip
-wget -qO - https://github.com/immortalwrt/immortalwrt/commit/af93561.patch | patch -p1
+wget -qO - https://github.com/coolsnowwolf/lede/commit/879d190.patch | patch -p1
 rm -rf ./target/linux/rockchip/Makefile
 wget -P target/linux/rockchip/ https://github.com/openwrt/openwrt/raw/openwrt-22.03/target/linux/rockchip/Makefile
 rm -rf ./target/linux/rockchip/patches-5.10/002-net-usb-r8152-add-LED-configuration-from-OF.patch
