@@ -96,7 +96,7 @@ svn export https://github.com/wongsyrone/lede-1/trunk/package/network/utils/nfta
 # FW3
 mkdir package/network/config/firewall/patches
 wget -P package/network/config/firewall/patches/ https://github.com/immortalwrt/immortalwrt/raw/openwrt-21.02/package/network/config/firewall/patches/100-fullconenat.patch
-#wget -qO- https://github.com/msylgj/R2S-R4S-OpenWrt/raw/master/PATCHES/001-fix-firewall3-flock.patch | patch -p1
+wget -qO- https://github.com/msylgj/R2S-R4S-OpenWrt/raw/master/PATCHES/001-fix-firewall3-flock.patch | patch -p1
 
 # Patch LuCI 以增添 FullCone 开关
 patch -p1 <../PATCH/firewall/luci-app-firewall_add_fullcone.patch
