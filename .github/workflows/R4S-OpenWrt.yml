@@ -122,7 +122,7 @@ jobs:
       with:
         name: OpenWRT-${{ env.latest_release }}
         allowUpdates: true
-        prerelease: true
+        prerelease: false
         tag: ${{ env.latest_release }}
         commit: master
         replacesArtifacts: true
