@@ -437,6 +437,7 @@ svn export https://github.com/openwrt/packages/trunk/net/v2raya feeds/packages/n
 ln -sf ../../../feeds/packages/net/v2raya ./package/feeds/packages/v2raya
 # socat
 svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-socat package/new/luci-app-socat
+sed -i '/socat.config/d' feeds/packages/net/socat/Makefile
 # 订阅转换
 svn export https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
 #wget https://github.com/immortalwrt/packages/raw/b7b4499/net/subconverter/Makefile -O feeds/packages/net/subconverter/Makefile
@@ -518,7 +519,6 @@ CONFIG_RESERVE_ACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_ACTIVEFILE_KBYTES=65536
 CONFIG_RESERVE_INACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_INACTIVEFILE_KBYTES=65536
-
 CONFIG_RANDOM_DEFAULT_IMPL=y
 CONFIG_LRNG=y
 CONFIG_LRNG_SHA256=y
@@ -542,7 +542,6 @@ CONFIG_LRNG_DFLT_DRNG_CHACHA20=y
 # CONFIG_LRNG_DFLT_DRNG_KCAPI is not set
 # CONFIG_LRNG_TESTING_MENU is not set
 # CONFIG_LRNG_SELFTEST is not set
-
 # CONFIG_IR_SANYO_DECODER is not set
 # CONFIG_IR_SHARP_DECODER is not set
 # CONFIG_IR_MCE_KBD_DECODER is not set
@@ -556,14 +555,11 @@ CONFIG_LRNG_DFLT_DRNG_CHACHA20=y
 # CONFIG_IR_SIR is not set
 # CONFIG_RC_XBOX_DVD is not set
 # CONFIG_IR_TOY is not set
-
 CONFIG_NFSD=y
-
 ' >>./target/linux/generic/config-5.10
 ### Shortcut-FE 部分 ###
 # Patch Kernel 以支持 Shortcut-FE
-#wget -P target/linux/generic/hack-5.10/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
-wget -P target/linux/generic/hack-5.10/ https://github.com/coolsnowwolf/lede/raw/2b04e06/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+wget -P target/linux/generic/hack-5.10/ https://github.com/coolsnowwolf/lede/raw/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 # Patch LuCI 以增添 Shortcut-FE 开关
 patch -p1 < ../PATCH/firewall/luci-app-firewall_add_sfe_switch.patch
 # Shortcut-FE 相关组件
