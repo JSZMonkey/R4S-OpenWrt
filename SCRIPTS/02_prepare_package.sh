@@ -115,6 +115,7 @@ rm -rf ./target/linux/rockchip/Makefile
 wget -P target/linux/rockchip/ https://github.com/openwrt/openwrt/raw/openwrt-22.03/target/linux/rockchip/Makefile
 rm -rf ./target/linux/rockchip/patches-5.10/002-net-usb-r8152-add-LED-configuration-from-OF.patch
 rm -rf ./target/linux/rockchip/patches-5.10/003-dt-bindings-net-add-RTL8152-binding-documentation.patch
+cp -rf ../PATCH/rockchip-5.10/* ./target/linux/rockchip/patches-5.10/
 
 mkdir -p target/linux/rockchip/files-5.10
 cp -rf ../PATCH/files-5.10 ./target/linux/rockchip/
@@ -519,6 +520,7 @@ CONFIG_RESERVE_ACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_ACTIVEFILE_KBYTES=65536
 CONFIG_RESERVE_INACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_INACTIVEFILE_KBYTES=65536
+
 CONFIG_RANDOM_DEFAULT_IMPL=y
 CONFIG_LRNG=y
 CONFIG_LRNG_SHA256=y
@@ -542,6 +544,7 @@ CONFIG_LRNG_DFLT_DRNG_CHACHA20=y
 # CONFIG_LRNG_DFLT_DRNG_KCAPI is not set
 # CONFIG_LRNG_TESTING_MENU is not set
 # CONFIG_LRNG_SELFTEST is not set
+
 # CONFIG_IR_SANYO_DECODER is not set
 # CONFIG_IR_SHARP_DECODER is not set
 # CONFIG_IR_MCE_KBD_DECODER is not set
@@ -555,7 +558,9 @@ CONFIG_LRNG_DFLT_DRNG_CHACHA20=y
 # CONFIG_IR_SIR is not set
 # CONFIG_RC_XBOX_DVD is not set
 # CONFIG_IR_TOY is not set
+
 CONFIG_NFSD=y
+
 ' >>./target/linux/generic/config-5.10
 ### Shortcut-FE 部分 ###
 # Patch Kernel 以支持 Shortcut-FE
