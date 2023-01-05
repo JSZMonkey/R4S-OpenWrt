@@ -6,7 +6,7 @@ on:
   #  - cron: 0 19 * * *
   watch:
     types: started
-  
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -36,11 +36,6 @@ jobs:
         sudo -E apt-get -qq clean
         sudo -E git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
         df -h
-    - name: Clone Source Code
-      run: |
-        df -h
-        git clone -b 22.03 --depth 1 https://github.com/QiuSimons/YAOF.git diyfile
-        cp -r diyfile/* /home/runner/work/R4S-OpenWrt/R4S-OpenWrt
     - name: Prepare Mixedwrt
       run: |
         sudo chown -R runner:runner /home/runner/work/R4S-OpenWrt
@@ -65,7 +60,7 @@ jobs:
     - name: Make Config
       run: |
         cd openwrt
-        cp -rf ../diy/R4S/config.seed .config
+        cp -rf ../SEED/R4S/config.seed .config
         #echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config
         make defconfig
     - name: Get Architecture
