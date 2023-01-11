@@ -249,6 +249,10 @@ wget -qO- https://github.com/openwrt/packages/commit/d811cb4.patch | patch -p1
 wget -qO- https://github.com/openwrt/packages/commit/9a2da85.patch | patch -p1
 wget -qO- https://github.com/openwrt/packages/commit/71dc090.patch | patch -p1
 popd
+wget -P feeds/packages/net/miniupnpd/patches/ https://github.com/ptpt52/openwrt-packages/raw/master/net/miniupnpd/patches/201-change-default-chain-rule-to-accept.patch
+wget -P feeds/packages/net/miniupnpd/patches/ https://github.com/ptpt52/openwrt-packages/raw/master/net/miniupnpd/patches/500-0004-miniupnpd-format-xml-to-make-some-app-happy.patch
+wget -P feeds/packages/net/miniupnpd/patches/ https://github.com/ptpt52/openwrt-packages/raw/master/net/miniupnpd/patches/500-0005-miniupnpd-stun-ignore-external-port-changed.patch
+wget -P feeds/packages/net/miniupnpd/patches/ https://github.com/ptpt52/openwrt-packages/raw/master/net/miniupnpd/patches/500-0006-miniupnpd-fix-stun-POSTROUTING-filter-for-openwrt.patch
 #sed -i '/firewall4.include/d' feeds/packages/net/miniupnpd/Makefile
 rm -rf ./feeds/luci/applications/luci-app-upnp
 #git clone -b main --depth 1 https://github.com/msylgj/luci-app-upnp feeds/luci/applications/luci-app-upnp
@@ -535,7 +539,6 @@ CONFIG_RESERVE_ACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_ACTIVEFILE_KBYTES=65536
 CONFIG_RESERVE_INACTIVEFILE_TO_PREVENT_DISK_THRASHING=y
 CONFIG_RESERVE_INACTIVEFILE_KBYTES=65536
-
 CONFIG_RANDOM_DEFAULT_IMPL=y
 CONFIG_LRNG=y
 CONFIG_LRNG_SHA256=y
@@ -559,7 +562,6 @@ CONFIG_LRNG_DFLT_DRNG_CHACHA20=y
 # CONFIG_LRNG_DFLT_DRNG_KCAPI is not set
 # CONFIG_LRNG_TESTING_MENU is not set
 # CONFIG_LRNG_SELFTEST is not set
-
 # CONFIG_IR_SANYO_DECODER is not set
 # CONFIG_IR_SHARP_DECODER is not set
 # CONFIG_IR_MCE_KBD_DECODER is not set
@@ -573,9 +575,7 @@ CONFIG_LRNG_DFLT_DRNG_CHACHA20=y
 # CONFIG_IR_SIR is not set
 # CONFIG_RC_XBOX_DVD is not set
 # CONFIG_IR_TOY is not set
-
 CONFIG_NFSD=y
-
 ' >>./target/linux/generic/config-5.10
 ### Shortcut-FE 部分 ###
 # Patch Kernel 以支持 Shortcut-FE
@@ -587,7 +587,6 @@ svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/f
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/shortcut-fe package/lean/shortcut-fe/shortcut-fe
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe/simulated-driver package/lean/shortcut-fe/simulated-driver
 wget -qO - https://github.com/coolsnowwolf/lede/commit/e517080.patch | patch -p1
-
 # Add luci-app-eqos
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-eqos package/new/luci-app-eqos
 #exit 0
