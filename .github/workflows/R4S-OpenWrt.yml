@@ -60,6 +60,10 @@ jobs:
         /bin/bash 07_fw3.sh
         #echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config
         make defconfig
+    - name: Add ACL
+      run: |
+        cd openwrt
+        /bin/bash 05_create_acl_for_luci.sh -a
     - name: Get Architecture
       working-directory: ${{ github.workspace }}/openwrt
       run: |
