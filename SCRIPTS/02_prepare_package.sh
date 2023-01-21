@@ -330,9 +330,15 @@ git clone --depth 1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk package
 #ln -sf ../../../feeds/packages/net/mosdns ./package/feeds/packages/mosdns
 #sed -i '/config.yaml/d' feeds/packages/net/mosdns/Makefile
 #sed -i '/mosdns-init-openwrt/d' feeds/packages/net/mosdns/Makefile
-svn export https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
-svn export https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
-svn export https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/new/v2ray-geodata
+#svn export https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
+#svn export https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
+#svn export https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/new/v2ray-geodata
+
+
+
+git clone https://github.com/sbwml/luci-app-mosdns package/new/luci-app-mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/new/v2ray-geodata
+
 # 流量监管
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-netdata package/lean/luci-app-netdata
 # 上网 APP 过滤
