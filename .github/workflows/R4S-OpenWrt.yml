@@ -36,6 +36,11 @@ jobs:
         sudo -E apt-get -qq clean
         sudo -E git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
         df -h
+    - name: Clone Source Code
+      run: |
+        df -h
+        git clone -b 22.03 --depth 1 https://github.com/QiuSimons/YAOF.git diyfile
+        cp -r diyfile/* /home/runner/work/R4S-OpenWrt/R4S-OpenWrt
     - name: Prepare Mixedwrt
       run: |
         sudo chown -R runner:runner /home/runner/work/R4S-OpenWrt
@@ -47,6 +52,7 @@ jobs:
         cd openwrt
         cp -r ../SCRIPTS/. ./
         /bin/bash 02_prepare_package.sh
+        /bin/bash 02_diy.sh
         /bin/bash 02_target_only.sh
         /bin/bash 04_remove_upx.sh
     - name: Convert Translation
@@ -56,7 +62,8 @@ jobs:
     - name: Make Config
       run: |
         cd openwrt
-        cp -rf ../SEED/R4S/config.seed .config
+        cp -rf ../diy/R4S/config.seed .config
+        #cp -rf ../SEED/R4S/config.seed .config
         /bin/bash 07_fw3.sh
         #echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config
         make defconfig
