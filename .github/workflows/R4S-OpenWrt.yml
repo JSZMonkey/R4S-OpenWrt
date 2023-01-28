@@ -51,6 +51,7 @@ jobs:
       run: |
         cd openwrt
         cp -r ../SCRIPTS/. ./
+        cp -r ../diy/02_diy.sh ./
         /bin/bash 02_prepare_package.sh
         /bin/bash 02_diy.sh
         /bin/bash 02_target_only.sh
