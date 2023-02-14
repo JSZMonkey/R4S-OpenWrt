@@ -1,0 +1,247 @@
+<?php
+header("Content-Type: text/html; charset=utf-8");
+date_default_timezone_set("Asia/Shanghai"); //时区
+
+require_once('page.class.php');
+
+$showrow = 5;
+$curpage = empty($_GET['page']) ? 1 : $_GET['page'];
+$url = "?page={page}";
+$dsn = 'mysql:host=xxx.xxx.80.xxx;dbname=admin';
+$pdo = new PDO($dsn, 'root', 'root');
+$pdo->query('set names utf8');
+$sql = "SELECT * from operator_list where 1=1";
+
+$res_gg = $pdo->query("SELECT count(*) as ctn from operator_list where 1=1;");
+$result = $res_gg->fetch();
+
+$total = $result["ctn"];
+
+if (!empty($_GET['page']) && $total != 0 && $curpage > ceil($total / $showrow)) {
+    $curpage = ceil($total_rows / $showrow);
+}
+$sql .= " LIMIT " . ($curpage - 1) * $showrow . ",$showrow;";
+
+$res_zz = $pdo->query($sql);
+$result = $res_zz->fetchAll();
+
+//print_r(json_encode($result));die;
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta name="keywords" content="入库"/>
+    <meta name="description" content="入库"/>
+    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js?v=1"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+</head>
+<body>
+<div class="head">
+    <!--    <div class="head_inner clearfix">-->
+    <!--        <ul id="nav">-->
+    <!--            <li><a href="javascript;">商品列表</a></li>-->
+    <!--            <li><a href="javascript;">详情列表</a></li>-->
+    <!--        </ul>-->
+    <!--                <a class="logo" href="javascript">
+                        <img src="javascript;" alt="公司logo" /></a>  -->
+    <!--    </div>-->
+</div>
+<div class="container">
+    <div class="demo">
+        <h2 class="title">报表</h2>
+
+        <div class="showData">
+            <table width="100%" border="0" align="center" 
+            style="border:1px solid #ccc;" cellpadding="0" cellspacing="1">
+                <tr align="center">
+                    <td>ID</td>
+                    <td>商品编号</td>
+                    <td>订阅状态</td>
+                    <td>商品状态</td>
+                    <td>修改时间</td>
+                    <td>创建时间</td>
+                </tr>
+                <?php
+                if (!empty($result)) {
+                    foreach ($result as $k => $v) {
+                        ?>
+                        <tr align="center">
+                            <td><?php echo $v['id']; ?></td>
+                            <td><?php echo $v["customer_id"]; ?></td>
+                            <td><?php echo $v["name"]; ?></td>
+                            <td><?php echo $v["role_id"]; ?></td>
+                            <td><?php echo $v["status"]; ?></td>
+                            <td><?php echo $v["cdate"]; ?></td>
+                        </tr>
+                        <?php
+                    }
+                }
+                ?>
+            </table>
+        </div>
+        <div class="showPage">
+            <?php
+            if ($total > $showrow) {//总记录数大于每页显示数，显示分页
+                $page = new page($total, $showrow, $curpage, $url, 3);
+                echo $page->myde_write();
+            }
+            ?>
+        </div>
+    </div>
+</div>
+<div class="foot">
+    阿里巴巴：<a href="#" target="_blank">https://www.taobao.com</a>
+</div>
+</body>
+</html>  
+
+
+
+
+
+<?php
+
+/* * *********************************************
+ * @类名:   page
+ * @参数:   $myde_total - 总记录数
+ *          $myde_size - 一页显示的记录数
+ *          $myde_page - 当前页
+ *          $myde_url - 获取当前的url
+ * @功能:   分页实现
+ */
+
+class page {
+
+    private $myde_total;          //总记录数
+    private $myde_size;           //一页显示的记录数
+    private $myde_page;           //当前页
+    private $myde_page_count;     //总页数
+    private $myde_i;              //起头页数
+    private $myde_en;             //结尾页数
+    private $myde_url;            //获取当前的url
+    /*
+     * $show_pages
+     * 页面显示的格式，显示链接的页数为2*$show_pages+1。
+     * 如$show_pages=2那么页面上显示就是[首页] [上页] 1 2 3 4 5 [下页] [尾页]
+     */
+    private $show_pages;
+
+    public function __construct($myde_total = 1, $myde_size = 1, $myde_page = 1, $myde_url, $show_pages = 2) {
+        $this->myde_total = $this->numeric($myde_total);
+        $this->myde_size = $this->numeric($myde_size);
+        $this->myde_page = $this->numeric($myde_page);
+        $this->myde_page_count = ceil($this->myde_total / $this->myde_size);
+        $this->myde_url = $myde_url;
+        if ($this->myde_total < 0)
+            $this->myde_total = 0;
+        if ($this->myde_page < 1)
+            $this->myde_page = 1;
+        if ($this->myde_page_count < 1)
+            $this->myde_page_count = 1;
+        if ($this->myde_page > $this->myde_page_count)
+            $this->myde_page = $this->myde_page_count;
+        $this->limit = ($this->myde_page - 1) * $this->myde_size;
+        $this->myde_i = $this->myde_page - $show_pages;
+        $this->myde_en = $this->myde_page + $show_pages;
+        if ($this->myde_i < 1) {
+            $this->myde_en = $this->myde_en + (1 - $this->myde_i);
+            $this->myde_i = 1;
+        }
+        if ($this->myde_en > $this->myde_page_count) {
+            $this->myde_i = $this->myde_i - ($this->myde_en - $this->myde_page_count);
+            $this->myde_en = $this->myde_page_count;
+        }
+        if ($this->myde_i < 1)
+            $this->myde_i = 1;
+    }
+
+    //检测是否为数字
+    private function numeric($num) {
+        if (strlen($num)) {
+            if (!preg_match("/^[0-9]+$/", $num)) {
+                $num = 1;
+            } else {
+                $num = substr($num, 0, 11);
+            }
+        } else {
+            $num = 1;
+        }
+        return $num;
+    }
+
+    //地址替换
+    private function page_replace($page) {
+        return str_replace("{page}", $page, $this->myde_url);
+    }
+
+    //首页
+    private function myde_home() {
+        if ($this->myde_page != 1) {
+            return "<a href='" . $this->page_replace(1) . "' title='首页'>首页</a>";
+        } else {
+            return "<p>首页</p>";
+        }
+    }
+
+    //上一页
+    private function myde_prev() {
+        if ($this->myde_page != 1) {
+            return "<a href='" . $this->page_replace($this->myde_page - 1) . "' title='上一页'>上一页</a>";
+        } else {
+            return "<p>上一页</p>";
+        }
+    }
+
+    //下一页
+    private function myde_next() {
+        if ($this->myde_page != $this->myde_page_count) {
+            return "<a href='" . $this->page_replace($this->myde_page + 1) . "' title='下一页'>下一页</a>";
+        } else {
+            return"<p>下一页</p>";
+        }
+    }
+
+    //尾页
+    private function myde_last() {
+        if ($this->myde_page != $this->myde_page_count) {
+            return "<a href='" . $this->page_replace($this->myde_page_count) . "' title='尾页'>尾页</a>";
+        } else {
+            return "<p>尾页</p>";
+        }
+    }
+
+    //输出
+    public function myde_write($id = 'page') {
+        $str = "<div id=" . $id . ">";
+        $str.=$this->myde_home();
+        $str.=$this->myde_prev();
+        if ($this->myde_i > 1) {
+            $str.="<p class='pageEllipsis'>...</p>";
+        }
+        for ($i = $this->myde_i; $i <= $this->myde_en; $i++) {
+            if ($i == $this->myde_page) {
+                $str.="<a href='" . $this->page_replace($i) . "' title='第" . $i . "页' class='cur'>$i</a>";
+            } else {
+                $str.="<a href='" . $this->page_replace($i) . "' title='第" . $i . "页'>$i</a>";
+            }
+        }
+        if ($this->myde_en < $this->myde_page_count) {
+            $str.="<p class='pageEllipsis'>...</p>";
+        }
+        $str.=$this->myde_next();
+        $str.=$this->myde_last();
+        $str.="<p class='pageRemark'>共<b>" . $this->myde_page_count .
+                "</b>页<b>" . $this->myde_total . "</b>条数据</p>";
+        $str.="</div>";
+        return $str;
+    }
+
+}
+
+?>
+
