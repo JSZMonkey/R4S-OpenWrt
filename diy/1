@@ -1,0 +1,560 @@
+
+码龄5年
+关注
+很早以前写的了，现整理共享出来。：)
+
+相关代码在下面，先发下效果图：
+
+3622255553.jpg
+
+下拉列表分页PMA和NORMAL两种模式差别效果图：
+
+2335385776.jpg
+
+3066634966.jpg
+
+分页类Page.class.php/**
+
+* 本类主要用于实现简单分页
+
+* Page.class.php
+
+*/
+
+class Page
+
+{
+
+private $page_num; //每页显示的信息条数
+
+private $page_all_no; //信息的总条数
+
+private $page_len; //显示多少个页码
+
+private $page; //当前的页数
+
+private $page_max; //页数最大值
+
+private $page_no_array; //页数的数组
+
+public $start_num; //查询语句limit的起始值
+
+private $page_change; //在第几个页码开始 页码递增
+
+private $URL; //获取当前页面的URL
+
+public function __construct($page_all_no, $page_num=5, $page_len=5)
+
+{
+
+$this->page_all_no = intval($page_all_no);
+
+$this->page_num = intval($page_num);
+
+$this->page_len = intval($page_len);
+
+$this->URL = $_SERVER['REQUEST_URI'];
+
+$this->max_page(); //得到页数的最大值
+
+$this->page_no(); //得到当前页数
+
+$this->page_no_array(); //页数数组
+
+$this->start_num(); //得到sql语句中limit的起始值
+
+$this->change_page(); //得到递增开始的页码$this->page_change
+
+$this->getURL(); //得到当前的URL并处理返回
+
+}
+
+private function isArray($str,$str_self)
+
+{
+
+if(!is_array($str)) throw new Exception("$str_self must be an Array type");
+
+}
+
+private function page_no()
+
+{
+
+$this->page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+if(isset($_GET['page']) && $_GET['page'] < 1) $this->page = 1;
+
+if(isset($_GET['page']) && $_GET['page'] > $this->page_max) $this->page = $this->page_max;
+
+return $this->page;
+
+}
+
+private function max_page()
+
+{
+
+return $this->page_max = $this->page_all_no <= 0 ? 1 : ceil($this->page_all_no/$this->page_num);
+
+}
+
+private function change_page()
+
+{
+
+return $this->page_change = ceil($this->page_len / 2);
+
+}
+
+private function page_no_array()
+
+{
+
+return $this->page_no_array = range(1, $this->page_max);
+
+}
+
+private function start_num()
+
+{
+
+return $this->start_num = $this->page_num * ($this->page - 1);
+
+}
+
+private function getURL()
+
+{
+
+if(!empty($_SERVER['argc']) ? $_SERVER['argc'] == 0 : strpos($_SERVER['REQUEST_URI'], '?') === false)
+
+{
+
+$this->URL = $this->URL.'?';
+
+}else{
+
+$url_a = "/\?page=[0-9]{1,}/";
+
+$url_b = "/&page=[0-9]{1,}/";
+
+ereg("\?page=[0-9]{1,}", $this->URL) ? $this->URL = preg_replace($url_a, "?", $this->URL):
+
+ereg("&page=[0-9]{1,}", $this->URL) ? $this->URL = preg_replace($url_b, "&", $this->URL):$this->URL = $this->URL.'&';
+
+}
+
+return $this->URL;
+
+}
+
+private function header_info($total_data_modifier='总数：', $total_page_modifier=' 总页数：', $current_page_modifier=' 当前页：', $header_info_modifier='', $header_data_color = 'red'){
+
+if($this->page_max != 1 && $this->page_all_no != 0)
+
+{
+
+$header_info = $total_data_modifier.''.$this->page_all_no.'';
+
+$header_info .= $total_page_modifier.''.$this->page_max.'';
+
+$header_info .= $current_page_modifier.''.$this->page.'　'."\r\n";
+
+if(!empty($header_info_modifier)) $header_info = $header_info_modifier.$header_info;
+
+return $header_info;
+
+}else{
+
+return NULL;
+
+}
+
+}
+
+private function first($first_format = '第一页')
+
+{
+
+return $this->page == 1 ? $first_format."\r\n" : ''.$first_format.''."\r\n";
+
+}
+
+private function last($last_format = '上一页')
+
+{
+
+if($this->page == 1) return $last_format."\r\n";
+
+return $this->page-1 == 1 ? ''.$last_format.''."\r\n" : ''.$last_format.''."\r\n";
+
+}
+
+private function page_num_format($separator=' ', $left_modifier='[', $right_modifier=']', $both_sides=false, $current_page_color = 'red')
+
+{
+
+empty($separator) ? $separator = ' ' : $separator;
+
+$page_array = '';
+
+if($this->page_max <= $this->page_len)
+
+{
+
+for ($i=0; $i < $this->page_max; $i++)
+
+{
+
+if($this->page_no_array[$i] == $this->page)
+
+{
+
+$the[$i] = ''.$left_modifier.$this->page_no_array[$i].$right_modifier.''."\r\n";
+
+}else{
+
+if($i == 0)
+
+{
+
+$page_one = substr($this->URL,0,strlen($this->URL)-1);
+
+$the[$i] = ''.$left_modifier.$this->page_no_array[$i].$right_modifier.''."\r\n";
+
+}else{
+
+$the[$i] = ''.$left_modifier.$this->page_no_array[$i].$right_modifier.''."\r\n";
+
+}
+
+}
+
+$page_array .= $the[$i].$separator;
+
+}
+
+if($both_sides === false)
+
+{
+
+$page_array = substr($page_array,0,strrpos($page_array, $separator));
+
+}elseif ($both_sides === true){
+
+$page_array = $separator.$page_array;
+
+}else{
+
+throw new Exception('ERROR: $both_sides must be a boolean type.');
+
+}
+
+}else{
+
+if($this->page <= $this->page_change)
+
+{
+
+$i_start = 0;
+
+}else{
+
+$i_start = $this->page - $this->page_change;
+
+//如果最大的页码已显示,那么开始页就不会在递增
+
+if($i_start >= $this->page_max - $this->page_len){
+
+$i_start = $this->page_max - $this->page_len;
+
+}
+
+}
+
+$i_end = ($i_start+$this->page_len) - 1;
+
+for ($i = $i_start; $i <= $i_end; $i++)
+
+{
+
+if($this->page_no_array[$i] == $this->page)
+
+{
+
+$the[$i] = ''.$left_modifier.$this->page_no_array[$i].$right_modifier.''."\r\n";
+
+}else{
+
+if($i == 0)
+
+{
+
+$page_one = substr($this->URL,0,strlen($this->URL)-1);
+
+$the[$i] = ''.$left_modifier.$this->page_no_array[$i].$right_modifier.''."\r\n";
+
+}else{
+
+$the[$i] = ''.$left_modifier.$this->page_no_array[$i].$right_modifier.''."\r\n";
+
+}
+
+}
+
+$page_array .= $the[$i].$separator;
+
+}
+
+if($both_sides === false)
+
+{
+
+$page_array = substr($page_array,0,strrpos($page_array, $separator));
+
+}elseif ($both_sides === true){
+
+$page_array = $separator.$page_array;
+
+}else{
+
+throw new Exception('ERROR: $both_sides must be a boolean type.');
+
+}
+
+}
+
+return $page_array;
+
+}
+
+private function next($next_format = '下一页')
+
+{
+
+if($this->page >= $this->page_max) return $next_format."\r\n";
+
+return ''.$next_format.''."\r\n";
+
+}
+
+private function end($end_format = '最后一页')
+
+{
+
+return $this->page >= $this->page_max ? $end_format."\r\n" : ''.$end_format.''."\r\n";
+
+}
+
+public function select_page($target='self', $select_page_mode='PMA', $value_left_modifier='', $value_right_modifier='')
+
+{
+
+if($this->page_max != 1 && $this->page_all_no != 0)
+
+{
+
+if($select_page_mode === 'NORMAL')
+
+{
+
+$page_no_array = $this->page_no_array;
+
+}elseif($select_page_mode === 'PMA'){
+
+$page_no_array = $this->PMA_page_no_array();
+
+}else{
+
+throw new Exception('$select_page_mode is unknown mode');
+
+}
+
+$select_page = '';
+
+$select_page .= ''. "\n";
+
+foreach($page_no_array as $value)
+
+{
+
+if($value == 1)
+
+{
+
+$false_url = substr($this->URL,0,strlen($this->URL)-1);
+
+$select_page .= ''.$value_left_modifier.$value.$value_right_modifier.''. "\n";
+
+}else{
+
+if($value == $this->page){
+
+$select_page .= ''.$value_left_modifier.$value.$value_right_modifier.''. "\n";
+
+}else{
+
+$select_page .= ''.$value_left_modifier.$value.$value_right_modifier.''. "\n";
+
+}
+
+}
+
+}
+
+$select_page .= ''. "\n";
+
+return $select_page;
+
+}else{
+
+return NULL;
+
+}
+
+}
+
+private function PMA_page_no_array()
+
+{
+
+$showAll = 200;
+
+$sliceStart = 5;
+
+$sliceEnd = 5;
+
+$percent = 20;
+
+$range = 10;
+
+if ($this->page_max < $showAll){
+
+$this->PMA_page_no_array = range(1, $this->page_max);
+
+} else {
+
+$this->PMA_page_no_array = array();
+
+for ($i = 1; $i <= $sliceStart; $i++) {
+
+$this->PMA_page_no_array[] = $i;
+
+}
+
+for ($i = $this->page_max - $sliceEnd; $i <= $this->page_max; $i++) {
+
+$this->PMA_page_no_array[] = $i;
+
+}
+
+$i = $sliceStart;
+
+$x = $this->page_max - $sliceEnd;
+
+$met_boundary = false;
+
+while ($i <= $x) {
+
+if ($i >= ($this->page - $range) && $i <= ($this->page + $range)) {
+
+$i++;
+
+$met_boundary = true;
+
+} else {
+
+$i = $i + floor($this->page_max / $percent);
+
+if ($i > ($this->page - $range) && !$met_boundary) {
+
+$i = $this->page - $range;
+
+}
+
+}
+
+if ($i > 0 && $i <= $x) {
+
+$this->PMA_page_no_array[] = $i;
+
+}
+
+}
+
+sort($this->PMA_page_no_array);
+
+$this->PMA_page_no_array = array_unique($this->PMA_page_no_array);
+
+}
+
+return $this->PMA_page_no_array;
+
+}
+
+public function key_change_page(){
+
+echo '';
+
+}
+
+public function eshow()
+
+{
+
+return $this->last().$this->next();
+
+}
+
+public function showForHelp()
+
+{
+
+return $this->first('首页', '').$this->last('上一页', '').$this->page_num_format('', '', '', false, '#FF8500').$this->next('下一页', '').$this->end('尾页', '');
+
+}
+
+public function show()
+
+{
+
+return $this->header_info().$this->first('首页', '').$this->last('上一页', '').$this->page_num_format('', '', '', false, '#FF8500').$this->next('下一页', '').$this->end('尾页', '');
+
+}
+
+}
+
+使用方法：header('content-type:text/html;charset=utf-8');
+
+include('Page.class.php');
+
+$page_all_no = 12000; //数据的总条数
+
+$page_num = 25; //设置每页显示的条数
+
+$page_len = 7; //最多显示的页码数
+
+$page = new Page($page_all_no, $page_num, $page_len);
+
+$start_num = $page->start_num;
+
+$sql = "select * from table limit {$start_num}, {$page_num}";
+
+$page->key_change_page(); //方向键翻页
+
+var_dump($sql);
+
+//自带三种分页形式，可再按需要添加新方法，像下面那样调用
+
+echo '
+
+'.$page->select_page('self', 'NORMAL').''; //这里的第二个参数默认为PMA模式，两种模式差别在上面已给出
+
+echo '
+
+'.$page->eshow().'';
+
+echo '
+
+'.$page->show().'';
