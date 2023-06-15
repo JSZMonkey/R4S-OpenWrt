@@ -49,7 +49,7 @@ jobs:
     - name: Clone Source Code
       run: |
         df -h
-        git clone -b 22.03 --depth 1 https://github.com/QiuSimons/YAOF.git diyfile
+        git clone -b 22.05 --depth 1 https://github.com/QiuSimons/YAOF.git diyfile
         cp -r diyfile/* /home/runner/work/R4S-OpenWrt/R4S-OpenWrt
     - name: Prepare Mixedwrt
       run: |
