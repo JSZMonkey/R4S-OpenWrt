@@ -18,11 +18,11 @@ jobs:
         echo -e "Total CPU cores\t: $(nproc)"
         cat /proc/cpuinfo | grep 'model name'
         cpu_name=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | awk -F: '{print $2}' | sed 's/^[ \t]*//')
-        if [[ ! "$cpu_name" =~ "8370C" and ! "$cpu_name" =~ "8272CL" ]]; then
-        echo "CPU不为 8370C 或 8272CL 性能不足，停止执行命令"
+        if [[ ! "$cpu_name" =~ "8370C" ]]; then
+        echo "CPU不为 8370C 性能不足，停止执行命令"
         exit 1
         else
-        echo "CPU为8370C 或 8272CL，继续执行命令"
+        echo "CPU为8370C ，继续执行命令"
         ulimit -a
         fi
     - name: Maximize build space
