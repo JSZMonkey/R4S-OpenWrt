@@ -18,7 +18,7 @@ jobs:
         echo -e "Total CPU cores\t: $(nproc)"
         cat /proc/cpuinfo | grep 'model name'
         cpu_name=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | awk -F: '{print $2}' | sed 's/^[ \t]*//')
-        if [[ ! "$cpu_name" =~ "8370C" ] && [ ! "$cpu_name" =~ "8272CL" ]]; then
+        if [[ ! "$cpu_name" =~ "8370C" ] and [ ! "$cpu_name" =~ "8272CL" ]]; then
         echo "CPU不为 8370C 或 8272CL 性能不足，停止执行命令"
         exit 1
         else
