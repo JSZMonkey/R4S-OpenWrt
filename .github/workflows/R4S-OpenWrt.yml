@@ -19,10 +19,10 @@ jobs:
         cat /proc/cpuinfo | grep 'model name'
         cpu_name=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | awk -F: '{print $2}' | sed 's/^[ \t]*//')
         if [[ ! "$cpu_name" =~ "8370C" ]]; then
-        echo "CPU不为 8370C 性能不足，停止执行命令"
+        echo "CPU不为8370C，性能不足，停止执行命令"
         exit 1
         else
-        echo "CPU为8370C ，继续执行命令"
+        echo "CPU为8370C，继续执行命令"
         ulimit -a
         fi
     - name: Maximize build space
@@ -149,7 +149,7 @@ jobs:
       with:
         name: OpenWRT-${{ env.latest_release }}
         allowUpdates: true
-        prerelease: true
+        prerelease: false
         tag: ${{ env.latest_release }}
         commit: master
         replacesArtifacts: true
