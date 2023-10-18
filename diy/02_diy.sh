@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
 
-# Add luci-app-eqos
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-eqos package/new/luci-app-eqos
+# Add luci-app-eqosplus
+cp -rf ../sirpdboy/luci-app-eqosplus ./package/sirpdboy/luci-app-eqosplus
 
