@@ -17,3 +17,6 @@ cp -rf ../lede_luci/applications/luci-app-mosdns ./package/new/luci-app-mosdns
 # MACFilter
 cp -rf ../immortalwrt_luci_23/applications/luci-app-webrestriction ./package/new/luci-app-webrestriction
 
+# luci-app-wrtbwmon
+rm -rf ./feeds/luci/applications/luci-app-wrtbwmon
+git clone https://github.com/brvphoenix/luci-app-wrtbwmon -b master ./feeds/luci/applications
