@@ -14,3 +14,6 @@ cp -rf ../lede_pkg/net/v2ray-geodata ./package/new/mosdns
 cp -rf ../lede_pkg/utils/v2dat ./package/new/v2dat
 cp -rf ../lede_luci/applications/luci-app-mosdns ./package/new/luci-app-mosdns
 
+# MACFilter
+cp -rf ../immortalwrt_luci_23/applications/luci-app-webrestriction ./package/new/luci-app-webrestriction
+
