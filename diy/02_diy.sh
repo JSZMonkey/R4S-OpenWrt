@@ -20,5 +20,5 @@ cp -rf ../lede_luci/applications/luci-app-accesscontrol ./package/new/luci-app-a
 
 # luci-app-wrtbwmon
 rm -rf ./feeds/luci/applications/luci-app-wrtbwmon
-git clone https://github.com/brvphoenix/luci-app-wrtbwmon -b master ./feeds/luci/applications/luci-app-wrtbwmon
-cp -rf ./feeds/luci/applications/luci-app-wrtbwmon/luci-app-wrtbwmon ./feeds/luci/applications/luci-app-wrtbwmon
+git clone https://github.com/brvphoenix/luci-app-wrtbwmon -b master ./feeds/luci/applications/
+#cp -rf ./feeds/luci/applications/luci-app-wrtbwmon/luci-app-wrtbwmon ./feeds/luci/applications/luci-app-wrtbwmon
