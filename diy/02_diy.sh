@@ -2,10 +2,10 @@
 clear
 
 # Add luci-app-eqosplus
-git clone -b main --depth 1 https://github.com/JSZMonkey/luci-app-eqosplus.git package/new/luci-app-eqosplus
+git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-eqosplus.git package/new/luci-app-eqosplus
 
 # Add luci-app-control-webrestriction
-git clone -b main --depth 1 https://github.com/JSZMonkey/luci-app-control-webrestriction.git package/new/luci-app-control-webrestriction
+git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-control-webrestriction.git package/new/luci-app-control-webrestriction
 
 # Mosdns
 rm -rf ./package/new/mosdns
