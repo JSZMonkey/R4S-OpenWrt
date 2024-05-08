@@ -7,8 +7,6 @@ git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-eqosplus.git
 # Add luci-app-control-webrestriction
 git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-control-webrestriction.git package/new/luci-app-control-webrestriction
 
-git clone -b main --depth 1 https://github.com/xiaorouji/openwrt-passwall2/luci-app-passwall2.git package/new/luci-app-passwall2
-
 # Mosdns
 rm -rf ./package/new/mosdns
 rm -rf ./package/new/luci-app-mosdns
