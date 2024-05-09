@@ -22,3 +22,5 @@ git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git
 
 
 
+rm -rf ../openwrt/package/libs/ustream-ssl
+cp -rf ../immortalwrt_23/package/libs/ustream-ssl  ../openwrt/package/libs/ustream-ssl
