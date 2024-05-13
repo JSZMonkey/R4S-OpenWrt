@@ -19,8 +19,3 @@ cp -rf ../lede_luci/applications/luci-app-mosdns ./package/new/luci-app-mosdns
 # 流量监视
 rm -rf ./package/new/luci-app-wrtbwmon
 git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
-
-
-
-rm -rf ../openwrt/package/libs/ustream-ssl
-cp -rf ../immortalwrt_23/package/libs/ustream-ssl  ../openwrt/package/libs/ustream-ssl
