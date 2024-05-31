@@ -4,7 +4,7 @@ CONFIG_TARGET_rockchip_armv8=y
 CONFIG_TARGET_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s=y
 CONFIG_TARGET_KERNEL_PARTSIZE=32
 CONFIG_TARGET_ROOTFS_PARTSIZE=822
-#CONFIG_ALL_KMODS=y
+CONFIG_ALL_KMODS=y
 CONFIG_DEVEL=y
 # CONFIG_KERNEL_KALLSYMS is not set
 CONFIG_KERNEL_BUILD_DOMAIN="buildhost"
@@ -146,10 +146,15 @@ CONFIG_LIBCURL_OPENSSL=y
 # CONFIG_LIBCURL_GNUTLS is not set
 # CONFIG_LIBCURL_NOSSL is not set
 
-
 ### Video Support ###
 CONFIG_PACKAGE_kmod-drm-panfrost=y
 CONFIG_PACKAGE_kmod-multimedia-input=y
+CONFIG_PACKAGE_kmod-backlight-pwm=y
+
+
+### OTHERS ###
+CONFIG_PACKAGE_kmod-crypto-cmac=y
+CONFIG_PACKAGE_kmod-crypto-ccm=y
 CONFIG_PACKAGE_kmod-backlight-pwm=y
 
 ### OTHERS ###
