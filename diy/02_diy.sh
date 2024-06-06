@@ -1,8 +1,8 @@
 #!/bin/bash
 clear
 
-# Add luci-app-eqosplus
-git clone -b master --depth 1 https://github.com/sirpdboy/luci-app-eqosplus.git package/new/luci-app-eqosplus
+# Add luci-app-eqos
+cp -rf ../lede_luci/applications/luci-app-eqos ./package/new/luci-app-eqos
 
 # Add luci-app-control-webrestriction
 git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-control-webrestriction.git package/new/luci-app-control-webrestriction
