@@ -4,6 +4,10 @@ clear
 # Add luci-app-eqos
 cp -rf ../lede_luci/applications/luci-app-eqos ./package/new/luci-app-eqos
 
+# Add luci-app-nft-qos
+cp -rf ../lede_luci/applications/luci-app-nft-qos ./package/new/luci-app-nft-qos
+
+
 # Add luci-app-control-webrestriction
 git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-control-webrestriction.git package/new/luci-app-control-webrestriction
 
