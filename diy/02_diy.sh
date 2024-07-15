@@ -23,10 +23,3 @@ cp -rf ../lede_luci/applications/luci-app-mosdns ./package/new/luci-app-mosdns
 # 流量监视
 rm -rf ./package/new/luci-app-wrtbwmon
 git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
-
-
-wget https://github.com/miniupnp/miniupnp/commit/c0a50ce.patch -O feeds/packages/net/miniupnpd/patches/c0a50ce.patch
-sed -i 's,/miniupnpd/,/,g' ./feeds/packages/net/miniupnpd/patches/c0a50ce.patch
-
-wget https://github.com/miniupnp/miniupnp/commit/814e855.patch -O feeds/packages/net/miniupnpd/patches/814e855.patch
-sed -i 's,/miniupnpd/,/,g' ./feeds/packages/net/miniupnpd/patches/814e855.patch
