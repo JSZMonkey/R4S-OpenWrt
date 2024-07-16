@@ -24,9 +24,6 @@ cp -rf ../lede_luci/applications/luci-app-mosdns ./package/new/luci-app-mosdns
 rm -rf ./package/new/luci-app-wrtbwmon
 git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 
-rm -rf ./feeds/packages/net/miniupnpd/patches/0e8c68d.patch
-rm -rf ./feeds/packages/net/miniupnpd/patches/21541fc.patch
-rm -rf ./feeds/packages/net/miniupnpd/patches/b78a363.patch
-rm -rf ./feeds/packages/net/miniupnpd/patches/8f2f392.patch
-rm -rf ./feeds/packages/net/miniupnpd/patches/60f5705.patch
-rm -rf ./feeds/packages/net/miniupnpd/patches/3f3582b.patch
+
+rm -rf ./feeds/packages/net/miniupnpd
+cp -rf ../lede_pkg/net/miniupnpd ./feeds/packages/net/miniupnpd
