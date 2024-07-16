@@ -26,4 +26,4 @@ git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git
 
 
 rm -rf ./feeds/packages/net/miniupnpd
-cp -rf ../lede_pkg/net/miniupnpd ./feeds/packages/net/miniupnpd
+cp -rf ../openwrt_pkg_ma/net/miniupnpd ./feeds/packages/net/miniupnpd
