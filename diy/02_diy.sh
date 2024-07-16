@@ -27,7 +27,3 @@ git clone -b master --depth 1 https://github.com/JSZMonkey/luci-app-wrtbwmon.git
 
 rm -rf ./feeds/packages/net/miniupnpd
 cp -rf ../lede_pkg/net/miniupnpd ./feeds/packages/net/miniupnpd
-pushd feeds/packages
-patch -p1 <../../../PATCH/miniupnpd/01-set-presentation_url.patch
-patch -p1 <../../../PATCH/miniupnpd/02-force_forwarding.patch
-patch -p1 <../../../PATCH/miniupnpd/03-Update-301-options-force_forwarding-support.patch.patch
