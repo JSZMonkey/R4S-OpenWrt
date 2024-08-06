@@ -1,6 +1,9 @@
 #!/bin/bash
 clear
 
+# 调整默认 LAN IP
+sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generate
+
 # Add luci-app-eqos
 cp -rf ../lede_luci/applications/luci-app-eqos ./package/new/luci-app-eqos
 
