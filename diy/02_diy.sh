@@ -1,6 +1,8 @@
 #!/bin/bash
 clear
 
+cp -rf ../immortalwrt_23/package/network/config/firewall/patches/100-fullconenat.patch ./package/network/config/firewall/patches/100-fullconenat.patch
+
 # 调整默认 LAN IP
 sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generate
 
