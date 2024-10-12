@@ -6,7 +6,7 @@ sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generat
 
 # qBittorrent 下载
 cp -rf ../immortalwrt_luci/applications/luci-app-qbittorrent ./package/new/luci-app-qbittorrent
-cp -rf ../immortalwrt_pkg/net/qbittorrent-enhanced-edition ./package/new/qbittorrent-enhanced-edition
+cp -rf ../immortalwrt_pkg/net/qBittorrent-Enhanced-Edition ./package/new/qBittorrent-Enhanced-Edition
 cp -rf ../immortalwrt_pkg/libs/qt6base ./package/new/qt6base
 
 # Add luci-app-eqos
