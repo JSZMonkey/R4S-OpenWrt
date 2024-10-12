@@ -9,6 +9,7 @@ cp -rf ../immortalwrt_luci/applications/luci-app-qbittorrent ./package/new/luci-
 cp -rf ../immortalwrt_pkg/net/qBittorrent-Enhanced-Edition ./package/new/qBittorrent-Enhanced-Edition
 cp -rf ../immortalwrt_pkg/libs/qt6base ./package/new/qt6base
 cp -rf ../immortalwrt_pkg/libs/libtorrent-rasterbar ./package/new/libtorrent-rasterbar
+cp -rf ../immortalwrt_pkg/libs/libdouble-conversion ./package/new/libdouble-conversion
 cp -rf ../immortalwrt_pkg/utils/qt6tools ./package/new/qt6tools
 
 # Add luci-app-eqos
