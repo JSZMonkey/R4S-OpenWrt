@@ -4,6 +4,14 @@ clear
 # 调整默认 LAN IP
 sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generate
 
+# qBittorrent 下载
+cp -rf ../lede_luci/applications/luci-app-qbittorrent ./package/new/luci-app-qbittorrent
+cp -rf ../lede_pkg/net/qBittorrent-static ./package/new/qBittorrent-static
+cp -rf ../lede_pkg/net/qBittorrent ./package/new/qBittorrent
+cp -rf ../lede_pkg/libs/qtbase ./package/new/qtbase
+cp -rf ../lede_pkg/libs/qttools ./package/new/qttools
+cp -rf ../lede_pkg/libs/rblibtorrent ./package/new/rblibtorrent
+
 # Add luci-app-eqos
 
 
