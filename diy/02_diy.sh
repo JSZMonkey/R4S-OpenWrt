@@ -12,6 +12,7 @@ cp -rf ../lede_pkg/libs/qtbase ./package/new/qtbase
 cp -rf ../lede_pkg/libs/qttools ./package/new/qttools
 cp -rf ../lede_pkg/libs/rblibtorrent ./package/new/rblibtorrent
 sed -i 's,"nas","services",g' package/new/luci-app-qbittorrent/luasrc/controller/qbittorrent.lua
+sed -i 's,nas,services,g' package/new/luci-app-qbittorrent/luasrc/view/qbittorrent_status.htm
 # Add luci-app-eqos
 
 
