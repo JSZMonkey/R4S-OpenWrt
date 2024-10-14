@@ -11,6 +11,7 @@ cp -rf ../lede_pkg/net/qBittorrent ./package/new/qBittorrent
 cp -rf ../lede_pkg/libs/qtbase ./package/new/qtbase
 cp -rf ../lede_pkg/libs/qttools ./package/new/qttools
 cp -rf ../lede_pkg/libs/rblibtorrent ./package/new/rblibtorrent
+sed -i 's,"nas","services",g' package/new/luci-app-qbittorrent/luasrc/controller/qbittorrent.lua
 # Add luci-app-eqos
 
 
