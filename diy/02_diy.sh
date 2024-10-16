@@ -5,12 +5,12 @@ clear
 sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generate
 
 # qBittorrent 下载
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent ./package/new/luci-app-qbittorrent
-svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static ./package/new/qBittorrent-static
-svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent ./package/new/qBittorrent
-svn export https://github.com/coolsnowwolf/packages/trunk/libs/qtbase ./package/new/qtbase
-svn export https://github.com/coolsnowwolf/packages/trunk/libs/qttools ./package/new/qttools
-svn export https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent ./package/new/rblibtorrent
+git clone -b master --depth 1 https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent ./package/new/luci-app-qbittorrent
+git clone -b master --depth 1 https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static ./package/new/qBittorrent-static
+git clone -b master --depth 1 https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent ./package/new/qBittorrent
+git clone -b master --depth 1 https://github.com/coolsnowwolf/packages/trunk/libs/qtbase ./package/new/qtbase
+git clone -b master --depth 1 https://github.com/coolsnowwolf/packages/trunk/libs/qttools ./package/new/qttools
+git clone -b master --depth 1 https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent ./package/new/rblibtorrent
 sed -i 's,"nas","services",g' package/new/luci-app-qbittorrent/luasrc/controller/qbittorrent.lua
 sed -i 's,nas,services,g' package/new/luci-app-qbittorrent/luasrc/view/qbittorrent_status.htm
 # Add luci-app-eqos
