@@ -5,7 +5,7 @@ clear
 sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generate
 
 # qBittorrent 下载
-git clone -b main --depth 1 https://github.com/JSZMonkey/luci-app-qbittorrent package/new/luci-app-qbittorrent
+git clone -b dev --depth 1 https://github.com/JSZMonkey/luci-app-qbittorrent package/new/luci-app-qbittorrent
 
 # Add luci-app-eqos
 
