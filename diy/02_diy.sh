@@ -2,7 +2,7 @@
 clear
 
 # 调整默认 LAN IP
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.110.1/g' package/base-files/files/bin/config_generate
 
 # qBittorrent 下载
 git clone -b main --depth 1 https://github.com/JSZMonkey/luci-app-qbittorrent package/new/luci-app-qbittorrent
